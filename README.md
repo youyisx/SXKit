@@ -1,2 +1,0 @@
-# SXKit
-SXKit
