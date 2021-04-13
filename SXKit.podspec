@@ -77,7 +77,6 @@ Pod::Spec.new do |s|
      ss.dependency 'SXKit/SXCommonKit'
      ss.dependency 'SXKit/SXUIKit'
      ss.dependency 'SXKit/SXHUD'
-     ss.dependency 'SXKit/SXPhotoLibrary'
    end
    s.default_subspec = 'SXKit'
    
