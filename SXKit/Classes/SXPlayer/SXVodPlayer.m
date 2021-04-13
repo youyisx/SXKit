@@ -229,6 +229,7 @@ NS_INLINE NSString * _SXVodPlayerTime(NSInteger second) {
         self.resolution = CGSizeMake(width, height);
     } else if (EvtID == PLAY_EVT_VOD_PLAY_PREPARED) {
         /// 准备好了
+        [self.contentView.loadingView stopAnimating];
         if (self.allowPlay == YES) { [self resume];};
         !self.eventCallBack?:self.eventCallBack(SXVodPlayEvent_Prepared);
     } else if (EvtID == PLAY_EVT_PLAY_PROGRESS) {
