@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'SXKit'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of SXKit.'
+  s.summary          = '常用工具库'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,25 +18,93 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  SXKit<常用工具库>
                        DESC
 
-  s.homepage         = 'https://github.com/vince_wang/SXKit'
+  s.homepage         = 'https://github.com/youyisx/SXKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'vince_wang' => 'youyisx@hotmail.com' }
-  s.source           = { :git => 'https://github.com/vince_wang/SXKit.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/youyisx/SXKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.ios.deployment_target = '9.0'
-
-  s.source_files = 'SXKit/Classes/**/*'
+  s.platform     = :ios, '11.0'
+  s.ios.deployment_target = '11.0'
   
-  # s.resource_bundles = {
-  #   'SXKit' => ['SXKit/Assets/*.png']
-  # }
-
+#   s.resource_bundles = {
+#     'SXKit' => ['SXKit/Assets/*.{png,jpg,jpeg,xib}']
+#   }
+  # 公开头文件
   # s.public_header_files = 'Pod/Classes/**/*.h'
+  
+  #该pod依赖的系统framework，多个用逗号隔开
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  #第三方.a文件
+  #s.vendored_libraries = 'XXEncryptKit/Classes/ThirdParty/*.a'
+  #第三方frameworks文件
+  #s.vendored_frameworks = 'XXEncryptKit/Classes/ThirdParty/*.framework'
+  
+  #依赖关系，该项目所依赖的其他库，如果有多个需要填写多个s.dependency
+#  s.dependency 'ReactiveObjC', '~> 3.1.1'
+#  s.dependency 'Masonry', '~> 1.1.0'
+
+   # 模块
+   
+   s.subspec 'SXCommonKit' do |ss|
+     ss.source_files = 'SXKit/Classes/SXCommonKit/**/*'
+     ss.dependency 'ReactiveObjC', '~> 3.1.1'
+     ss.dependency 'Masonry', '~> 1.1.0'
+     s.frameworks = 'UIKit', 'Foundation'
+   end
+   s.subspec 'SXHUD' do |ss|
+     ss.source_files = 'SXKit/Classes/SXHUD/*'
+     ss.dependency 'MBProgressHUD', '~> 1.2.0'
+     ss.dependency 'SXKit/SXCommonKit'
+   end
+   s.subspec 'SXUIKit' do |ss|
+     ss.source_files = 'SXKit/Classes/SXUIKit/*'
+     ss.dependency 'SXKit/SXCommonKit'
+   end
+   s.subspec 'SXPhotoLibrary' do |ss|
+     ss.source_files = 'SXKit/Classes/SXPhotoLibrary/*'
+     ss.dependency 'SXKit/SXCommonKit'
+     s.frameworks = 'Photos'
+   end
+   s.subspec 'SXKit' do |ss|
+     ss.dependency 'SXKit/SXCommonKit'
+     ss.dependency 'SXKit/SXUIKit'
+     ss.dependency 'SXKit/SXHUD'
+     ss.dependency 'SXKit/SXPhotoLibrary'
+   end
+   s.default_subspec = 'SXKit'
+   
+   s.subspec 'SXPlayer' do |ss|
+     ss.source_files = 'SXKit/Classes/SXPlayer/*.{h,m}'
+     ss.resource = [
+       'SXKit/Classes/SXPlayer/Resources/*.{png,jpg,jpeg}'
+     ]
+     ss.dependency 'SXKit/SXCommonKit'
+     ss.dependency 'SXKit/SXUIKit'
+     # 腾讯云 超级播放器
+#     ss.dependency 'TXLiteAVSDK_Player', '7.4.9203'
+    ss.vendored_frameworks = [
+      'SXKit/Classes/SXPlayer/Frameworks/*.framework',
+    ]
+    ss.frameworks = [
+      'SystemConfiguration',
+      'CoreTelephony',
+      'VideoToolbox',
+      'CoreGraphics',
+      'AVFoundation',
+      'Accelerate'
+    ]
+    ss.libraries = [
+      'z',
+      'c++',
+      'resolv',
+      'iconv',
+      'stdc++',
+      'sqlite3',
+    ]
+   end
+   
 end

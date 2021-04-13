@@ -1,0 +1,48 @@
+PODS:
+  - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
+  - ReactiveObjC (3.1.1)
+  - SXKit (0.1.0):
+    - SXKit/SXKit (= 0.1.0)
+  - SXKit/SXCommonKit (0.1.0):
+    - Masonry (~> 1.1.0)
+    - ReactiveObjC (~> 3.1.1)
+  - SXKit/SXHUD (0.1.0):
+    - MBProgressHUD (~> 1.2.0)
+    - SXKit/SXCommonKit
+  - SXKit/SXKit (0.1.0):
+    - SXKit/SXCommonKit
+    - SXKit/SXHUD
+    - SXKit/SXPhotoLibrary
+    - SXKit/SXUIKit
+  - SXKit/SXPhotoLibrary (0.1.0):
+    - SXKit/SXCommonKit
+  - SXKit/SXPlayer (0.1.0):
+    - SXKit/SXCommonKit
+    - SXKit/SXUIKit
+  - SXKit/SXUIKit (0.1.0):
+    - SXKit/SXCommonKit
+
+DEPENDENCIES:
+  - SXKit (from `../`)
+  - SXKit/SXPlayer (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Masonry
+    - MBProgressHUD
+    - ReactiveObjC
+
+EXTERNAL SOURCES:
+  SXKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
+  SXKit: 3da7d82237d4301b0c9e1e62cec68d9f1a403d7e
+
+PODFILE CHECKSUM: d254eee87aee679d6d283437e16ddb899e74bed8
+
+COCOAPODS: 1.8.4

@@ -1,0 +1,118 @@
+{
+  "name": "SXKit",
+  "version": "0.1.0",
+  "summary": "常用工具库",
+  "description": "SXKit<常用工具库>",
+  "homepage": "https://github.com/youyisx/SXKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "vince_wang": "youyisx@hotmail.com"
+  },
+  "source": {
+    "git": "https://github.com/youyisx/SXKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "11.0"
+  },
+  "frameworks": "Photos",
+  "default_subspecs": "SXKit",
+  "subspecs": [
+    {
+      "name": "SXCommonKit",
+      "source_files": "SXKit/Classes/SXCommonKit/**/*",
+      "dependencies": {
+        "ReactiveObjC": [
+          "~> 3.1.1"
+        ],
+        "Masonry": [
+          "~> 1.1.0"
+        ]
+      }
+    },
+    {
+      "name": "SXHUD",
+      "source_files": "SXKit/Classes/SXHUD/*",
+      "dependencies": {
+        "MBProgressHUD": [
+          "~> 1.2.0"
+        ],
+        "SXKit/SXCommonKit": [
+
+        ]
+      }
+    },
+    {
+      "name": "SXUIKit",
+      "source_files": "SXKit/Classes/SXUIKit/*",
+      "dependencies": {
+        "SXKit/SXCommonKit": [
+
+        ]
+      }
+    },
+    {
+      "name": "SXPhotoLibrary",
+      "source_files": "SXKit/Classes/SXPhotoLibrary/*",
+      "dependencies": {
+        "SXKit/SXCommonKit": [
+
+        ]
+      }
+    },
+    {
+      "name": "SXKit",
+      "dependencies": {
+        "SXKit/SXCommonKit": [
+
+        ],
+        "SXKit/SXUIKit": [
+
+        ],
+        "SXKit/SXHUD": [
+
+        ],
+        "SXKit/SXPhotoLibrary": [
+
+        ]
+      }
+    },
+    {
+      "name": "SXPlayer",
+      "source_files": "SXKit/Classes/SXPlayer/*.{h,m}",
+      "resources": [
+        "SXKit/Classes/SXPlayer/Resources/*.{png,jpg,jpeg}"
+      ],
+      "dependencies": {
+        "SXKit/SXCommonKit": [
+
+        ],
+        "SXKit/SXUIKit": [
+
+        ]
+      },
+      "vendored_frameworks": [
+        "SXKit/Classes/SXPlayer/Frameworks/*.framework"
+      ],
+      "frameworks": [
+        "SystemConfiguration",
+        "CoreTelephony",
+        "VideoToolbox",
+        "CoreGraphics",
+        "AVFoundation",
+        "Accelerate"
+      ],
+      "libraries": [
+        "z",
+        "c++",
+        "resolv",
+        "iconv",
+        "stdc++",
+        "sqlite3"
+      ]
+    }
+  ]
+}

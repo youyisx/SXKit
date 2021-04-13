@@ -1,0 +1,6 @@
+framework module SXKit {
+  umbrella header "SXKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

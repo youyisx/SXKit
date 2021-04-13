@@ -1,13 +1,14 @@
 use_frameworks!
 
-platform :ios, '9.0'
+platform :ios, '11.0'
 
 target 'SXKit_Example' do
   pod 'SXKit', :path => '../'
+  pod 'SXKit/SXPlayer', :path => '../'
 
   target 'SXKit_Tests' do
     inherit! :search_paths
 
-    pod 'FBSnapshotTestCase'
+#    pod 'FBSnapshotTestCase'
   end
 end
