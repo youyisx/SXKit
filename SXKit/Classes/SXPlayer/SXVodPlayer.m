@@ -77,6 +77,7 @@ NS_INLINE NSString * _SXVodPlayerTime(NSInteger second) {
 @end
 
 @implementation SXVodPlayer
+@dynamic cover;
 
 - (void)dealloc {
     [self stop];
@@ -105,7 +106,6 @@ NS_INLINE NSString * _SXVodPlayerTime(NSInteger second) {
     [self.vodPlayer setupVideoWidget:self.contentView insertIndex:0];
 }
 
-
 - (void)layoutSubviews {
     [super layoutSubviews];
     if (self.contentView.superview != self) return;
@@ -126,6 +126,10 @@ NS_INLINE NSString * _SXVodPlayerTime(NSInteger second) {
         needResume = [self isPlaying];
         if (needResume == YES) [self pause];
     }];
+}
+
+- (UIImageView *)cover {
+    return self.contentView.coverImgView;
 }
 
 #pragma mark --- event
@@ -163,7 +167,7 @@ NS_INLINE NSString * _SXVodPlayerTime(NSInteger second) {
     self.videoUrl = nil;
     self.contentView.pauseIcon.alpha = 1.0;
     self.allowControl = NO;
-    self.contentView.coverImgView.hidden = NO;
+    self.cover.hidden = NO;
 
 }
 
@@ -216,7 +220,7 @@ NS_INLINE NSString * _SXVodPlayerTime(NSInteger second) {
     if (EvtID == PLAY_EVT_RCV_FIRST_I_FRAME) {
         // 首帧加载出来了
         [self.contentView.loadingView stopAnimating];
-        self.contentView.coverImgView.hidden = YES;
+        self.cover.hidden = YES;
         !self.eventCallBack?:self.eventCallBack(SXVodPlayEvent_FirstIFrame);
     } else if (EvtID == PLAY_EVT_CHANGE_RESOLUTION) {
         // 分辨率发生改变

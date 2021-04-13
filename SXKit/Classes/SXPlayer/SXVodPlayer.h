@@ -43,6 +43,7 @@ typedef NS_ENUM(NSInteger, SXVodPlayEvent) {
 @interface SXVodPlayer : UIView
 /// 播放层
 @property (nonatomic, strong) SXPlayerContentView *contentView;
+@property (nonatomic, readonly) UIImageView *cover;
 /// 准备播放
 - (void)preparePlayWithUrl:(NSString *)url;
 - (void)preparePlayWithUrl:(NSString *)url renderMode:(SXVodPlayerRenderMode)mode;
