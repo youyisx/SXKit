@@ -59,7 +59,7 @@
     },
     {
       "name": "SXPhotoLibrary",
-      "source_files": "SXKit/Classes/SXPhotoLibrary/*",
+      "source_files": "SXKit/Classes/SXPhotoLibrary/**/*",
       "dependencies": {
         "SXKit/SXCommonKit": [
 

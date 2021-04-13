@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
      ss.dependency 'SXKit/SXCommonKit'
    end
    s.subspec 'SXPhotoLibrary' do |ss|
-     ss.source_files = 'SXKit/Classes/SXPhotoLibrary/*'
+     ss.source_files = 'SXKit/Classes/SXPhotoLibrary/**/*'
      ss.dependency 'SXKit/SXCommonKit'
      ss.frameworks = 'Photos'
      # 在项目中配置宏
