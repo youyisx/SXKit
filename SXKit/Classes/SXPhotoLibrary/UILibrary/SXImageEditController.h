@@ -2,7 +2,7 @@
 //  FAImageEditController.h
 //  FansApp
 //
-//  Created by taihe-imac-ios-01 on 2021/3/12.
+//  Created by vince_wang on 2021/3/12.
 //  Copyright © 2021 legendry. All rights reserved.
 //
 

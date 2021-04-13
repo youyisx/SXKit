@@ -2,7 +2,7 @@
 //  SXCommon.h
 //  VSocial
 //
-//  Created by taihe-imac-ios-01 on 2021/1/19.
+//  Created by vince_wang on 2021/1/19.
 //  Copyright © 2021 vince. All rights reserved.
 //
 

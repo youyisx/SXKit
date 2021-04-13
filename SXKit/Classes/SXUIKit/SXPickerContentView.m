@@ -2,7 +2,7 @@
 //  SXPickerContentView.m
 //  VSocial
 //
-//  Created by taihe-imac-ios-01 on 2021/3/5.
+//  Created by vince_wang on 2021/3/5.
 //  Copyright © 2021 vince. All rights reserved.
 //
 

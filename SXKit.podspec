@@ -88,7 +88,6 @@ Pod::Spec.new do |s|
      ss.dependency 'SXKit/SXCommonKit'
      ss.dependency 'SXKit/SXUIKit'
      # 腾讯云 超级播放器
-#     ss.static_framework = true
      ss.dependency 'TXLiteAVSDK_Player', '7.4.9203'
      
 #    ss.vendored_frameworks = [

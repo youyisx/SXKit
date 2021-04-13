@@ -2,7 +2,7 @@
 //  UITextView+SXDynamic.m
 //  VSocial
 //
-//  Created by taihe-imac-ios-01 on 2021/2/24.
+//  Created by vince_wang on 2021/2/24.
 //  Copyright © 2021 vince. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  SXPhotoLibrary.h
 //  SXKit
 //
-//  Created by taihe-imac-ios-01 on 2021/4/12.
+//  Created by vince_wang on 2021/4/12.
 //
 
 #ifndef SXPhotoLibrary_h

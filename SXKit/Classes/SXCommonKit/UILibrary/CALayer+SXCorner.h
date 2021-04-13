@@ -2,7 +2,7 @@
 //  CALayer+SXCorner.h
 //  VSocial
 //
-//  Created by taihe-imac-ios-01 on 2021/2/2.
+//  Created by vince_wang on 2021/2/2.
 //  Copyright © 2021 vince. All rights reserved.
 //
 

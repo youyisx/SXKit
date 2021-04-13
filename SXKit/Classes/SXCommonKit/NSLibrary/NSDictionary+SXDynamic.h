@@ -2,7 +2,7 @@
 //  NSDictionary+SXDynamic.h
 //  SXKit
 //
-//  Created by taihe-imac-ios-01 on 2021/4/9.
+//  Created by vince_wang on 2021/4/9.
 //
 
 #import <Foundation/Foundation.h>
