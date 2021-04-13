@@ -99,6 +99,9 @@
         ],
         "SXKit/SXUIKit": [
 
+        ],
+        "TXLiteAVSDK_Player": [
+          "7.4.9203"
         ]
       }
     }
