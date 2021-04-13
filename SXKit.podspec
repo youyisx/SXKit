@@ -110,5 +110,8 @@ Pod::Spec.new do |s|
 #      'sqlite3',
 #    ]
    end
-   
+   s.subspec 'SXVideoTrimmerView' do |ss|
+     ss.source_files = 'SXKit/Classes/SXVideoTrimmerView/*'
+     ss.frameworks = 'UIKit', 'Foundation'
+   end
 end

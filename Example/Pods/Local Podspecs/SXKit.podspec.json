@@ -101,6 +101,14 @@
           "7.4.9203"
         ]
       }
+    },
+    {
+      "name": "SXVideoTrimmerView",
+      "source_files": "SXKit/Classes/SXVideoTrimmerView/*",
+      "frameworks": [
+        "UIKit",
+        "Foundation"
+      ]
     }
   ]
 }
