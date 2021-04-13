@@ -161,9 +161,6 @@ NS_INLINE NSString * _SXVodPlayerTime(NSInteger second) {
 
 - (void)stop {
     [self.vodPlayer stopPlay];
-#ifdef SXPHOTOKIT
-    self.videoAsset = nil;
-#endif
     self.videoUrl = nil;
     self.contentView.pauseIcon.alpha = 1.0;
     self.allowControl = NO;
@@ -190,6 +187,9 @@ NS_INLINE NSString * _SXVodPlayerTime(NSInteger second) {
 
 - (void)preparePlayWithUrl:(NSString *)url renderMode:(SXVodPlayerRenderMode)mode {
     [self stop];
+#ifdef SXPHOTOKIT
+    self.videoAsset = nil;
+#endif
     if (sx_stringWithObject(url).length == 0) return;
     self.videoUrl = sx_stringWithObject(url);
     [self.contentView.loadingView startAnimating];
