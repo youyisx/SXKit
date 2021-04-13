@@ -54,8 +54,8 @@
         [contentView hidePicker];
     }];
     
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, backBarH, back.sx_w, 1)];
-    line.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.5];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, backBarH, back.sx_w, 0.5)];
+    line.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.4];
     [back addSubview:line];
     
     [UIView animateWithDuration:0.25 animations:^{

@@ -1,8 +1,8 @@
 FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/TXLiteAVSDK_Player/TXLiteAVSDK_Player/SDK"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 SXPHOTOKIT
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/MBProgressHUD" "${PODS_ROOT}/Headers/Public/Masonry" "${PODS_ROOT}/Headers/Public/ReactiveObjC" "${PODS_ROOT}/Headers/Public/SXKit" ${PODS_ROOT}/TXLiteAVSDK_Player/TXLiteAVSDK_Player/SDK/TXLiteAVSDK_Player.framework/Headers/
-LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/MBProgressHUD" "${PODS_CONFIGURATION_BUILD_DIR}/Masonry" "${PODS_CONFIGURATION_BUILD_DIR}/ReactiveObjC" "${PODS_CONFIGURATION_BUILD_DIR}/SXKit"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"MBProgressHUD" -l"Masonry" -l"ReactiveObjC" -l"SXKit" -l"c++" -l"iconv" -l"resolv" -l"sqlite3" -l"stdc++" -l"z" -framework "AVFoundation" -framework "Accelerate" -framework "CoreGraphics" -framework "CoreTelephony" -framework "Foundation" -framework "Photos" -framework "QuartzCore" -framework "SystemConfiguration" -framework "TXLiteAVSDK_Player" -framework "UIKit" -framework "VideoToolbox"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/MBProgressHUD" "${PODS_ROOT}/Headers/Public/Masonry" "${PODS_ROOT}/Headers/Public/ReactiveObjC" "${PODS_ROOT}/Headers/Public/SDWebImage" "${PODS_ROOT}/Headers/Public/SXKit" ${PODS_ROOT}/TXLiteAVSDK_Player/TXLiteAVSDK_Player/SDK/TXLiteAVSDK_Player.framework/Headers/
+LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/MBProgressHUD" "${PODS_CONFIGURATION_BUILD_DIR}/Masonry" "${PODS_CONFIGURATION_BUILD_DIR}/ReactiveObjC" "${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage" "${PODS_CONFIGURATION_BUILD_DIR}/SXKit"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"MBProgressHUD" -l"Masonry" -l"ReactiveObjC" -l"SDWebImage" -l"SXKit" -l"c++" -l"iconv" -l"resolv" -l"sqlite3" -l"stdc++" -l"z" -framework "AVFoundation" -framework "Accelerate" -framework "CoreGraphics" -framework "CoreTelephony" -framework "Foundation" -framework "ImageIO" -framework "Photos" -framework "QuartzCore" -framework "SystemConfiguration" -framework "TXLiteAVSDK_Player" -framework "UIKit" -framework "VideoToolbox"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.

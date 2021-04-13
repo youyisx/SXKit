@@ -2,6 +2,9 @@ PODS:
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - ReactiveObjC (3.1.1)
+  - SDWebImage (5.8.3):
+    - SDWebImage/Core (= 5.8.3)
+  - SDWebImage/Core (5.8.3)
   - SXKit (0.1.0):
     - SXKit/SXKit (= 0.1.0)
   - SXKit/SXCommonKit (0.1.0):
@@ -13,7 +16,6 @@ PODS:
   - SXKit/SXKit (0.1.0):
     - SXKit/SXCommonKit
     - SXKit/SXHUD
-    - SXKit/SXPhotoLibrary
     - SXKit/SXUIKit
   - SXKit/SXPhotoLibrary (0.1.0):
     - SXKit/SXCommonKit
@@ -26,7 +28,9 @@ PODS:
   - TXLiteAVSDK_Player (7.4.9203)
 
 DEPENDENCIES:
+  - SDWebImage
   - SXKit (from `../`)
+  - SXKit/SXPhotoLibrary (from `../`)
   - SXKit/SXPlayer (from `../`)
 
 SPEC REPOS:
@@ -34,6 +38,7 @@ SPEC REPOS:
     - Masonry
     - MBProgressHUD
     - ReactiveObjC
+    - SDWebImage
     - TXLiteAVSDK_Player
 
 EXTERNAL SOURCES:
@@ -44,9 +49,10 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  SXKit: 0b6f957ea89b9752c71657c6f0788e2e89a29139
+  SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
+  SXKit: b3f10c50f42b0c388cb95164087dd7e0b72cf7f6
   TXLiteAVSDK_Player: 8452cc0a8fefcba329dea6bd3f8119c76538eee4
 
-PODFILE CHECKSUM: d8d20dc285f4b252a7cd01d11e6215784853cd1f
+PODFILE CHECKSUM: 892e34dc2b16f550e3703e92c907ae458d874586
 
 COCOAPODS: 1.8.4

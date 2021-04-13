@@ -7,13 +7,23 @@
 //
 
 #import "SXAppDelegate.h"
-
+#import <SXKit/SXVodPlayer.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 @implementation SXAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:SXVodPlayerRotationNotificationName object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        self.vodPlayerOrientation = [x.object integerValue];
+    }];
     return YES;
+}
+
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    if (self.vodPlayerOrientation == UIDeviceOrientationLandscapeLeft || self.vodPlayerOrientation == UIDeviceOrientationLandscapeRight) {
+        return UIInterfaceOrientationMaskLandscape;
+    }
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

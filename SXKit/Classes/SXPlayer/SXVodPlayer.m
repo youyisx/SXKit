@@ -30,7 +30,7 @@ NS_INLINE NSString * _SXVodPlayerTime(NSInteger second) {
     self.coverImgView.backgroundColor = UIColor.blackColor;
     [self addSubview:self.coverImgView];
     
-    self.pauseIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_video_0"]];
+    self.pauseIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sx_icon_play"]];
     self.pauseIcon.userInteractionEnabled = false;
     [self addSubview:self.pauseIcon];
     
