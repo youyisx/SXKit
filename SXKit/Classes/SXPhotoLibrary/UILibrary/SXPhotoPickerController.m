@@ -98,14 +98,14 @@
 @end
 
 @interface SXPhotoPickerController ()<UICollectionViewDelegate, UICollectionViewDataSource>
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) SXPhotoHelper *helper;
 @property (nonatomic, strong) NSMutableDictionary <NSString *,PHAsset *>*selectedAssets;
 @end
 
 @implementation SXPhotoPickerController
 + (instancetype)defaultPickerController {
-    SXPhotoPickerController *picker = [[SXPhotoPickerController alloc] initWithNibName:@"SXPhotoPickerController" bundle:nil];
+    SXPhotoPickerController *picker = [[SXPhotoPickerController alloc] initWithNibName:nil bundle:nil];
     return picker;
 }
 
@@ -126,12 +126,21 @@
 }
 
 - (void)configCollectionView {
-    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.minimumLineSpacing = 10;
     layout.minimumInteritemSpacing = 10;
     CGFloat w_ = (SXScreenW - 30 - layout.sectionInset.left - layout.sectionInset.right) / 4.0;
     w_ = floor(w_);
     layout.itemSize = CGSizeMake(w_, w_);
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    self.collectionView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.collectionView];
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.mas_topLayoutGuideBottom);
+        make.leading.trailing.bottom.mas_equalTo(0);
+    }];
 }
 
 
