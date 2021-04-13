@@ -20,8 +20,10 @@ PODS:
   - SXKit/SXPlayer (0.1.0):
     - SXKit/SXCommonKit
     - SXKit/SXUIKit
+    - TXLiteAVSDK_Player (= 7.4.9203)
   - SXKit/SXUIKit (0.1.0):
     - SXKit/SXCommonKit
+  - TXLiteAVSDK_Player (7.4.9203)
 
 DEPENDENCIES:
   - SXKit (from `../`)
@@ -32,6 +34,7 @@ SPEC REPOS:
     - Masonry
     - MBProgressHUD
     - ReactiveObjC
+    - TXLiteAVSDK_Player
 
 EXTERNAL SOURCES:
   SXKit:
@@ -41,8 +44,9 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  SXKit: 3da7d82237d4301b0c9e1e62cec68d9f1a403d7e
+  SXKit: 0b6f957ea89b9752c71657c6f0788e2e89a29139
+  TXLiteAVSDK_Player: 8452cc0a8fefcba329dea6bd3f8119c76538eee4
 
-PODFILE CHECKSUM: d254eee87aee679d6d283437e16ddb899e74bed8
+PODFILE CHECKSUM: d8d20dc285f4b252a7cd01d11e6215784853cd1f
 
 COCOAPODS: 1.8.4

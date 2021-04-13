@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B6AA17FE20A193A1219725E /* libPods-SXKit_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E43C9180D92F34048F42 /* libPods-SXKit_Example.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -20,9 +21,8 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		70082E5A7926007F590570B0 /* Pods_SXKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 129EABA38578A8DD5F263DB4 /* Pods_SXKit_Example.framework */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
-		7F81FD401FE974FB21E7AF73 /* Pods_SXKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D73175D232502BDC2724DAC /* Pods_SXKit_Tests.framework */; };
+		81CD5A7603FA3080167C9BF8 /* libPods-SXKit_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5343C6F0D31DD28E06B2445 /* libPods-SXKit_Tests.a */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -37,9 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		129EABA38578A8DD5F263DB4 /* Pods_SXKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SXKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BF4C759CC6F1419FC2BB5EA /* SXKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SXKit.podspec; path = ../SXKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		2D73175D232502BDC2724DAC /* Pods_SXKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SXKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		425FF5EEC6A536F5F9D07D87 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* SXKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SXKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -63,7 +61,9 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		80BE2F8078D81F9651C12C62 /* Pods-SXKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SXKit_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SXKit_Tests/Pods-SXKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8FE0E43C9180D92F34048F42 /* libPods-SXKit_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SXKit_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B616EA8C84D81E01E11F2473 /* Pods-SXKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SXKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-SXKit_Example/Pods-SXKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		C5343C6F0D31DD28E06B2445 /* libPods-SXKit_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SXKit_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5D986867392E27240B5666 /* Pods-SXKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SXKit_Example.release.xcconfig"; path = "Target Support Files/Pods-SXKit_Example/Pods-SXKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		CF14E66CDD432B78E6AC46E4 /* Pods-SXKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SXKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-SXKit_Tests/Pods-SXKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		DD1972E6EACEBC27D4EE5C68 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				70082E5A7926007F590570B0 /* Pods_SXKit_Example.framework in Frameworks */,
+				5B6AA17FE20A193A1219725E /* libPods-SXKit_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +88,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				7F81FD401FE974FB21E7AF73 /* Pods_SXKit_Tests.framework in Frameworks */,
+				81CD5A7603FA3080167C9BF8 /* libPods-SXKit_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,8 +134,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				129EABA38578A8DD5F263DB4 /* Pods_SXKit_Example.framework */,
-				2D73175D232502BDC2724DAC /* Pods_SXKit_Tests.framework */,
+				8FE0E43C9180D92F34048F42 /* libPods-SXKit_Example.a */,
+				C5343C6F0D31DD28E06B2445 /* libPods-SXKit_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -207,7 +207,7 @@
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				1B371F41CB748306A6BBB09A /* [CP] Embed Pods Frameworks */,
+				780FE9A16A57C0607831A7C5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -295,30 +295,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1B371F41CB748306A6BBB09A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SXKit_Example/Pods-SXKit_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
-				"${BUILT_PRODUCTS_DIR}/SXKit/SXKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SXKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SXKit_Example/Pods-SXKit_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4A13F96AB7EE70E370C43A15 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,6 +315,42 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		780FE9A16A57C0607831A7C5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SXKit_Example/Pods-SXKit_Example-resources.sh",
+				"${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play@2x.png",
+				"${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play@3x.png",
+				"${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play_0@2x.png",
+				"${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play_0@3x.png",
+				"${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play_1@2x.png",
+				"${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play_1@3x.png",
+				"${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_0@2x.png",
+				"${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_0@3x.png",
+				"${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_1@2x.png",
+				"${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_1@3x.png",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sx_icon_vod_play@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sx_icon_vod_play@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sx_icon_vod_play_0@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sx_icon_vod_play_0@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sx_icon_vod_play_1@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sx_icon_vod_play_1@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sx_icon_vod_resize_0@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sx_icon_vod_resize_0@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sx_icon_vod_resize_1@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sx_icon_vod_resize_1@3x.png",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SXKit_Example/Pods-SXKit_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9A102A73718BC9424132F0CD /* [CP] Check Pods Manifest.lock */ = {

@@ -18,7 +18,6 @@
   "platforms": {
     "ios": "11.0"
   },
-  "frameworks": "Photos",
   "default_subspecs": "SXKit",
   "subspecs": [
     {
@@ -31,7 +30,11 @@
         "Masonry": [
           "~> 1.1.0"
         ]
-      }
+      },
+      "frameworks": [
+        "UIKit",
+        "Foundation"
+      ]
     },
     {
       "name": "SXHUD",
@@ -61,6 +64,10 @@
         "SXKit/SXCommonKit": [
 
         ]
+      },
+      "frameworks": "Photos",
+      "xcconfig": {
+        "GCC_PREPROCESSOR_DEFINITIONS": "SXPHOTOKIT"
       }
     },
     {
@@ -92,27 +99,11 @@
         ],
         "SXKit/SXUIKit": [
 
+        ],
+        "TXLiteAVSDK_Player": [
+          "7.4.9203"
         ]
-      },
-      "vendored_frameworks": [
-        "SXKit/Classes/SXPlayer/Frameworks/*.framework"
-      ],
-      "frameworks": [
-        "SystemConfiguration",
-        "CoreTelephony",
-        "VideoToolbox",
-        "CoreGraphics",
-        "AVFoundation",
-        "Accelerate"
-      ],
-      "libraries": [
-        "z",
-        "c++",
-        "resolv",
-        "iconv",
-        "stdc++",
-        "sqlite3"
-      ]
+      }
     }
   ]
 }

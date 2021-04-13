@@ -48,12 +48,12 @@ Pod::Spec.new do |s|
 #  s.dependency 'Masonry', '~> 1.1.0'
 
    # 模块
-   
+#   s.static_framework = true
    s.subspec 'SXCommonKit' do |ss|
      ss.source_files = 'SXKit/Classes/SXCommonKit/**/*'
      ss.dependency 'ReactiveObjC', '~> 3.1.1'
      ss.dependency 'Masonry', '~> 1.1.0'
-     s.frameworks = 'UIKit', 'Foundation'
+     ss.frameworks = 'UIKit', 'Foundation'
    end
    s.subspec 'SXHUD' do |ss|
      ss.source_files = 'SXKit/Classes/SXHUD/*'
@@ -67,7 +67,11 @@ Pod::Spec.new do |s|
    s.subspec 'SXPhotoLibrary' do |ss|
      ss.source_files = 'SXKit/Classes/SXPhotoLibrary/*'
      ss.dependency 'SXKit/SXCommonKit'
-     s.frameworks = 'Photos'
+     ss.frameworks = 'Photos'
+     # 在项目中配置宏
+     ss.xcconfig = {
+       "GCC_PREPROCESSOR_DEFINITIONS" => "SXPHOTOKIT"
+     }
    end
    s.subspec 'SXKit' do |ss|
      ss.dependency 'SXKit/SXCommonKit'
@@ -85,26 +89,28 @@ Pod::Spec.new do |s|
      ss.dependency 'SXKit/SXCommonKit'
      ss.dependency 'SXKit/SXUIKit'
      # 腾讯云 超级播放器
-#     ss.dependency 'TXLiteAVSDK_Player', '7.4.9203'
-    ss.vendored_frameworks = [
-      'SXKit/Classes/SXPlayer/Frameworks/*.framework',
-    ]
-    ss.frameworks = [
-      'SystemConfiguration',
-      'CoreTelephony',
-      'VideoToolbox',
-      'CoreGraphics',
-      'AVFoundation',
-      'Accelerate'
-    ]
-    ss.libraries = [
-      'z',
-      'c++',
-      'resolv',
-      'iconv',
-      'stdc++',
-      'sqlite3',
-    ]
+#     ss.static_framework = true
+     ss.dependency 'TXLiteAVSDK_Player', '7.4.9203'
+     
+#    ss.vendored_frameworks = [
+#      'SXKit/Classes/SXPlayer/Frameworks/*.framework',
+#    ]
+#    ss.frameworks = [
+#      'SystemConfiguration',
+#      'CoreTelephony',
+#      'VideoToolbox',
+#      'CoreGraphics',
+#      'AVFoundation',
+#      'Accelerate'
+#    ]
+#    ss.libraries = [
+#      'z',
+#      'c++',
+#      'resolv',
+#      'iconv',
+#      'stdc++',
+#      'sqlite3',
+#    ]
    end
    
 end

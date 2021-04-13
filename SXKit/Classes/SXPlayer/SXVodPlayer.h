@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SXProgress.h"
 #import <ReactiveObjC/ReactiveObjC.h>
-/// 如果需要播放PHAsset 视频文件，需要引入<SXKit/SXPhotoLibrary> ,并且在Proprocessor Macros 或pch文件中去定义“SXPHOTOKIT”宏
+/// 引入<SXKit/SXPhotoLibrary> 库后会自动在在Proprocessor Macros 中定义“SXPHOTOKIT”宏
 #ifdef SXPHOTOKIT
 #import "SXPhotoLibrary.h"
 #endif
