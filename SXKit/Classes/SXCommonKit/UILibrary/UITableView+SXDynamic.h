@@ -18,6 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (UITableViewCell *)sx_dequeueReusableCellWithIdentifier:(NSString *)identifier
                                                  cellName:(NSString *)cell
                                                 indexPath:(NSIndexPath *)indexPath ;
+
+- (BOOL)sx_scrollToCell:(UITableViewCell *)cell
+       atScrollPosition:(UITableViewScrollPosition)scrollPosition
+               animated:(BOOL)animated;
 @end
 
 NS_ASSUME_NONNULL_END

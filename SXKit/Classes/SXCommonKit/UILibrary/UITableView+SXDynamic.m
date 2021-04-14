@@ -39,5 +39,13 @@
       return result ? result : [UITableViewCell new];
 }
 
+- (BOOL)sx_scrollToCell:(UITableViewCell *)cell
+       atScrollPosition:(UITableViewScrollPosition)scrollPosition
+               animated:(BOOL)animated{
+    NSIndexPath *idx = [self indexPathForCell:cell];
+    if (idx == nil) return NO;
+    [self scrollToRowAtIndexPath:idx atScrollPosition:scrollPosition animated:animated];
+    return YES;
+}
 
 @end
