@@ -17,6 +17,8 @@
 #import "NSError+SXDynamic.h"
 #import "NSMutableAttributedString+SXDynamic.h"
 #import "NSDictionary+SXDynamic.h"
+#import "NSString+SXEncrypt.h"
+#import "NSString+SXURL.h"
 
 #import "UIView+SXDynamic.h"
 #import "UIAlertController+SXDynamic.h"
