@@ -6,7 +6,7 @@
 //
 
 #import "SXVideoTrimmerView.h"
-
+#import <SXKit/NSBundle+SXDynamic.h>
 @interface SXVideoTrimmerMaskView : UIView
 @property (nonatomic, strong) UIImageView *rightSlider;
 @property (nonatomic, strong) UIImageView *leftSlider;
@@ -47,14 +47,12 @@
     self.rightLine.layer.cornerRadius = 2;
     self.rightLine.backgroundColor = bgColor;
     [self addSubview:self.rightLine];
-    
-    
-    self.rightSlider = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sx_icon_seekbar"]];
+     
+    self.rightSlider = [[UIImageView alloc] initWithImage:[[NSBundle bundleForClass:[self class]] sx_img:@"sx_icon_seekbar"]];
     self.rightSlider.userInteractionEnabled = true;
     self.rightSlider.contentMode = UIViewContentModeCenter;
     
-    
-    self.leftSlider = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sx_icon_seekbar"]];
+    self.leftSlider = [[UIImageView alloc] initWithImage:[[NSBundle bundleForClass:[self class]] sx_img:@"sx_icon_seekbar"]];
     self.leftSlider.userInteractionEnabled = true;
     self.leftSlider.contentMode = UIViewContentModeCenter;
     

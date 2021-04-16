@@ -89,4 +89,5 @@
         return [self sx_QRCodeFromString:qrcode size:size];
     };
 }
+
 @end

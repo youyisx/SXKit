@@ -26,7 +26,8 @@ PODS:
     - TXLiteAVSDK_Player (= 7.4.9203)
   - SXKit/SXUIKit (0.1.0):
     - SXKit/SXCommonKit
-  - SXKit/SXVideoTrimmerView (0.1.0)
+  - SXKit/SXVideoTrimmerView (0.1.0):
+    - SXKit/SXCommonKit
   - TXLiteAVSDK_Player (7.4.9203)
 
 DEPENDENCIES:
@@ -53,7 +54,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
-  SXKit: 2714b07abd38fe9eacfd30eb9cc2895293408f6f
+  SXKit: 38735c63cef9930c1b4a5ba406d2247c4b1225ba
   TXLiteAVSDK_Player: 8452cc0a8fefcba329dea6bd3f8119c76538eee4
 
 PODFILE CHECKSUM: 34051a1d093738902bea8527abd4d0c3a684683e

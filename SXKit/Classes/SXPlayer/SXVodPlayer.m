@@ -14,6 +14,14 @@ NS_INLINE NSString * _SXVodPlayerTime(NSInteger second) {
     return [NSString stringWithFormat:@"%02ld:%02ld",second/60,second%60];
 }
 
+NS_INLINE NSBundle * _sxplayerBundler() {
+    return [NSBundle bundleForClass:[SXVodPlayer class]];
+}
+
+NS_INLINE UIImage * _sxplayerImg(NSString *img) {
+    return [_sxplayerBundler() sx_img:img];
+}
+
 @implementation SXPlayerContentView
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -21,6 +29,8 @@ NS_INLINE NSString * _SXVodPlayerTime(NSInteger second) {
     [self configUI];
     return self;
 }
+
+
 
 - (void)configUI {
     self.backgroundColor = UIColor.blackColor;
@@ -30,7 +40,7 @@ NS_INLINE NSString * _SXVodPlayerTime(NSInteger second) {
     self.coverImgView.backgroundColor = UIColor.blackColor;
     [self addSubview:self.coverImgView];
     
-    self.pauseIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sx_icon_play"]];
+    self.pauseIcon = [[UIImageView alloc] initWithImage:_sxplayerImg(@"sx_icon_play")];
     self.pauseIcon.userInteractionEnabled = false;
     [self addSubview:self.pauseIcon];
     
@@ -348,13 +358,13 @@ NS_INLINE NSString * _SXVodPlayerTime(NSInteger second) {
 
 - (void)configControl {
     self.fullBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.fullBtn setImage:[UIImage imageNamed:@"sx_icon_vod_resize_0"] forState:UIControlStateSelected];
-    [self.fullBtn setImage:[UIImage imageNamed:@"sx_icon_vod_resize_1"] forState:UIControlStateNormal];
+    [self.fullBtn setImage:_sxplayerImg(@"sx_icon_vod_resize_0") forState:UIControlStateSelected];
+    [self.fullBtn setImage:_sxplayerImg(@"sx_icon_vod_resize_1") forState:UIControlStateNormal];
     [self addSubview:self.fullBtn];
     
     self.playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.playBtn setImage:[UIImage imageNamed:@"sx_icon_vod_play_0"] forState:UIControlStateNormal];
-    [self.playBtn setImage:[UIImage imageNamed:@"sx_icon_vod_play_1"] forState:UIControlStateSelected];
+    [self.playBtn setImage:_sxplayerImg(@"sx_icon_vod_play_0") forState:UIControlStateNormal];
+    [self.playBtn setImage:_sxplayerImg(@"sx_icon_vod_play_1") forState:UIControlStateSelected];
     [self addSubview:self.playBtn];
     
     self.pSlider = [SXProgressSlider new];

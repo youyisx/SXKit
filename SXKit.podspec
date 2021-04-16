@@ -48,7 +48,7 @@ Pod::Spec.new do |s|
 #  s.dependency 'Masonry', '~> 1.1.0'
 
    # 模块
-#   s.static_framework = true
+#   s.static_framework = false
    s.subspec 'SXCommonKit' do |ss|
      ss.source_files = 'SXKit/Classes/SXCommonKit/**/*'
      ss.dependency 'ReactiveObjC', '~> 3.1.1'
@@ -112,8 +112,9 @@ Pod::Spec.new do |s|
 #    ]
    end
    s.subspec 'SXVideoTrimmerView' do |ss|
+     ss.dependency 'SXKit/SXCommonKit'
      ss.source_files = 'SXKit/Classes/SXVideoTrimmerView/*.{h,m}'
      ss.frameworks = 'UIKit', 'Foundation'
-     ss.resource = [ 'SXKit/Classes/SXVideoTrimmerView/Resources/*.{png,jpg,jpeg,xib}' ]
+     ss.resource = ['SXKit/Classes/SXVideoTrimmerView/Resources/*.{png,jpg,jpeg}']
    end
 end

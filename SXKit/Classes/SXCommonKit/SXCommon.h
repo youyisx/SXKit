@@ -19,6 +19,7 @@
 #import "NSDictionary+SXDynamic.h"
 #import "NSString+SXEncrypt.h"
 #import "NSString+SXURL.h"
+#import "NSBundle+SXDynamic.h"
 
 #import "UIView+SXDynamic.h"
 #import "UIAlertController+SXDynamic.h"

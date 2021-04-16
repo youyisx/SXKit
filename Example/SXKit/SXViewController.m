@@ -27,8 +27,8 @@
     mask.backgroundColor = [UIColor redColor];
     [self.view addSubview:mask];
     mask.framesCount = 60;
-    mask.minIntervalProgress = 0.1;
-    mask.maxIntervalProgress = 0.2;
+    mask.minIntervalProgress = 0.01;
+    mask.maxIntervalProgress = 0.02;
     [mask activeTrimmerView];
     for (int i = 0; i < mask.framesCount; i++) [mask setFrame:[UIImage imageNamed:@"test.jpg"] idx:i];
     
@@ -42,13 +42,13 @@
     [self.player preparePlayWithUrl:@"http://img02-xusong.taihe.com/321669_db68904e275e00f07c988f62d9dc78ce_[640_360_5756].mp4"];
     [self.player.cover sd_setImageWithURL:[NSURL URLWithString:@"https://img02-xusong.taihe.com/321669_4b95c20e38623c03c456ad2d22d4574b_[640_360_71].jpeg"]];
     
-    self.player.control.fullBtn.hidden = true;
-    self.player.control.pSlider.userInteractionEnabled = false;
-    [self.player.contentView.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[UIPanGestureRecognizer class]]) {
-            obj.enabled = NO;
-        }
-    }];
+//    self.player.control.fullBtn.hidden = true;
+//    self.player.control.pSlider.userInteractionEnabled = false;
+//    [self.player.contentView.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        if ([obj isKindOfClass:[UIPanGestureRecognizer class]]) {
+//            obj.enabled = NO;
+//        }
+//    }];
 }
 
 - (void)didReceiveMemoryWarning

@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "NSBundle+SXDynamic.h"
 #import "NSDate+SXDynamic.h"
 #import "NSDictionary+SXDynamic.h"
 #import "NSError+SXDynamic.h"
