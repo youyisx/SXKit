@@ -114,6 +114,6 @@ Pod::Spec.new do |s|
    s.subspec 'SXVideoTrimmerView' do |ss|
      ss.source_files = 'SXKit/Classes/SXVideoTrimmerView/*.{h,m}'
      ss.frameworks = 'UIKit', 'Foundation'
-     ss.resource_bundles = { 'SXVideoTrimmerView' => ['SXKit/Classes/SXVideoTrimmerView/Resources/*.{png,jpg,jpeg,xib}'] }
+     ss.resource = [ 'SXKit/Classes/SXVideoTrimmerView/Resources/*.{png,jpg,jpeg,xib}' ]
    end
 end

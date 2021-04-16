@@ -31,6 +31,7 @@
     mask.maxIntervalProgress = 0.2;
     [mask activeTrimmerView];
     for (int i = 0; i < mask.framesCount; i++) [mask setFrame:[UIImage imageNamed:@"test.jpg"] idx:i];
+    
     self.player = [SXVodControlPlayer new];
     [self.view addSubview:self.player];
     [self.player mas_makeConstraints:^(MASConstraintMaker *make) {

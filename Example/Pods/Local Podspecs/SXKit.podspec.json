@@ -112,11 +112,9 @@
         "UIKit",
         "Foundation"
       ],
-      "resource_bundles": {
-        "SXVideoTrimmerView": [
-          "SXKit/Classes/SXVideoTrimmerView/Resources/*.{png,jpg,jpeg,xib}"
-        ]
-      }
+      "resources": [
+        "SXKit/Classes/SXVideoTrimmerView/Resources/*.{png,jpg,jpeg,xib}"
+      ]
     }
   ]
 }
