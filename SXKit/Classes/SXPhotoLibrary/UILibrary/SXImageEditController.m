@@ -7,7 +7,7 @@
 //
 
 #import "SXImageEditController.h"
-#import "SXCommon.h"
+#import <SXKit/SXCommon.h>
 #import <Masonry/Masonry.h>
 @interface SXDrawLucencyView : UIView
 /// 指定透明区域（坐标系为FADrawLucencyView 自身坐标系）

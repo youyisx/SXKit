@@ -63,6 +63,9 @@
       "dependencies": {
         "SXKit/SXCommonKit": [
 
+        ],
+        "SXKit/SXHUD": [
+
         ]
       },
       "frameworks": "Photos",
@@ -104,11 +107,16 @@
     },
     {
       "name": "SXVideoTrimmerView",
-      "source_files": "SXKit/Classes/SXVideoTrimmerView/*",
+      "source_files": "SXKit/Classes/SXVideoTrimmerView/*.{h,m}",
       "frameworks": [
         "UIKit",
         "Foundation"
-      ]
+      ],
+      "resource_bundles": {
+        "SXVideoTrimmerView": [
+          "SXKit/Classes/SXVideoTrimmerView/Resources/*.{png,jpg,jpeg,xib}"
+        ]
+      }
     }
   ]
 }

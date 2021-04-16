@@ -109,6 +109,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_0@3x.png"
   install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_1@2x.png"
   install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_1@3x.png"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/SXKit/SXVideoTrimmerView.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_play@2x.png"
@@ -123,6 +124,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_0@3x.png"
   install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_1@2x.png"
   install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_1@3x.png"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/SXKit/SXVideoTrimmerView.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

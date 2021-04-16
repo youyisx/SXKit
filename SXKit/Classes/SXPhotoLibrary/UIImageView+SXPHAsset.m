@@ -8,8 +8,7 @@
 
 #import "UIImageView+SXPHAsset.h"
 #import <ReactiveObjC/ReactiveObjC.h>
-#import "NSObject+SXDynamic.h"
-#import "UIView+SXDynamic.h"
+#import <SXKit/SXCommon.h>
 #define k_phImageManager @"k_phImageManager"
 #define k_requestID @"k_requestID"
 #define k_asset @"k_asset"

@@ -7,8 +7,7 @@
 //
 
 #import "SXPhotoHelper.h"
-#import "UIAlertController+SXDynamic.h"
-#import "SXCommon.h"
+#import <SXKit/SXCommon.h>
 @interface SXPhotoHelper ()
 @property (nonatomic, assign, readwrite) PHAssetMediaType mediaType;
 /// 当前相册的资源

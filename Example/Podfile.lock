@@ -19,6 +19,7 @@ PODS:
     - SXKit/SXUIKit
   - SXKit/SXPhotoLibrary (0.1.0):
     - SXKit/SXCommonKit
+    - SXKit/SXHUD
   - SXKit/SXPlayer (0.1.0):
     - SXKit/SXCommonKit
     - SXKit/SXUIKit
@@ -52,7 +53,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
-  SXKit: 1f06b6fc19be56ff426e504148530113423ff8e4
+  SXKit: 580f7ac397225a042419be88137b1243b0792d4d
   TXLiteAVSDK_Player: 8452cc0a8fefcba329dea6bd3f8119c76538eee4
 
 PODFILE CHECKSUM: 34051a1d093738902bea8527abd4d0c3a684683e

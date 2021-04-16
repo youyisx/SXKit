@@ -16,6 +16,8 @@
 #import "NSMutableAttributedString+SXDynamic.h"
 #import "NSObject+SXDynamic.h"
 #import "NSString+SXDynamic.h"
+#import "NSString+SXEncrypt.h"
+#import "NSString+SXURL.h"
 #import "SXCommon.h"
 #import "SXNavigationHeader.h"
 #import "SXScreenDefine.h"
@@ -42,11 +44,13 @@
 #import "SXPhotoHelper.h"
 #import "SXPhotoLibrary.h"
 #import "UIImageView+SXPHAsset.h"
-#import "SXVodPlayer.h"
+#import "SXImageEditController.h"
+#import "SXPhotoPickerController.h"
 #import "SXPickerContentView+DatePicker.h"
 #import "SXPickerContentView+Picker.h"
 #import "SXPickerContentView.h"
 #import "SXProgress.h"
+#import "SXVideoTrimmerView.h"
 
 FOUNDATION_EXPORT double SXKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char SXKitVersionString[];

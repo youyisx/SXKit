@@ -67,6 +67,7 @@ Pod::Spec.new do |s|
    s.subspec 'SXPhotoLibrary' do |ss|
      ss.source_files = 'SXKit/Classes/SXPhotoLibrary/**/*'
      ss.dependency 'SXKit/SXCommonKit'
+     ss.dependency 'SXKit/SXHUD'
      ss.frameworks = 'Photos'
      # 在项目中配置宏
      ss.xcconfig = {
@@ -89,7 +90,7 @@ Pod::Spec.new do |s|
      ss.dependency 'SXKit/SXUIKit'
      # 腾讯云 超级播放器
      ss.dependency 'TXLiteAVSDK_Player', '7.4.9203'
-     
+
 #    ss.vendored_frameworks = [
 #      'SXKit/Classes/SXPlayer/Frameworks/*.framework',
 #    ]
@@ -111,7 +112,8 @@ Pod::Spec.new do |s|
 #    ]
    end
    s.subspec 'SXVideoTrimmerView' do |ss|
-     ss.source_files = 'SXKit/Classes/SXVideoTrimmerView/*'
+     ss.source_files = 'SXKit/Classes/SXVideoTrimmerView/*.{h,m}'
      ss.frameworks = 'UIKit', 'Foundation'
+     ss.resource_bundles = { 'SXVideoTrimmerView' => ['SXKit/Classes/SXVideoTrimmerView/Resources/*.{png,jpg,jpeg,xib}'] }
    end
 end
