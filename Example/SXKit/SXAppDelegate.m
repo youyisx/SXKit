@@ -7,7 +7,6 @@
 //
 
 #import "SXAppDelegate.h"
-//#import <SXKit/SXVodPlayer.h>
 #import <ReactiveObjC/ReactiveObjC.h>
 @implementation SXAppDelegate
 

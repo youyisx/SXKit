@@ -1,9 +1,9 @@
 # SXKit
 
-[![CI Status](https://img.shields.io/travis/vince_wang/SXKit.svg?style=flat)](https://travis-ci.org/vince_wang/SXKit)
-[![Version](https://img.shields.io/cocoapods/v/SXKit.svg?style=flat)](https://cocoapods.org/pods/SXKit)
-[![License](https://img.shields.io/cocoapods/l/SXKit.svg?style=flat)](https://cocoapods.org/pods/SXKit)
-[![Platform](https://img.shields.io/cocoapods/p/SXKit.svg?style=flat)](https://cocoapods.org/pods/SXKit)
+[![CI Status](https://img.shields.io/travis/vince_wang/SXKit.svg?style=flat)](https://travis-ci.org/vince_wang/SXBaseKit)
+[![Version](https://img.shields.io/cocoapods/v/SXBaseKit.svg?style=flat)](https://cocoapods.org/pods/SXBaseKit)
+[![License](https://img.shields.io/cocoapods/l/SXBaseKit.svg?style=flat)](https://cocoapods.org/pods/SXBaseKit)
+[![Platform](https://img.shields.io/cocoapods/p/SXBaseKit.svg?style=flat)](https://cocoapods.org/pods/SXBaseKit)
 
 ## Example
 
