@@ -1,10 +1,10 @@
-#use_frameworks!
+use_frameworks!
 
 platform :ios, '11.0'
 
 target 'SXKit_Example' do
   pod 'SXKit', :path => '../'
-  pod 'SXKit/SXPlayer', :path => '../'
+#  pod 'SXKit/SXPlayer', :path => '../'
   pod 'SXKit/SXPhotoLibrary', :path => '../'
   pod 'SXKit/SXVideoTrimmerView', :path => '../'
   pod 'SDWebImage'

@@ -81,36 +81,36 @@ Pod::Spec.new do |s|
    end
    s.default_subspec = 'SXKit'
    
-   s.subspec 'SXPlayer' do |ss|
-     ss.source_files = 'SXKit/Classes/SXPlayer/*.{h,m}'
-     ss.resource = [
-       'SXKit/Classes/SXPlayer/Resources/*.{png,jpg,jpeg}'
-     ]
-     ss.dependency 'SXKit/SXCommonKit'
-     ss.dependency 'SXKit/SXUIKit'
-     # 腾讯云 超级播放器
-     ss.dependency 'TXLiteAVSDK_Player', '7.4.9203'
-
-#    ss.vendored_frameworks = [
-#      'SXKit/Classes/SXPlayer/Frameworks/*.framework',
-#    ]
-#    ss.frameworks = [
-#      'SystemConfiguration',
-#      'CoreTelephony',
-#      'VideoToolbox',
-#      'CoreGraphics',
-#      'AVFoundation',
-#      'Accelerate'
-#    ]
-#    ss.libraries = [
-#      'z',
-#      'c++',
-#      'resolv',
-#      'iconv',
-#      'stdc++',
-#      'sqlite3',
-#    ]
-   end
+#   s.subspec 'SXPlayer' do |ss|
+#     ss.source_files = 'SXKit/Classes/SXPlayer/*.{h,m}'
+#     ss.resource = [
+#       'SXKit/Classes/SXPlayer/Resources/*.{png,jpg,jpeg}'
+#     ]
+#     ss.dependency 'SXKit/SXCommonKit'
+#     ss.dependency 'SXKit/SXUIKit'
+#     # 腾讯云 超级播放器
+#     ss.dependency 'TXLiteAVSDK_Player', '7.4.9203'
+#
+##    ss.vendored_frameworks = [
+##      'SXKit/Classes/SXPlayer/Frameworks/*.framework',
+##    ]
+##    ss.frameworks = [
+##      'SystemConfiguration',
+##      'CoreTelephony',
+##      'VideoToolbox',
+##      'CoreGraphics',
+##      'AVFoundation',
+##      'Accelerate'
+##    ]
+##    ss.libraries = [
+##      'z',
+##      'c++',
+##      'resolv',
+##      'iconv',
+##      'stdc++',
+##      'sqlite3',
+##    ]
+#   end
    s.subspec 'SXVideoTrimmerView' do |ss|
      ss.dependency 'SXKit/SXCommonKit'
      ss.source_files = 'SXKit/Classes/SXVideoTrimmerView/*.{h,m}'

@@ -7,15 +7,15 @@
 //
 
 #import "SXAppDelegate.h"
-#import <SXKit/SXVodPlayer.h>
+//#import <SXKit/SXVodPlayer.h>
 #import <ReactiveObjC/ReactiveObjC.h>
 @implementation SXAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:SXVodPlayerRotationNotificationName object:nil] subscribeNext:^(NSNotification * _Nullable x) {
-        self.vodPlayerOrientation = [x.object integerValue];
-    }];
+//    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:SXVodPlayerRotationNotificationName object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+//        self.vodPlayerOrientation = [x.object integerValue];
+//    }];
     return YES;
 }
 

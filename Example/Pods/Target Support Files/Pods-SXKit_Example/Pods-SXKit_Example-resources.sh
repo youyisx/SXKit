@@ -97,34 +97,10 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_play@2x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_play@3x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play@2x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play@3x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play_0@2x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play_0@3x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play_1@2x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play_1@3x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_0@2x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_0@3x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_1@2x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_1@3x.png"
   install_resource "${PODS_ROOT}/../../SXKit/Classes/SXVideoTrimmerView/Resources/sx_icon_seekbar@2x.png"
   install_resource "${PODS_ROOT}/../../SXKit/Classes/SXVideoTrimmerView/Resources/sx_icon_seekbar@3x.png"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_play@2x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_play@3x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play@2x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play@3x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play_0@2x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play_0@3x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play_1@2x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_play_1@3x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_0@2x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_0@3x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_1@2x.png"
-  install_resource "${PODS_ROOT}/../../SXKit/Classes/SXPlayer/Resources/sx_icon_vod_resize_1@3x.png"
   install_resource "${PODS_ROOT}/../../SXKit/Classes/SXVideoTrimmerView/Resources/sx_icon_seekbar@2x.png"
   install_resource "${PODS_ROOT}/../../SXKit/Classes/SXVideoTrimmerView/Resources/sx_icon_seekbar@3x.png"
 fi

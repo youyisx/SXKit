@@ -88,24 +88,6 @@
       }
     },
     {
-      "name": "SXPlayer",
-      "source_files": "SXKit/Classes/SXPlayer/*.{h,m}",
-      "resources": [
-        "SXKit/Classes/SXPlayer/Resources/*.{png,jpg,jpeg}"
-      ],
-      "dependencies": {
-        "SXKit/SXCommonKit": [
-
-        ],
-        "SXKit/SXUIKit": [
-
-        ],
-        "TXLiteAVSDK_Player": [
-          "7.4.9203"
-        ]
-      }
-    },
-    {
       "name": "SXVideoTrimmerView",
       "dependencies": {
         "SXKit/SXCommonKit": [
