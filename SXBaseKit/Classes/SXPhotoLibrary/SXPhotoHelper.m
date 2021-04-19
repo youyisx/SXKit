@@ -7,7 +7,7 @@
 //
 
 #import "SXPhotoHelper.h"
-#import <SXKit/SXCommon.h>
+#import <SXBaseKit/SXCommon.h>
 @interface SXPhotoHelper ()
 @property (nonatomic, assign, readwrite) PHAssetMediaType mediaType;
 /// 当前相册的资源

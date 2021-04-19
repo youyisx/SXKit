@@ -10,11 +10,11 @@
 #import "SXPhotoHelper.h"
 #import <Masonry/Masonry.h>
 #import "UIImageView+SXPHAsset.h"
-#import <SXKit/SXScreenDefine.h>
-#import <SXKit/SXHudHeader.h>
+#import <SXBaseKit/SXScreenDefine.h>
+#import <SXBaseKit/SXHudHeader.h>
 #define SXAssetSortKey @"k_sxassetsort_0"
 #import <objc/runtime.h>
-#import <SXKit/SXCommon.h>
+#import <SXBaseKit/SXCommon.h>
 @interface PHAsset(SXKitSort)
 @property (nonatomic, readonly) BOOL isSelected;
 @property (nonatomic, assign) NSInteger selectedSort;

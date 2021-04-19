@@ -7,13 +7,13 @@
 //
 
 #import "SXViewController.h"
-#import <SXKit/SXHudHeader.h>
+#import <SXBaseKit/SXHudHeader.h>
 //#import <SXKit/SXVodPlayer.h>
 #import <Masonry/Masonry.h>
 #import <SDWebImage/SDWebImage.h>
-#import <SXKit/SXPickerContentView+DatePicker.h>
-#import <SXKit/SXPickerContentView+Picker.h>
-#import <SXKit/SXVideoTrimmerView.h>
+#import <SXBaseKit/SXPickerContentView+DatePicker.h>
+#import <SXBaseKit/SXPickerContentView+Picker.h>
+#import <SXBaseKit/SXVideoTrimmerView.h>
 @interface SXViewController ()
 //@property (nonatomic, strong) SXVodControlPlayer *player;
 @end

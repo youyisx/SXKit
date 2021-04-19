@@ -6,7 +6,7 @@
 //
 
 #import "SXVideoTrimmerView.h"
-#import <SXKit/NSBundle+SXDynamic.h>
+#import <SXBaseKit/NSBundle+SXDynamic.h>
 @interface SXVideoTrimmerMaskView : UIView
 @property (nonatomic, strong) UIImageView *rightSlider;
 @property (nonatomic, strong) UIImageView *leftSlider;

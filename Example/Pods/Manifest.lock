@@ -5,31 +5,31 @@ PODS:
   - SDWebImage (5.8.3):
     - SDWebImage/Core (= 5.8.3)
   - SDWebImage/Core (5.8.3)
-  - SXKit (0.1.0):
-    - SXKit/SXKit (= 0.1.0)
-  - SXKit/SXCommonKit (0.1.0):
+  - SXBaseKit (0.1.0):
+    - SXBaseKit/SXBaseKit (= 0.1.0)
+  - SXBaseKit/SXBaseKit (0.1.0):
+    - SXBaseKit/SXCommonKit
+    - SXBaseKit/SXHUD
+    - SXBaseKit/SXUIKit
+  - SXBaseKit/SXCommonKit (0.1.0):
     - Masonry (~> 1.1.0)
     - ReactiveObjC (~> 3.1.1)
-  - SXKit/SXHUD (0.1.0):
+  - SXBaseKit/SXHUD (0.1.0):
     - MBProgressHUD (~> 1.2.0)
-    - SXKit/SXCommonKit
-  - SXKit/SXKit (0.1.0):
-    - SXKit/SXCommonKit
-    - SXKit/SXHUD
-    - SXKit/SXUIKit
-  - SXKit/SXPhotoLibrary (0.1.0):
-    - SXKit/SXCommonKit
-    - SXKit/SXHUD
-  - SXKit/SXUIKit (0.1.0):
-    - SXKit/SXCommonKit
-  - SXKit/SXVideoTrimmerView (0.1.0):
-    - SXKit/SXCommonKit
+    - SXBaseKit/SXCommonKit
+  - SXBaseKit/SXPhotoLibrary (0.1.0):
+    - SXBaseKit/SXCommonKit
+    - SXBaseKit/SXHUD
+  - SXBaseKit/SXUIKit (0.1.0):
+    - SXBaseKit/SXCommonKit
+  - SXBaseKit/SXVideoTrimmerView (0.1.0):
+    - SXBaseKit/SXCommonKit
 
 DEPENDENCIES:
   - SDWebImage
-  - SXKit (from `../`)
-  - SXKit/SXPhotoLibrary (from `../`)
-  - SXKit/SXVideoTrimmerView (from `../`)
+  - SXBaseKit (from `../`)
+  - SXBaseKit/SXPhotoLibrary (from `../`)
+  - SXBaseKit/SXVideoTrimmerView (from `../`)
 
 SPEC REPOS:
   trunk:
@@ -39,7 +39,7 @@ SPEC REPOS:
     - SDWebImage
 
 EXTERNAL SOURCES:
-  SXKit:
+  SXBaseKit:
     :path: "../"
 
 SPEC CHECKSUMS:
@@ -47,8 +47,8 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
-  SXKit: 5a1174b7453713ea3f29049db887f4390ad1aec4
+  SXBaseKit: 4ff0312ed49822a6d7548fcc9998e9812c4dc0a7
 
-PODFILE CHECKSUM: 176ee301d9af71f19f1780516f8efbdb4a3fc41d
+PODFILE CHECKSUM: da14ecf8ae51255cd70d2766751484f4b1c3f7df
 
 COCOAPODS: 1.8.4

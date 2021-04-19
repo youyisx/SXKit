@@ -1,5 +1,5 @@
 {
-  "name": "SXKit",
+  "name": "SXBaseKit",
   "version": "0.1.0",
   "summary": "常用工具库",
   "description": "SXKit<常用工具库>",
@@ -18,7 +18,7 @@
   "platforms": {
     "ios": "11.0"
   },
-  "default_subspecs": "SXKit",
+  "default_subspecs": "SXBaseKit",
   "subspecs": [
     {
       "name": "SXCommonKit",
@@ -43,7 +43,7 @@
         "MBProgressHUD": [
           "~> 1.2.0"
         ],
-        "SXKit/SXCommonKit": [
+        "SXBaseKit/SXCommonKit": [
 
         ]
       }
@@ -52,7 +52,7 @@
       "name": "SXUIKit",
       "source_files": "SXKit/Classes/SXUIKit/*",
       "dependencies": {
-        "SXKit/SXCommonKit": [
+        "SXBaseKit/SXCommonKit": [
 
         ]
       }
@@ -61,10 +61,10 @@
       "name": "SXPhotoLibrary",
       "source_files": "SXKit/Classes/SXPhotoLibrary/**/*",
       "dependencies": {
-        "SXKit/SXCommonKit": [
+        "SXBaseKit/SXCommonKit": [
 
         ],
-        "SXKit/SXHUD": [
+        "SXBaseKit/SXHUD": [
 
         ]
       },
@@ -74,15 +74,15 @@
       }
     },
     {
-      "name": "SXKit",
+      "name": "SXBaseKit",
       "dependencies": {
-        "SXKit/SXCommonKit": [
+        "SXBaseKit/SXCommonKit": [
 
         ],
-        "SXKit/SXUIKit": [
+        "SXBaseKit/SXUIKit": [
 
         ],
-        "SXKit/SXHUD": [
+        "SXBaseKit/SXHUD": [
 
         ]
       }
@@ -90,7 +90,7 @@
     {
       "name": "SXVideoTrimmerView",
       "dependencies": {
-        "SXKit/SXCommonKit": [
+        "SXBaseKit/SXCommonKit": [
 
         ]
       },

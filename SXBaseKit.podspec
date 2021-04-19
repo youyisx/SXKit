@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'SXKit'
+  s.name             = 'SXBaseKit'
   s.version          = '0.1.0'
   s.summary          = '常用工具库'
 
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.author           = { 'vince_wang' => 'youyisx@hotmail.com' }
   s.source           = { :git => 'https://github.com/youyisx/SXKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-  s.platform     = :ios, '11.0'
+#  s.platform     = :ios, '11.0'
   s.ios.deployment_target = '11.0'
   
 #   s.resource_bundles = {
@@ -50,36 +50,36 @@ Pod::Spec.new do |s|
    # 模块
 #   s.static_framework = false
    s.subspec 'SXCommonKit' do |ss|
-     ss.source_files = 'SXKit/Classes/SXCommonKit/**/*'
+     ss.source_files = 'SXBaseKit/Classes/SXCommonKit/**/*'
      ss.dependency 'ReactiveObjC', '~> 3.1.1'
      ss.dependency 'Masonry', '~> 1.1.0'
      ss.frameworks = 'UIKit', 'Foundation'
    end
    s.subspec 'SXHUD' do |ss|
-     ss.source_files = 'SXKit/Classes/SXHUD/*'
+     ss.source_files = 'SXBaseKit/Classes/SXHUD/*'
      ss.dependency 'MBProgressHUD', '~> 1.2.0'
-     ss.dependency 'SXKit/SXCommonKit'
+     ss.dependency 'SXBaseKit/SXCommonKit'
    end
    s.subspec 'SXUIKit' do |ss|
-     ss.source_files = 'SXKit/Classes/SXUIKit/*'
-     ss.dependency 'SXKit/SXCommonKit'
+     ss.source_files = 'SXBaseKit/Classes/SXUIKit/*'
+     ss.dependency 'SXBaseKit/SXCommonKit'
    end
    s.subspec 'SXPhotoLibrary' do |ss|
-     ss.source_files = 'SXKit/Classes/SXPhotoLibrary/**/*'
-     ss.dependency 'SXKit/SXCommonKit'
-     ss.dependency 'SXKit/SXHUD'
+     ss.source_files = 'SXBaseKit/Classes/SXPhotoLibrary/**/*'
+     ss.dependency 'SXBaseKit/SXCommonKit'
+     ss.dependency 'SXBaseKit/SXHUD'
      ss.frameworks = 'Photos'
      # 在项目中配置宏
      ss.xcconfig = {
        "GCC_PREPROCESSOR_DEFINITIONS" => "SXPHOTOKIT"
      }
    end
-   s.subspec 'SXKit' do |ss|
-     ss.dependency 'SXKit/SXCommonKit'
-     ss.dependency 'SXKit/SXUIKit'
-     ss.dependency 'SXKit/SXHUD'
+   s.subspec 'SXBaseKit' do |ss|
+     ss.dependency 'SXBaseKit/SXCommonKit'
+     ss.dependency 'SXBaseKit/SXUIKit'
+     ss.dependency 'SXBaseKit/SXHUD'
    end
-   s.default_subspec = 'SXKit'
+   s.default_subspec = 'SXBaseKit'
    
 #   s.subspec 'SXPlayer' do |ss|
 #     ss.source_files = 'SXKit/Classes/SXPlayer/*.{h,m}'
@@ -112,9 +112,9 @@ Pod::Spec.new do |s|
 ##    ]
 #   end
    s.subspec 'SXVideoTrimmerView' do |ss|
-     ss.dependency 'SXKit/SXCommonKit'
-     ss.source_files = 'SXKit/Classes/SXVideoTrimmerView/*.{h,m}'
+     ss.dependency 'SXBaseKit/SXCommonKit'
+     ss.source_files = 'SXBaseKit/Classes/SXVideoTrimmerView/*.{h,m}'
      ss.frameworks = 'UIKit', 'Foundation'
-     ss.resource = ['SXKit/Classes/SXVideoTrimmerView/Resources/*.{png,jpg,jpeg}']
+     ss.resource = ['SXBaseKit/Classes/SXVideoTrimmerView/Resources/*.{png,jpg,jpeg}']
    end
 end
