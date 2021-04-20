@@ -2,7 +2,7 @@
 //  NSString+SXURL.m
 //  SXKit
 //
-//  Created by taihe-imac-ios-01 on 2021/4/15.
+//  Created by vince on 2021/4/15.
 //
 
 #import "NSString+SXURL.h"

@@ -2,7 +2,7 @@
 //  NSBundle+SXDynamic.h
 //  SXKit
 //
-//  Created by taihe-imac-ios-01 on 2021/4/16.
+//  Created by vince on 2021/4/16.
 //
 
 #import <Foundation/Foundation.h>
