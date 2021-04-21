@@ -15,8 +15,15 @@
 
 #define SXScreenW           [UIScreen mainScreen].bounds.size.width
 #define SXScreenH           [UIScreen mainScreen].bounds.size.height
-#define SXSafeAreaInsets    [UIApplication sharedApplication].windows.firstObject.safeAreaInsets
 
+NS_INLINE UIEdgeInsets _SXSafeAreaInsets() {
+    if (@available(iOS 11.0, *)) {
+        return [UIApplication sharedApplication].windows.firstObject.safeAreaInsets;
+    } else {
+        return UIEdgeInsetsMake([UIApplication sharedApplication].statusBarFrame.size.height, 0, 0, 0);
+    }
+}
+#define SXSafeAreaInsets    _SXSafeAreaInsets()
 #define SXStatusBarHeight   SXSafeAreaInsets.top
 #define SXSafeBottomHeight  SXSafeAreaInsets.bottom
 

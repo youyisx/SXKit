@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SXBaseKit'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = '常用工具库'
 
 # This description is used to generate tags and improve search results.
@@ -27,8 +27,8 @@ Pod::Spec.new do |s|
   s.author           = { 'vince_wang' => 'youyisx@hotmail.com' }
   s.source           = { :git => 'https://github.com/youyisx/SXKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-#  s.platform     = :ios, '11.0'
-  s.ios.deployment_target = '11.0'
+  s.platform         = :ios, '10.0'
+  s.ios.deployment_target = '10.0'
   
 #   s.resource_bundles = {
 #     'SXKit' => ['SXKit/Assets/*.{png,jpg,jpeg,xib}']

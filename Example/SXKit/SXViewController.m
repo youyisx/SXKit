@@ -7,6 +7,7 @@
 //
 
 #import "SXViewController.h"
+#import <SXBaseKit/SXCommon.h>
 #import <SXBaseKit/SXHudHeader.h>
 //#import <SXKit/SXVodPlayer.h>
 #import <Masonry/Masonry.h>
@@ -49,6 +50,8 @@
 //            obj.enabled = NO;
 //        }
 //    }];
+    
+    NSLog(@"--- top:%@ bottom:%@",@(SXStatusBarHeight),@(SXSafeBottomHeight));
 }
 
 - (void)didReceiveMemoryWarning

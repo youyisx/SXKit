@@ -5,24 +5,24 @@ PODS:
   - SDWebImage (5.8.3):
     - SDWebImage/Core (= 5.8.3)
   - SDWebImage/Core (5.8.3)
-  - SXBaseKit (0.1.0):
-    - SXBaseKit/SXBaseKit (= 0.1.0)
-  - SXBaseKit/SXBaseKit (0.1.0):
+  - SXBaseKit (0.1.1):
+    - SXBaseKit/SXBaseKit (= 0.1.1)
+  - SXBaseKit/SXBaseKit (0.1.1):
     - SXBaseKit/SXCommonKit
     - SXBaseKit/SXHUD
     - SXBaseKit/SXUIKit
-  - SXBaseKit/SXCommonKit (0.1.0):
+  - SXBaseKit/SXCommonKit (0.1.1):
     - Masonry (~> 1.1.0)
     - ReactiveObjC (~> 3.1.1)
-  - SXBaseKit/SXHUD (0.1.0):
+  - SXBaseKit/SXHUD (0.1.1):
     - MBProgressHUD (~> 1.2.0)
     - SXBaseKit/SXCommonKit
-  - SXBaseKit/SXPhotoLibrary (0.1.0):
+  - SXBaseKit/SXPhotoLibrary (0.1.1):
     - SXBaseKit/SXCommonKit
     - SXBaseKit/SXHUD
-  - SXBaseKit/SXUIKit (0.1.0):
+  - SXBaseKit/SXUIKit (0.1.1):
     - SXBaseKit/SXCommonKit
-  - SXBaseKit/SXVideoTrimmerView (0.1.0):
+  - SXBaseKit/SXVideoTrimmerView (0.1.1):
     - SXBaseKit/SXCommonKit
 
 DEPENDENCIES:
@@ -47,8 +47,8 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
-  SXBaseKit: 4ff0312ed49822a6d7548fcc9998e9812c4dc0a7
+  SXBaseKit: a4eb5ad4969a14d15e1ba0937cda0eb687e3c255
 
-PODFILE CHECKSUM: da14ecf8ae51255cd70d2766751484f4b1c3f7df
+PODFILE CHECKSUM: 4080b41c222ed3d29b3e8d8df18abedd70e09615
 
 COCOAPODS: 1.8.4
