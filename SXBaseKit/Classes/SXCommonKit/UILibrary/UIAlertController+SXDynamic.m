@@ -11,12 +11,12 @@
 #import "SXValidLibrary.h"
 @implementation UIAlertController (SXDynamic)
 
-+ (RACSignal <NSNumber *>*)alertSignalWithTitle:(nullable NSString *)title
-                                        message:(nullable NSString *)msg
-                                          items:(nullable NSArray <NSString *>*)items
-                                     cancelItem:(nullable NSString *)cancel
-                                 highlightIndex:(NSInteger)highlight
-                                          style:(UIAlertControllerStyle)style {
++ (RACSignal <NSNumber *>*)sx_alertSignalWithTitle:(nullable NSString *)title
+                                           message:(nullable NSString *)msg
+                                             items:(nullable NSArray <NSString *>*)items
+                                        cancelItem:(nullable NSString *)cancel
+                                    highlightIndex:(NSInteger)highlight
+                                             style:(UIAlertControllerStyle)style {
     RACSignal *signale = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
         dispatch_async(dispatch_get_main_queue(), ^{
             UIAlertController *ac = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:style];
@@ -39,16 +39,16 @@
     return signale;
 }
 
-+ (RACSignal <NSNumber *>*)alertSignalWithTitle:(nullable NSString *)title
-                                        message:(nullable NSString *)msg
-                                    confirmTips:(nullable NSString *)confirmTips {
-    return [self alertSignalWithTitle:title message:msg confirmTips:confirmTips cancelTips:@"取消"];
++ (RACSignal <NSNumber *>*)sx_alertSignalWithTitle:(nullable NSString *)title
+                                           message:(nullable NSString *)msg
+                                       confirmTips:(nullable NSString *)confirmTips {
+    return [self sx_alertSignalWithTitle:title message:msg confirmTips:confirmTips cancelTips:@"取消"];
 }
 
-+ (RACSignal<NSNumber *> *)alertSignalWithTitle:(nullable NSString *)title
-                                        message:(nullable NSString *)msg
-                                    confirmTips:(nullable NSString *)confirmTips
-                                     cancelTips:(nullable NSString *)cancelTips {
++ (RACSignal<NSNumber *> *)sx_alertSignalWithTitle:(nullable NSString *)title
+                                           message:(nullable NSString *)msg
+                                       confirmTips:(nullable NSString *)confirmTips
+                                        cancelTips:(nullable NSString *)cancelTips {
     NSMutableArray *items = @[].mutableCopy;
     if (confirmTips.length > 0) [items addObject:confirmTips];
     NSString *cancel = cancelTips;
@@ -56,24 +56,24 @@
         cancel = confirmTips;
         items = nil;
     }
-    return  [self alertSignalWithTitle:title
-                               message:msg
-                                 items:items
-                            cancelItem:cancel
-                        highlightIndex:-1
-                                 style:UIAlertControllerStyleAlert];
+    return  [self sx_alertSignalWithTitle:title
+                                  message:msg
+                                    items:items
+                               cancelItem:cancel
+                           highlightIndex:-1
+                                    style:UIAlertControllerStyleAlert];
 }
 
 
-+ (RACSignal <NSString *>*)alertSignalWithTitle:(nullable NSString *)title
-                                        message:(nullable NSString *)msg
-                                    placeHolder:(nullable NSString *)placeHolder {
-    return [self alertSignalWithTitle:title message:msg params:@{@"tips":sx_stringWithObject(placeHolder)}];
++ (RACSignal <NSString *>*)sx_alertSignalWithTitle:(nullable NSString *)title
+                                           message:(nullable NSString *)msg
+                                       placeHolder:(nullable NSString *)placeHolder {
+    return [self sx_alertSignalWithTitle:title message:msg params:@{@"tips":sx_stringWithObject(placeHolder)}];
 }
 
-+ (RACSignal <NSString *>*)alertSignalWithTitle:(nullable NSString *)title
-                                        message:(nullable NSString *)msg
-                                         params:(NSDictionary *)params {
++ (RACSignal <NSString *>*)sx_alertSignalWithTitle:(nullable NSString *)title
+                                           message:(nullable NSString *)msg
+                                            params:(NSDictionary *)params {
     return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
         dispatch_async(dispatch_get_main_queue(), ^{
             UIAlertController *ac = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];

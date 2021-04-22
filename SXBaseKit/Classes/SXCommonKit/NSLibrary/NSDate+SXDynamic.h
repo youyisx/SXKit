@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSDate (SXDynamic)
 
-- (NSDate *)zeroDate;
-- (NSDateComponents *)dateComponents;
+- (NSDate *)sx_zeroDate;
+- (NSDateComponents *)sx_dateComponents;
 
 @end
 

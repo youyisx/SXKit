@@ -10,13 +10,13 @@
 
 @implementation NSDate (SXDynamic)
 
-- (NSDate *)zeroDate {
+- (NSDate *)sx_zeroDate {
     NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:self];
     return [calendar dateFromComponents:components];
 }
 
-- (NSDateComponents *)dateComponents {
+- (NSDateComponents *)sx_dateComponents {
     NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     return [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond fromDate:self];
 }

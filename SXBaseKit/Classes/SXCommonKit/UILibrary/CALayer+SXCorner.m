@@ -10,7 +10,7 @@
 #import <ReactiveObjC/ReactiveObjC.h>
 @implementation CALayer (SXCorner)
 
-+ (CAShapeLayer *)cornerLayerWithtl:(CGFloat)tl tr:(CGFloat)tr bl:(CGFloat)bl br:(CGFloat)br size:(CGSize)size {
++ (CAShapeLayer *)sx_cornerLayerWithtl:(CGFloat)tl tr:(CGFloat)tr bl:(CGFloat)bl br:(CGFloat)br size:(CGSize)size {
     CGFloat width = size.width;
     CGFloat height = size.height;
     UIBezierPath *path = [[UIBezierPath alloc] init];
@@ -33,7 +33,7 @@
     return maskLayer;
 }
 
-+ (CAGradientLayer *)gradientLayerWithColors:(NSArray <UIColor *>*)colors size:(CGSize)size {
++ (CAGradientLayer *)sx_gradientLayerWithColors:(NSArray <UIColor *>*)colors size:(CGSize)size {
     // gradient
     CAGradientLayer *gl = [CAGradientLayer layer];
     gl.frame = CGRectMake(0,0,size.width,size.height);

@@ -8,7 +8,7 @@
 
 #ifndef SXCommon_h
 #define SXCommon_h
-/** 最低版本要求 IOS 11 */
+/** 最低版本要求 IOS 10 */
 #import "SXScreenDefine.h"
 #import "SXNavigationHeader.h"
 

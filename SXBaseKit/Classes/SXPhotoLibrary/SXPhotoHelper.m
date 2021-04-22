@@ -69,7 +69,7 @@
     if (status == PHAuthorizationStatusAuthorized) return [RACSignal return:@(true)];
     /// 没有授权
     if (status != PHAuthorizationStatusNotDetermined) {
-        RACSignal *signal = [[UIAlertController alertSignalWithTitle:@"相册访问" message:@"相册访问受限，请到设置中开启访问权限" confirmTips:@"去设置"] doNext:^(NSNumber * _Nullable x) {
+        RACSignal *signal = [[UIAlertController sx_alertSignalWithTitle:@"相册访问" message:@"相册访问受限，请到设置中开启访问权限" confirmTips:@"去设置"] doNext:^(NSNumber * _Nullable x) {
             NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
             [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {}];
         }];

@@ -12,13 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIView (SXCorner)
 
-- (void)addCornerLayerWithtl:(CGFloat)tl tr:(CGFloat)tr bl:(CGFloat)bl br:(CGFloat)br;
+- (void)sx_addCornerLayerWithtl:(CGFloat)tl tr:(CGFloat)tr bl:(CGFloat)bl br:(CGFloat)br;
 
-- (void)addCornerLayerWithtl:(CGFloat)tl tr:(CGFloat)tr bl:(CGFloat)bl br:(CGFloat)br size:(CGSize)size;
+- (void)sx_addCornerLayerWithtl:(CGFloat)tl tr:(CGFloat)tr bl:(CGFloat)bl br:(CGFloat)br size:(CGSize)size;
 /// 会自动根据bounds的变化  而更新corner
-- (void)addAutoCornerLayerWithtl:(CGFloat)tl tr:(CGFloat)tr bl:(CGFloat)bl br:(CGFloat)br;
+- (void)sx_addAutoCornerLayerWithtl:(CGFloat)tl tr:(CGFloat)tr bl:(CGFloat)bl br:(CGFloat)br;
 
-- (void)addCorner:(CGFloat)corner;
+- (void)sx_addCorner:(CGFloat)corner;
 
 @end
 
