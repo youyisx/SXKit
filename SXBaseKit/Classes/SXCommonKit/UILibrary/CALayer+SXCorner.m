@@ -30,6 +30,7 @@
     
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
     maskLayer.path = path.CGPath;
+    maskLayer.frame = CGRectMake(0, 0, size.width, size.height);
     return maskLayer;
 }
 
