@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIView * (^)(UIColor *_Nullable))sx_backColor;
 - (UIView * (^)(CGFloat))sx_radius;
 - (UIView * (^)(UIColor *color, CGFloat width))sx_border;
-
+- (UIView * (^)(CGRect))sx_frame;
 /// 添加一个宽度约束
 - (void)sx_addWidthAttributeLayout:(CGFloat)width;
 /// 添加一个高度约束

@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)sx_scrollToCell:(UITableViewCell *)cell
        atScrollPosition:(UITableViewScrollPosition)scrollPosition
                animated:(BOOL)animated;
+
 @end
 
 NS_ASSUME_NONNULL_END

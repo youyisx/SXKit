@@ -108,6 +108,12 @@
     };
 }
 
+- (UIView * (^)(CGRect))sx_frame {
+    return ^(CGRect rect) {
+        self.frame = rect;
+        return self;
+    };
+}
 /// 添加一个宽度约束
 - (void)sx_addWidthAttributeLayout:(CGFloat)width {
     NSLayoutConstraint *attribute = [NSLayoutConstraint constraintWithItem:self
