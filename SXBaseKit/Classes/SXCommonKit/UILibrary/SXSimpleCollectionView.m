@@ -23,7 +23,7 @@
     SXSimpleCollectionView *collectionView = [[[self class] alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     collectionView.delegate = collectionView;
     collectionView.dataSource = collectionView;
-    
+    collectionView.backgroundColor = [UIColor clearColor];
     if (cell.length) {
         Class c = NSClassFromString(cell);
         if (c) [collectionView registerClass:c forCellWithReuseIdentifier:k_simple_CellIdentifier];
