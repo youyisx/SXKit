@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSArray *sources;
 @property (nonatomic, copy) UICollectionViewCell *(^cellForItemAt)(SXSimpleCollectionView *collectionview, NSIndexPath *indexPath, id model) ;
 @property (nonatomic, copy) void(^didSelectItem)(SXSimpleCollectionView *collectionView, NSIndexPath *indexPath, id model);
+/// 目前仅支持左右滑动
+@property (nonatomic, assign) BOOL sx_pagingEnabled;
 @end
 
 
