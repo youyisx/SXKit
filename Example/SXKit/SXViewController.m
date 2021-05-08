@@ -52,6 +52,9 @@
 //    }];
     
     NSLog(@"--- top:%@ bottom:%@",@(SXStatusBarHeight),@(SXSafeBottomHeight));
+    
+//    self.modalPresentationStyle
+   
 }
 
 - (void)didReceiveMemoryWarning
