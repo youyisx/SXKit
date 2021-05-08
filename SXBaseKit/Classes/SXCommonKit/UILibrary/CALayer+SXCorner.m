@@ -35,11 +35,18 @@
 }
 
 + (CAGradientLayer *)sx_gradientLayerWithColors:(NSArray <UIColor *>*)colors size:(CGSize)size {
+    return [self sx_gradientLayerWithColors:colors size:size start:CGPointMake(0, 0.5) end:CGPointMake(1, 0.5)];
+}
+
++ (CAGradientLayer *)sx_gradientLayerWithColors:(NSArray <UIColor *>*)colors
+                                           size:(CGSize)size
+                                          start:(CGPoint)start
+                                            end:(CGPoint)end {
     // gradient
     CAGradientLayer *gl = [CAGradientLayer layer];
     gl.frame = CGRectMake(0,0,size.width,size.height);
-    gl.startPoint = CGPointMake(0, 0.5);
-    gl.endPoint = CGPointMake(1, 0.5);
+    gl.startPoint = start;
+    gl.endPoint = end;
     NSArray *cgColors = [[[colors rac_sequence] map:^id _Nullable(UIColor * _Nullable value) {
         return ((__bridge id)value.CGColor);
     }] array];

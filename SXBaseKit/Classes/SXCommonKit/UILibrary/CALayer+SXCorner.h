@@ -12,10 +12,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CALayer (SXCorner)
 
-+ (CAShapeLayer *)sx_cornerLayerWithtl:(CGFloat)tl tr:(CGFloat)tr bl:(CGFloat)bl br:(CGFloat)br size:(CGSize)size;
++ (CAShapeLayer *)sx_cornerLayerWithtl:(CGFloat)tl
+                                    tr:(CGFloat)tr
+                                    bl:(CGFloat)bl
+                                    br:(CGFloat)br
+                                  size:(CGSize)size;
 
-+ (CAGradientLayer *)sx_gradientLayerWithColors:(NSArray <UIColor *>*)colors size:(CGSize)size;
++ (CAGradientLayer *)sx_gradientLayerWithColors:(NSArray <UIColor *>*)colors
+                                           size:(CGSize)size;
 
++ (CAGradientLayer *)sx_gradientLayerWithColors:(NSArray <UIColor *>*)colors
+                                           size:(CGSize)size
+                                          start:(CGPoint)start
+                                            end:(CGPoint)end;
 @end
 
 NS_ASSUME_NONNULL_END
