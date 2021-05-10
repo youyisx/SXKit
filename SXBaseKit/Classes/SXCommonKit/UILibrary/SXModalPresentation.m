@@ -11,6 +11,7 @@
 @interface SXModelPresentationVal()
 @property (nonatomic, copy) dispatch_block_t privateWillHideBlock;
 @property (nonatomic, copy) dispatch_block_t privateDidHideBlock;
+@property (nonatomic, strong) UIViewController *target;
 @end
 
 @implementation SXModelPresentationVal
@@ -28,6 +29,9 @@
     return val;
 }
 
+- (void)dealloc {
+    NSLog(@"--- %s",__FUNCTION__);
+}
 
 @end
 
@@ -40,6 +44,11 @@
 
 
 @implementation SXModalPresentationContentView
+
+- (void)dealloc {
+    NSLog(@"--- %s",__FUNCTION__);
+}
+
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -65,6 +74,7 @@
         case UIGestureRecognizerStateChanged: {
             CGPoint p = self.center;
             p.y += point.y;
+            if (p.y < self.cy) p.y = self.cy;
             self.moveDirection = p.y > self.center.y ? 1 : 0;
             self.center = p;
         }
@@ -73,7 +83,7 @@
         default:
         {
             CGFloat y = self.frame.origin.y;
-            if (y > self.cy + 20 && self.moveDirection == 1) {
+            if (y > self.cy + 8 && self.moveDirection == 1) {
                 !self.moveHideCallBack?:self.moveHideCallBack(self);
             } else {
                 CGPoint p = self.center;
@@ -99,17 +109,26 @@
         return;
     }
     SXModelPresentationVal *uiVal = val ? val : [SXModelPresentationVal defaultVal];
-    UIViewController *rootVC = SXRootVC();
-    [rootVC addChildViewController:vc];
+//    UIViewController *rootVC = SXRootVC();
+//    [rootVC addChildViewController:vc];
+    uiVal.target = vc;
     [self presentationWithView:vc.view val:uiVal completed:^(BOOL success) {
         if (success) {
-            [vc didMoveToParentViewController:rootVC];
+//            [vc didMoveToParentViewController:rootVC];
         } else {
-            [vc removeFromParentViewController];
+//            [vc removeFromParentViewController];
+            uiVal.target = nil;
         }
     }];
-    uiVal.privateWillHideBlock = ^{ [vc willMoveToParentViewController:nil]; };
-    uiVal.privateDidHideBlock = ^{ [vc removeFromParentViewController]; };
+    uiVal.privateWillHideBlock = ^{
+//        [vc willMoveToParentViewController:nil];
+    };
+    @weakify(uiVal)
+    uiVal.privateDidHideBlock = ^{
+        @strongify(uiVal)
+//        [vc removeFromParentViewController];
+        uiVal.target = nil;
+    };
 }
 
 + (void)presentationWithView:(UIView *)view val:(SXModelPresentationVal * _Nullable)val completed:(void (^ _Nullable)(BOOL))completed{
@@ -121,42 +140,46 @@
     
     void(^hideBlock)(UIView *maskView, UIView *contentView) = ^(UIView *maskView, UIView *contentView) {
         [UIView animateWithDuration:0.45 animations:^{
-            maskView.alpha = 0;
-            contentView.transform = CGAffineTransformMakeTranslation(0, -contentView.bounds.size.height);
+            maskView.alpha = 0.4;
+            contentView.transform = CGAffineTransformMakeTranslation(0, contentView.bounds.size.height);
         } completion:^(BOOL finished) {
             !uiVal.privateWillHideBlock?:uiVal.privateWillHideBlock();
-            [maskView removeFromSuperview];
             [contentView removeFromSuperview];
             !uiVal.privateDidHideBlock?:uiVal.privateDidHideBlock();
-            !uiVal.didHideBlock?:uiVal.didHideBlock();
+            [UIView animateWithDuration:0.2 animations:^{
+                maskView.alpha = 0;
+            } completion:^(BOOL finished) {
+                [maskView removeFromSuperview];
+                !uiVal.didHideBlock?:uiVal.didHideBlock();
+            }];
         }];
     };
     
     
-    UIView *rootView = SXRootWindow();
+    UIView *rootView =SXRootWindow();
     UIButton *maskBtn = UIButton.sx_button(nil);
     maskBtn.sx_frame(rootView.bounds).sx_backColor(uiVal.maskColor);
     [rootView addSubview:maskBtn];
     
-    CGSize contentSize = CGSizeMake(CGRectGetWidth(rootView.bounds), CGRectGetHeight(rootView.bounds) * val.heightScale);
+    CGSize contentSize = CGSizeMake(CGRectGetWidth(rootView.bounds), CGRectGetHeight(rootView.bounds) * uiVal.heightScale);
     CGRect contentRect = CGRectMake(0, CGRectGetHeight(rootView.bounds) - contentSize.height, contentSize.width, contentSize.height);
     
     SXModalPresentationContentView *contentView = [[SXModalPresentationContentView alloc] initWithFrame:contentRect];
-    contentView.backgroundColor = val.contentBackColor;
-    if (val.topCornerRadius > 0) [contentView sx_addCornerLayerWithtl:val.topCornerRadius tr:val.topCornerRadius bl:0 br:0 size:contentSize];
+    contentView.backgroundColor = uiVal.contentBackColor;
+    if (uiVal.topCornerRadius > 0) [contentView sx_addCornerLayerWithtl:uiVal.topCornerRadius tr:uiVal.topCornerRadius bl:0 br:0 size:contentSize];
     [rootView addSubview:contentView];
     
-    if (!CGSizeEqualToSize(CGSizeZero, val.sliderSize) && val.sliderColor) {
-        UIView *slider = UIView.sx_view(val.sliderColor).sx_frame(CGRectMake(0, 0, val.sliderSize.width, val.sliderSize.height)).sx_radius(val.sliderSize.height * 0.5);
+    if (!CGSizeEqualToSize(CGSizeZero, uiVal.sliderSize) && uiVal.sliderColor) {
+        UIView *slider = UIView.sx_view(uiVal.sliderColor).sx_frame(CGRectMake(0, 0, uiVal.sliderSize.width, uiVal.sliderSize.height)).sx_radius(uiVal.sliderSize.height * 0.5);
         slider.userInteractionEnabled = NO;
         [contentView addSubview:slider];
-        slider.center = CGPointMake(contentSize.width * 0.5, val.contentEdge.top * 0.5);
+        slider.center = CGPointMake(contentSize.width * 0.5, uiVal.contentEdge.top * 0.5);
     }
     [contentView addSubview:view];
-    view.frame = CGRectMake(val.contentEdge.left,
-                            val.contentEdge.top,
-                            contentSize.width - val.contentEdge.left - val.contentEdge.right,
-                            contentSize.height - val.contentEdge.top - val.contentEdge.bottom);
+    view.frame = CGRectMake(uiVal.contentEdge.left,
+                            uiVal.contentEdge.top,
+                            contentSize.width - uiVal.contentEdge.left - uiVal.contentEdge.right,
+                            contentSize.height - uiVal.contentEdge.top - uiVal.contentEdge.bottom);
     
     @weakify(maskBtn)
     contentView.moveHideCallBack = ^(SXModalPresentationContentView *view) {
@@ -167,11 +190,12 @@
     @weakify(contentView)
     [[maskBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         @strongify(contentView)
+        if (!uiVal.hidenWhenTouchMask) return;
         hideBlock(x,contentView);
     }];
     
     
-    contentView.transform = CGAffineTransformMakeTranslation(0, -contentSize.height);
+    contentView.transform = CGAffineTransformMakeTranslation(0, contentSize.height);
     maskBtn.alpha = 0;
     [UIView animateWithDuration:0.45 animations:^{
         maskBtn.alpha = 1;

@@ -15,6 +15,10 @@
 #import <SXBaseKit/SXPickerContentView+DatePicker.h>
 #import <SXBaseKit/SXPickerContentView+Picker.h>
 #import <SXBaseKit/SXVideoTrimmerView.h>
+#import "SXTableViewController.h"
+//#import "SXModalPresentation.h"
+#import <SXBaseKit/SXModalPresentation.h>
+
 @interface SXViewController ()
 //@property (nonatomic, strong) SXVodControlPlayer *player;
 @end
@@ -65,12 +69,19 @@
 
 
 - (IBAction)clickedBtn:(id)sender {
-    [SXPickerContentView showSources:@[@"1",@"2"] selected:^(NSInteger idx) {
-        
-    }];
+//    [SXPickerContentView showSources:@[@"1",@"2"] selected:^(NSInteger idx) {
+//
+//    }];
 //    [SXPickerContentView showDatePicker:^(NSDate * _Nonnull date) {
 //        NSLog(@"--date :%@",date);
 //    }];
+    SXTableViewController *vc = [SXTableViewController new];
+//    SXModelPresentationVal *val = [SXModalPresentat]
+    SXModelPresentationVal *val = [SXModelPresentationVal defaultVal];
+    val.didHideBlock = ^{
+        NSLog(@"--- hidden");
+    };
+    [SXModalPresentation presentationWithViewController:vc val:val completed:nil];
 }
 
 @end
