@@ -82,13 +82,13 @@
             break;
         default:
         {
-            CGFloat y = self.frame.origin.y;
+            CGFloat y = self.center.y;
             if (y > self.cy + 8 && self.moveDirection == 1) {
                 !self.moveHideCallBack?:self.moveHideCallBack(self);
             } else {
                 CGPoint p = self.center;
                 p.y = self.cy;
-                [UIView animateWithDuration:0.45 animations:^{
+                [UIView animateWithDuration:0.25 animations:^{
                     self.center = p;
                 }];
             }
@@ -119,6 +119,7 @@
 //            [vc removeFromParentViewController];
             uiVal.target = nil;
         }
+        !completed?:completed(success);
     }];
     uiVal.privateWillHideBlock = ^{
 //        [vc willMoveToParentViewController:nil];
@@ -139,14 +140,14 @@
     SXModelPresentationVal *uiVal = val ? val : [SXModelPresentationVal defaultVal];
     
     void(^hideBlock)(UIView *maskView, UIView *contentView) = ^(UIView *maskView, UIView *contentView) {
-        [UIView animateWithDuration:0.45 animations:^{
-            maskView.alpha = 0.4;
+        [UIView animateWithDuration:0.25 animations:^{
+            maskView.alpha = 0.3;
             contentView.transform = CGAffineTransformMakeTranslation(0, contentView.bounds.size.height);
         } completion:^(BOOL finished) {
             !uiVal.privateWillHideBlock?:uiVal.privateWillHideBlock();
             [contentView removeFromSuperview];
             !uiVal.privateDidHideBlock?:uiVal.privateDidHideBlock();
-            [UIView animateWithDuration:0.2 animations:^{
+            [UIView animateWithDuration:0.1 animations:^{
                 maskView.alpha = 0;
             } completion:^(BOOL finished) {
                 [maskView removeFromSuperview];
@@ -197,7 +198,7 @@
     
     contentView.transform = CGAffineTransformMakeTranslation(0, contentSize.height);
     maskBtn.alpha = 0;
-    [UIView animateWithDuration:0.45 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         maskBtn.alpha = 1;
         contentView.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
