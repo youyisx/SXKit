@@ -8,7 +8,6 @@
 
 #import "UIView+SXDynamic.h"
 #import "NSObject+SXDynamic.h"
-#import <ReactiveObjC/ReactiveObjC.h>
 #define k_sizeChangeHandler_0 @"k_sizeChangeHandler_0"
 #define k_layoutSubviews_observers @"k_layoutSubviews_observers"
 @implementation UIView (SXDynamic)
@@ -33,6 +32,27 @@
 
 - (SXSizeChangeHandler)sizeChangeHandler {
     return [self sx_objectForKey:k_sizeChangeHandler_0];
+}
+
+/// size 发生变化后 会触发该信号
+- (RACSignal <UIView *>*)sx_sizeChangeSignal {
+    __block CGSize old_ = self.bounds.size;
+    RACSignal *signal_ = [self rac_signalForSelector:@selector(layoutSubviews)];
+    @weakify(self)
+    signal_ = [signal_ filter:^BOOL(id  _Nullable value) {
+        @strongify(self)
+        CGSize size = self.bounds.size;
+        return !CGSizeEqualToSize(size, old_);
+    }];
+    signal_ = [signal_ doNext:^(id  _Nullable x) {
+        @strongify(self)
+        old_ = self.bounds.size;
+    }];
+    return [signal_ map:^id _Nullable(id  _Nullable value) {
+        @strongify(self)
+        UIView *result = self;
+        return result;
+    }];
 }
 
 - (void)sx_updateWithModel:(nullable id)model {

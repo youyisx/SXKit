@@ -19,7 +19,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)sx_addAutoCornerLayerWithtl:(CGFloat)tl tr:(CGFloat)tr bl:(CGFloat)bl br:(CGFloat)br;
 
 - (void)sx_addCorner:(CGFloat)corner;
-
+/// 给view 插入一个渐变layer
+- (void)sx_addGradientBackLayerWithColors:(NSArray <UIColor *>*)colors
+                                    start:(CGPoint)start
+                                      end:(CGPoint)end;
+/// 移除渐变背景layer
+- (void)sx_removeGradientBackLayer;
 @end
 
 NS_ASSUME_NONNULL_END

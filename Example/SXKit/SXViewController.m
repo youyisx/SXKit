@@ -21,6 +21,7 @@
 
 @interface SXViewController ()
 //@property (nonatomic, strong) SXVodControlPlayer *player;
+@property (nonatomic, strong) UIView *testView;
 @end
 
 @implementation SXViewController
@@ -28,14 +29,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    SXVideoTrimmerView *mask = [[SXVideoTrimmerView alloc] initWithFrame:CGRectMake(10, 250, 320, 50)];
-    mask.backgroundColor = [UIColor redColor];
-    [self.view addSubview:mask];
-    mask.framesCount = 60;
-    mask.minIntervalProgress = 0.01;
-    mask.maxIntervalProgress = 0.02;
-    [mask activeTrimmerView];
-    for (int i = 0; i < mask.framesCount; i++) [mask setFrame:[UIImage imageNamed:@"test.jpg"] idx:i];
+//    self.view.backgroundColor = [UIColor greenColor];
+//    SXVideoTrimmerView *mask = [[SXVideoTrimmerView alloc] initWithFrame:CGRectMake(10, 250, 320, 50)];
+//    mask.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:mask];
+//    mask.framesCount = 60;
+//    mask.minIntervalProgress = 0.01;
+//    mask.maxIntervalProgress = 0.02;
+//    [mask activeTrimmerView];
+//    for (int i = 0; i < mask.framesCount; i++) [mask setFrame:[UIImage imageNamed:@"test.jpg"] idx:i];
     
 //    self.player = [SXVodControlPlayer new];
 //    [self.view addSubview:self.player];
@@ -58,6 +60,15 @@
     NSLog(@"--- top:%@ bottom:%@",@(SXStatusBarHeight),@(SXSafeBottomHeight));
     
 //    self.modalPresentationStyle
+    
+    self.testView = UIView.sx_view(UIColor.clearColor);
+    [self.testView sx_addGradientBackLayerWithColors:@[UIColor.clearColor, UIColor.redColor] start:CGPointMake(0.5, 0) end:CGPointMake(0.5, 1)];
+    [self.view addSubview:self.testView];
+    [self.testView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.mas_topLayoutGuideBottom).offset(40);
+        make.leading.mas_equalTo(40);
+        make.size.mas_equalTo(CGSizeMake(arc4random_uniform(200)+5, arc4random_uniform(200)+5));
+    }];
    
 }
 
@@ -69,19 +80,26 @@
 
 
 - (IBAction)clickedBtn:(id)sender {
+    [self.testView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(arc4random_uniform(200)+5, arc4random_uniform(200)+5));
+    }];
 //    [SXPickerContentView showSources:@[@"1",@"2"] selected:^(NSInteger idx) {
 //
 //    }];
 //    [SXPickerContentView showDatePicker:^(NSDate * _Nonnull date) {
 //        NSLog(@"--date :%@",date);
 //    }];
-    SXTableViewController *vc = [SXTableViewController new];
+//    SXTableViewController *vc = [SXTableViewController new];
 //    SXModelPresentationVal *val = [SXModalPresentat]
-    SXModelPresentationVal *val = [SXModelPresentationVal defaultVal];
-    val.didHideBlock = ^{
-        NSLog(@"--- hidden");
-    };
-    [SXModalPresentation presentationWithViewController:vc val:val completed:nil];
+//    SXModelPresentationVal *val = [SXModelPresentationVal defaultVal];
+//    val.didHideBlock = ^{
+//        NSLog(@"--- hidden");
+//    };
+//    [SXModalPresentation presentationWithViewController:vc val:val completed:nil];
+//    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+//    [self.navigationController pushViewController:vc animated:NO];
+//    [self.navigationController presentViewController:vc animated:YES completion:nil];
+//    [self.navigationController pushViewController:vc animated:NO];
 }
 
 @end

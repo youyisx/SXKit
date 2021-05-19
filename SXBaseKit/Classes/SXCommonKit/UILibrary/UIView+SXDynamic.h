@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 #define SXNibIdentifierSuffix @"_nib"
 typedef void(^SXSizeChangeHandler)(CGSize size, UIView * _Nonnull target);
 
@@ -15,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIView (SXDynamic)
 
 @property (nonatomic, copy, nullable) SXSizeChangeHandler sizeChangeHandler ;
+/// size 发生变化后 会触发该信号
+- (RACSignal <UIView *>*)sx_sizeChangeSignal;
 
 - (void)sx_updateWithModel:(nullable id)model;
 

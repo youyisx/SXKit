@@ -36,20 +36,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    self.tableView.backgroundColor = [UIColor redColor];
-    self.tableView.rowHeight = 45;
-    self.tableView.estimatedRowHeight = 45;
-    [self.view addSubview:self.tableView];
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.bottom.trailing.mas_equalTo(0);
-        make.top.mas_equalTo(self.mas_topLayoutGuideBottom);
-    }];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"1"];
-    
+    self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+//    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+//    self.tableView.backgroundColor = [UIColor redColor];
+//    self.tableView.rowHeight = 45;
+//    self.tableView.estimatedRowHeight = 45;
+//    [self.view addSubview:self.tableView];
+//    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.leading.bottom.trailing.mas_equalTo(0);
+//        make.top.mas_equalTo(self.mas_topLayoutGuideBottom);
+//    }];
+//    self.tableView.delegate = self;
+//    self.tableView.dataSource = self;
+//
+//    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"1"];
+//
     
 }
 

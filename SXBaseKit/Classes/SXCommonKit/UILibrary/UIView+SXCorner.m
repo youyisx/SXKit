@@ -33,9 +33,32 @@
     [self sx_addCornerLayerWithtl:tl tr:tr bl:bl br:br size:currentSize];
 }
 
-- (void)addCorner:(CGFloat)corner {
+- (void)sx_addCorner:(CGFloat)corner {
     [self sx_addAutoCornerLayerWithtl:corner tr:corner bl:corner br:corner];
 }
 
+/// 给view 插入一个渐变layer
+- (void)sx_addGradientBackLayerWithColors:(NSArray <UIColor *>*)colors
+                                    start:(CGPoint)start
+                                      end:(CGPoint)end {
+    CGSize size = self.bounds.size;
+    if (CGSizeEqualToSize(size, CGSizeZero)) size = CGSizeMake(10, 10);
+    CAGradientLayer *layer = [CALayer sx_gradientLayerWithColors:colors size:size start:start end:end];
+    [self.layer addSublayer:layer];
+    @weakify(layer)
+    [[[self sx_sizeChangeSignal] takeUntil:layer.rac_willDeallocSignal] subscribeNext:^(UIView * _Nullable x) {
+        @strongify(layer)
+        layer.frame = x.bounds;
+    }];
+}
+/// 移除渐变背景layer
+- (void)sx_removeGradientBackLayer {
+    NSArray <CALayer *>*layers =  [self.layer.sublayers copy];
+    for (CALayer *layer in layers) {
+        if ([layer isKindOfClass:[CAGradientLayer class]]) {
+            [layer removeFromSuperlayer];
+        }
+    }
+}
 
 @end
