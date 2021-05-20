@@ -19,8 +19,9 @@
     if (obj == nil) {
         obj = [[NSDateFormatter alloc] init];
         [obj setDateFormat:formatter];
-        [obj setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
-        [obj setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:8]];
+//        [obj setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
+//        [obj setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:8]];
+        [obj setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Beijing"]];
         params[formatter] = obj;
     }
     return obj;
