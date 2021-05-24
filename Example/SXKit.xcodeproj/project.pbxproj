@@ -542,6 +542,7 @@
 			baseConfigurationReference = B616EA8C84D81E01E11F2473 /* Pods-SXKit_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 2021052410;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SXKit/SXKit-Prefix.pch";
 				INFOPLIST_FILE = "SXKit/SXKit-Info.plist";
@@ -559,6 +560,7 @@
 			baseConfigurationReference = CC5D986867392E27240B5666 /* Pods-SXKit_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 2021052410;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SXKit/SXKit-Prefix.pch";
 				INFOPLIST_FILE = "SXKit/SXKit-Info.plist";

@@ -18,7 +18,7 @@
 #import "SXTableViewController.h"
 //#import "SXModalPresentation.h"
 #import <SXBaseKit/SXModalPresentation.h>
-
+#import <SXBaseKit/SXApp.h>
 @interface SXViewController ()
 //@property (nonatomic, strong) SXVodControlPlayer *player;
 @property (nonatomic, strong) UIView *testView;
@@ -69,7 +69,13 @@
         make.leading.mas_equalTo(40);
         make.size.mas_equalTo(CGSizeMake(arc4random_uniform(200)+5, arc4random_uniform(200)+5));
     }];
-   
+    
+    NSLog(@"-- %@",@([SXApp compareBuildVersion:@"2021052411"]));
+    NSLog(@"-- %@",@([SXApp compareBuildVersion:@"2.1.3"]));
+    NSLog(@"-- %@",@([SXApp compareBuildVersion:@"0.1.3"]));
+    NSLog(@"-- %@",@([SXApp compareBuildVersion:@"1.0.0.0"]));
+    NSLog(@"-- %@",@([SXApp compareBuildVersion:@"1.0.0.1"]));
+    
 }
 
 - (void)didReceiveMemoryWarning
