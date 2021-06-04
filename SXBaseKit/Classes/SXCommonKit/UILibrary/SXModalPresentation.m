@@ -11,7 +11,7 @@
 @interface SXModelPresentationVal()
 @property (nonatomic, copy) dispatch_block_t privateWillHideBlock;
 @property (nonatomic, copy) dispatch_block_t privateDidHideBlock;
-@property (nonatomic, strong) UIViewController *target;
+
 @end
 
 @implementation SXModelPresentationVal
@@ -108,37 +108,51 @@
         !completed?:completed(NO);
         return;
     }
-    SXModelPresentationVal *uiVal = val ? val : [SXModelPresentationVal defaultVal];
-//    UIViewController *rootVC = SXRootVC();
-//    [rootVC addChildViewController:vc];
-    uiVal.target = vc;
-    [self presentationWithView:vc.view val:uiVal completed:^(BOOL success) {
-        if (success) {
-//            [vc didMoveToParentViewController:rootVC];
-        } else {
-//            [vc removeFromParentViewController];
-            uiVal.target = nil;
-        }
-        !completed?:completed(success);
+    UIViewController *contentVC = [UIViewController new];
+    contentVC.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+    contentVC.view.frame = [UIScreen mainScreen].bounds;
+    contentVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    @weakify(contentVC)
+    [SXValidVC() presentViewController:contentVC animated:NO completion:^{
+        @strongify(contentVC)
+        [contentVC addChildViewController:vc];
+        SXModelPresentationVal *uiVal = val ? val : [SXModelPresentationVal defaultVal];
+        [self presentationWithContentView:contentVC.view view:vc.view val:uiVal completed:^(BOOL success) {
+            @strongify(contentVC)
+            if (success) {
+                [vc didMoveToParentViewController:contentVC];
+            } else {
+                [vc removeFromParentViewController];
+            }
+            !completed?:completed(success);
+        }];
+        uiVal.privateWillHideBlock = ^{
+            [vc willMoveToParentViewController:nil];
+        };
+        uiVal.privateDidHideBlock = ^{
+            @strongify(contentVC)
+            [vc removeFromParentViewController];
+            [contentVC dismissViewControllerAnimated:NO completion:nil];
+        };
     }];
-    uiVal.privateWillHideBlock = ^{
-//        [vc willMoveToParentViewController:nil];
-    };
-    @weakify(uiVal)
-    uiVal.privateDidHideBlock = ^{
-        @strongify(uiVal)
-//        [vc removeFromParentViewController];
-        uiVal.target = nil;
-    };
+
+
 }
 
 + (void)presentationWithView:(UIView *)view val:(SXModelPresentationVal * _Nullable)val completed:(void (^ _Nullable)(BOOL))completed{
-    if (view == nil) {
+    UIView *rootView =SXRootWindow();
+    [self presentationWithContentView:rootView view:view val:val completed:completed];
+}
+
++ (void)presentationWithContentView:(UIView *)rootView
+                               view:(UIView *)view
+                                val:(SXModelPresentationVal * _Nullable)val
+                          completed:(void (^ _Nullable)(BOOL))completed{
+    if (view == nil || rootView == nil) {
         !completed?:completed(NO);
         return;
     }
     SXModelPresentationVal *uiVal = val ? val : [SXModelPresentationVal defaultVal];
-    
     void(^hideBlock)(UIView *maskView, UIView *contentView) = ^(UIView *maskView, UIView *contentView) {
         [UIView animateWithDuration:0.25 animations:^{
             maskView.alpha = 0.3;
@@ -156,8 +170,6 @@
         }];
     };
     
-    
-    UIView *rootView =SXRootWindow();
     UIButton *maskBtn = UIButton.sx_button(nil);
     maskBtn.sx_frame(rootView.bounds).sx_backColor(uiVal.maskColor);
     [rootView addSubview:maskBtn];
@@ -206,5 +218,6 @@
     }];
     
 }
+
 
 @end

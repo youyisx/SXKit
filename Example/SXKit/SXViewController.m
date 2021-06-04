@@ -86,22 +86,23 @@
 
 
 - (IBAction)clickedBtn:(id)sender {
-    [self.testView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(arc4random_uniform(200)+5, arc4random_uniform(200)+5));
-    }];
+//    [self.testView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.size.mas_equalTo(CGSizeMake(arc4random_uniform(200)+5, arc4random_uniform(200)+5));
+//    }];
 //    [SXPickerContentView showSources:@[@"1",@"2"] selected:^(NSInteger idx) {
 //
 //    }];
 //    [SXPickerContentView showDatePicker:^(NSDate * _Nonnull date) {
 //        NSLog(@"--date :%@",date);
 //    }];
-//    SXTableViewController *vc = [SXTableViewController new];
+    SXTableViewController *vc = [SXTableViewController new];
 //    SXModelPresentationVal *val = [SXModalPresentat]
-//    SXModelPresentationVal *val = [SXModelPresentationVal defaultVal];
+    SXModelPresentationVal *val = [SXModelPresentationVal defaultVal];
+    val.hidenWhenTouchMask = YES;
 //    val.didHideBlock = ^{
 //        NSLog(@"--- hidden");
 //    };
-//    [SXModalPresentation presentationWithViewController:vc val:val completed:nil];
+    [SXModalPresentation presentationWithViewController:vc val:val completed:nil];
 //    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
 //    [self.navigationController pushViewController:vc animated:NO];
 //    [self.navigationController presentViewController:vc animated:YES completion:nil];
