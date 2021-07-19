@@ -51,4 +51,16 @@
     [self setContentHuggingPriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal] ;
 }
 
+/// 更新文本显示（text 可以是 nsstring 或者 nsattributed）
+- (void)sx_updateText:(id)text {
+    if ([text isKindOfClass:[NSString class]]) {
+        self.text = text;
+    } else if ([text isKindOfClass:[NSAttributedString class]]) {
+        self.attributedText = text;
+    } else {
+        self.text = nil;
+        self.attributedText = nil;
+    }
+}
+
 @end
