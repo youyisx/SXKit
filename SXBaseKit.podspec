@@ -117,4 +117,9 @@ Pod::Spec.new do |s|
      ss.frameworks = 'UIKit', 'Foundation'
      ss.resource = ['SXBaseKit/Classes/SXVideoTrimmerView/Resources/*.{png,jpg,jpeg}']
    end
+   s.subspec 'SXScrollViewStack' do |ss|
+     ss.source_files = 'SXBaseKit/Classes/SXScrollViewStack/*'
+     ss.dependency 'ReactiveObjC', '~> 3.1.1'
+     ss.frameworks = 'UIKit', 'Foundation'
+   end
 end
