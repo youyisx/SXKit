@@ -20,6 +20,8 @@ PODS:
   - SXBaseKit/SXPhotoLibrary (0.1.1):
     - SXBaseKit/SXCommonKit
     - SXBaseKit/SXHUD
+  - SXBaseKit/SXScrollViewStack (0.1.1):
+    - ReactiveObjC (~> 3.1.1)
   - SXBaseKit/SXUIKit (0.1.1):
     - SXBaseKit/SXCommonKit
   - SXBaseKit/SXVideoTrimmerView (0.1.1):
@@ -29,6 +31,7 @@ DEPENDENCIES:
   - SDWebImage
   - SXBaseKit (from `../`)
   - SXBaseKit/SXPhotoLibrary (from `../`)
+  - SXBaseKit/SXScrollViewStack (from `../`)
   - SXBaseKit/SXVideoTrimmerView (from `../`)
 
 SPEC REPOS:
@@ -47,8 +50,8 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
-  SXBaseKit: a4eb5ad4969a14d15e1ba0937cda0eb687e3c255
+  SXBaseKit: 5a3a50cbd486d07a9a1c893da732497114b68692
 
-PODFILE CHECKSUM: 4080b41c222ed3d29b3e8d8df18abedd70e09615
+PODFILE CHECKSUM: 1a13e139656f62c2b869ebe670ab438d1c5c8a19
 
 COCOAPODS: 1.8.4
