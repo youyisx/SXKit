@@ -44,7 +44,7 @@
     [self didChangeValueForKey:@k_sxstack_arrangedSubviews];
     
     
-    [self layoutSubviews];
+    [self layoutArrangeSubviews];
     
     if ([objc_getAssociatedObject(self, k_observers_layoutSubviews) boolValue]) return;
     /// 启动对layoutSubviews的监听
