@@ -12,27 +12,26 @@
 
 
 #define k_sxstack_arrangedSubviews "arrangedSubviews"
-#define k_sxstack_animationUpdate "animationUpdate"
+#define k_sxstack_animationUpdate "animationDuration"
 
 #define k_observers_layoutSubviews "k_observers_layoutSubviews"
 #define k_sxstack_arrangedWidth "k_sxstack_arrangedWidth"
 @implementation UIScrollView (SXStack)
 
-@dynamic arrangedSubviews,animationUpdate;
+@dynamic arrangedSubviews,animationDuration;
 
 - (NSInteger)arrangedWidth {
     return ceil(self.bounds.size.width);
 }
 
-
-- (void)setAnimationUpdate:(BOOL)animationUpdate {
+- (void)setAnimationDuration:(NSTimeInterval)animationDuration {
     [self willChangeValueForKey:@k_sxstack_animationUpdate];
-    objc_setAssociatedObject(self, k_sxstack_animationUpdate, @(!animationUpdate), OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, k_sxstack_animationUpdate, @(animationDuration), OBJC_ASSOCIATION_COPY_NONATOMIC);
     [self didChangeValueForKey:@k_sxstack_animationUpdate];
 }
 
-- (BOOL)animationUpdate {
-    return ![objc_getAssociatedObject(self, k_sxstack_animationUpdate) boolValue];
+- (NSTimeInterval)animationDuration {
+    return [objc_getAssociatedObject(self, k_sxstack_animationUpdate) doubleValue];
 }
 
 - (void)setArrangedSubviews:(NSArray<UIView *> *)arrangedSubviews {
@@ -126,25 +125,34 @@
     if (stIdx >= list.count) return;
     
     NSInteger arrangedWidth_ = [self arrangedWidth];
-    dispatch_block_t updateLayout = ^{
-        UIView *lastView = stIdx == 0 ? nil : list[stIdx - 1];
-        CGFloat totalH = CGRectGetMaxY(lastView.frame) + lastView.sx_stackEdge.bottom;
-        for (NSInteger i = stIdx; i < list.count; i++) {
-            UIView *view = list[i];
-            if (view.superview != self) [self addSubview:view];
-            UIEdgeInsets edge = view.sx_stackEdge;
-            NSInteger height = view.sx_stackHeight;
-            view.frame = CGRectMake(edge.left, edge.top + totalH, arrangedWidth_ - edge.left - edge.right, height);
-            totalH = CGRectGetMaxY(view.frame) + edge.bottom;
+    UIView *lastView = stIdx == 0 ? nil : list[stIdx - 1];
+    CGFloat totalH = CGRectGetMaxY(lastView.frame) + lastView.sx_stackEdge.bottom;
+    NSTimeInterval duration = self.animationDuration;
+    if (duration < 0) duration = 0;
+    for (NSInteger i = stIdx; i < list.count; i++) {
+        UIView *view = list[i];
+        UIEdgeInsets edge = view.sx_stackEdge;
+        NSInteger height = view.sx_stackHeight;
+        CGRect frame = CGRectMake(edge.left, edge.top + totalH, arrangedWidth_ - edge.left - edge.right, height);
+        if (view.superview != self) {
+            [self addSubview:view];
+            if (i > 0) {
+                CGFloat lastBottomY = CGRectGetMaxY(list[i-1].frame);
+                view.frame = CGRectOffset(frame, 0, lastBottomY - frame.origin.y);
+            } else {
+                view.frame = CGRectOffset(frame, 0, -frame.size.height);
+            }
         }
-        self.contentSize = CGSizeMake(0, totalH);
-    };
-    
-    if (self.animationUpdate && list[stIdx].superview == self) {
-        [UIView animateWithDuration:0.45 animations:^{ updateLayout(); }];
-    } else {
-        updateLayout();
+        if (duration == 0) {
+            view.frame = frame;
+        } else {
+            [UIView animateWithDuration:duration animations:^{
+                view.frame = frame;
+            }];
+        }
+        totalH = CGRectGetMaxY(frame) + edge.bottom;
     }
+    self.contentSize = CGSizeMake(0, totalH);
     /// 下标为0，则是全部调整frame, 需要记录一下，避免layoutsubviews 反复触发
     if (stIdx == 0) objc_setAssociatedObject(self, k_sxstack_arrangedWidth, @(arrangedWidth_), OBJC_ASSOCIATION_COPY_NONATOMIC);
     

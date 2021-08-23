@@ -21,12 +21,12 @@
     return YES;
 }
 
-- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
-    if (self.vodPlayerOrientation == UIDeviceOrientationLandscapeLeft || self.vodPlayerOrientation == UIDeviceOrientationLandscapeRight) {
-        return UIInterfaceOrientationMaskLandscape;
-    }
-    return UIInterfaceOrientationMaskPortrait;
-}
+//- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+//    if (self.vodPlayerOrientation == UIDeviceOrientationLandscapeLeft || self.vodPlayerOrientation == UIDeviceOrientationLandscapeRight) {
+//        return UIInterfaceOrientationMaskLandscape;
+//    }
+//    return UIInterfaceOrientationMaskPortrait;
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

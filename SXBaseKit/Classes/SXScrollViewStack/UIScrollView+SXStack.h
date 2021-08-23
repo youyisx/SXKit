@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIScrollView (SXStack)
 
 @property (nonatomic) NSArray<UIView *> *arrangedSubviews;
-/// 默认为YES ，添加/移除/高度变化 会通过动画更新
-@property (nonatomic) BOOL animationUpdate;
+/// 添加/移除/高度变化 动画更新时间
+@property (nonatomic) NSTimeInterval animationDuration;
 
 - (void)addArrangedSubview:(UIView *)view;
 

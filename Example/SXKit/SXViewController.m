@@ -31,6 +31,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    
+    
 //    self.view.backgroundColor = [UIColor greenColor];
 //    SXVideoTrimmerView *mask = [[SXVideoTrimmerView alloc] initWithFrame:CGRectMake(10, 250, 320, 50)];
 //    mask.backgroundColor = [UIColor redColor];
@@ -80,6 +83,7 @@
     
     
     UIScrollView *scrollView = [UIScrollView new];
+    scrollView.animationDuration = 0.25;
     scrollView.backgroundColor = [UIColor greenColor];
     [self.view addSubview:scrollView];
     [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -101,7 +105,7 @@
 - (UIView *)_createView {
     UIView *view = [UIView new];
     view.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1];
-//    view.sx_stackEdge = UIEdgeInsetsMake(arc4random_uniform(30), arc4random_uniform(30), arc4random_uniform(30), arc4random_uniform(30));
+    view.sx_stackEdge = UIEdgeInsetsMake(arc4random_uniform(30), arc4random_uniform(30), arc4random_uniform(30), arc4random_uniform(30));
     view.sx_stackHeight = arc4random_uniform(80)+20;
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.backgroundColor = [UIColor whiteColor];
@@ -118,6 +122,7 @@
         @strongify(self)
         @strongify(view)
         NSInteger value = arc4random_uniform(3);
+        value = 0;
         if (value == 0) {
             [self.scrollView removeArrangedSubview:view];
         } else if (value == 1) {
