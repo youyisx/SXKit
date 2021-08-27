@@ -16,7 +16,7 @@
 //    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:SXVodPlayerRotationNotificationName object:nil] subscribeNext:^(NSNotification * _Nullable x) {
 //        self.vodPlayerOrientation = [x.object integerValue];
 //    }];
-
+//    [UIApplication sharedApplication].delegate;
     
     return YES;
 }

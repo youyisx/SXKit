@@ -20,10 +20,14 @@
 #import <SXBaseKit/SXModalPresentation.h>
 #import <SXBaseKit/SXApp.h>
 #import <SXBaseKit/UIScrollView+SXStack.h>
+#import <objc/runtime.h>
+#import <SXBaseKit/SXSimpleCollectionView.h>
+static void *my_a = &my_a;
+static void *my_b = &my_b;
+
 @interface SXViewController ()
 //@property (nonatomic, strong) SXVodControlPlayer *player;
-@property (nonatomic, strong) UIView *testView;
-@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) SXSimpleCollectionView *collectionView;
 @end
 
 @implementation SXViewController
@@ -31,8 +35,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+    layout.minimumLineSpacing = 20;
+    layout.minimumInteritemSpacing = 20;
+    layout.itemSize = CGSizeMake(240, 120);
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layout.sectionInset = UIEdgeInsetsMake(0, 75, 0, 75);
+    self.collectionView =[SXSimpleCollectionView simpleWithLayout:layout cell:NSStringFromClass(UICollectionViewCell.class)];
     
+    self.collectionView.sx_pagingEnabled = YES;
+    [self.view addSubview:self.collectionView];
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.view);
+        make.leading.trailing.mas_equalTo(0);
+        make.height.mas_equalTo(160);
+    }];
+    self.collectionView.backgroundColor = [UIColor greenColor];
+    
+    NSMutableArray *sources = @[].mutableCopy;
+    for (int i = 0; i<50; i++) {
+        [sources addObject:@(i)];
+    }
+    self.collectionView.sources = sources;
+//    SXAppDelegate()
+   
     
 //    self.view.backgroundColor = [UIColor greenColor];
 //    SXVideoTrimmerView *mask = [[SXVideoTrimmerView alloc] initWithFrame:CGRectMake(10, 250, 320, 50)];
@@ -81,60 +107,61 @@
 //    NSLog(@"-- %@",@([SXApp compareBuildVersion:@"1.0.0.0"]));
 //    NSLog(@"-- %@",@([SXApp compareBuildVersion:@"1.0.0.1"]));
     
-    
-    UIScrollView *scrollView = [UIScrollView new];
-    scrollView.animationDuration = 0.25;
-    scrollView.backgroundColor = [UIColor greenColor];
-    [self.view addSubview:scrollView];
-    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.mas_topLayoutGuideBottom);
-        make.leading.mas_equalTo(20);
-        make.trailing.mas_equalTo(-20);
-        make.bottom.mas_equalTo(self.mas_bottomLayoutGuideTop).offset(-100);
-    }];
-    self.scrollView = scrollView;
-    self.scrollView.arrangedSubviews = @[
-        [self _createView],
-        [self _createView],
-        [self _createView],
-        [self _createView],
-        [self _createView],
-    ];
+//
+//    UIScrollView *scrollView = [UIScrollView new];
+//    scrollView.animationDuration = 0.25;
+//    scrollView.backgroundColor = [UIColor greenColor];
+//    [self.view addSubview:scrollView];
+//    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(self.mas_topLayoutGuideBottom);
+//        make.leading.mas_equalTo(20);
+//        make.trailing.mas_equalTo(-20);
+//        make.bottom.mas_equalTo(self.mas_bottomLayoutGuideTop).offset(-100);
+//    }];
+//    self.scrollView = scrollView;
+//    self.scrollView.arrangedSubviews = @[
+//        [self _createView],
+//        [self _createView],
+//        [self _createView],
+//        [self _createView],
+//        [self _createView],
+//    ];
 }
 
 - (UIView *)_createView {
-    UIView *view = [UIView new];
-    view.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1];
-    view.sx_stackEdge = UIEdgeInsetsMake(arc4random_uniform(30), arc4random_uniform(30), arc4random_uniform(30), arc4random_uniform(30));
-    view.sx_stackHeight = arc4random_uniform(80)+20;
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.backgroundColor = [UIColor whiteColor];
-    [btn setTitle:@"X" forState:UIControlStateNormal];
-    [btn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-    [view addSubview:btn];
-    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.trailing.mas_equalTo(0);
-        make.size.mas_equalTo(CGSizeMake(30, 20));
-    }];
-    @weakify(self)
-    @weakify(view)
-    [[btn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-        @strongify(self)
-        @strongify(view)
-        NSInteger value = arc4random_uniform(3);
-        value = 0;
-        if (value == 0) {
-            [self.scrollView removeArrangedSubview:view];
-        } else if (value == 1) {
-//            view.sx_stackEdge = UIEdgeInsetsMake(arc4random_uniform(30), arc4random_uniform(30), arc4random_uniform(30), arc4random_uniform(30));
-            view.sx_stackHeight = arc4random_uniform(80)+20;
-        } else {
-            NSInteger idx = [self.scrollView indexOfArrangeView:view];
-            if (idx < 0) return;
-            [self.scrollView insertArrangedSubview:[self _createView] atIndex:idx];
-        }
-    }];
-    return view;
+//    UIView *view = [UIView new];
+//    view.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1];
+//    view.sx_stackEdge = UIEdgeInsetsMake(arc4random_uniform(30), arc4random_uniform(30), arc4random_uniform(30), arc4random_uniform(30));
+//    view.sx_stackHeight = arc4random_uniform(80)+20;
+//    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    btn.backgroundColor = [UIColor whiteColor];
+//    [btn setTitle:@"X" forState:UIControlStateNormal];
+//    [btn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+//    [view addSubview:btn];
+//    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.trailing.mas_equalTo(0);
+//        make.size.mas_equalTo(CGSizeMake(30, 20));
+//    }];
+//    @weakify(self)
+//    @weakify(view)
+//    [[btn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+//        @strongify(self)
+//        @strongify(view)
+//        NSInteger value = arc4random_uniform(3);
+//        value = 0;
+//        if (value == 0) {
+//            [self.scrollView removeArrangedSubview:view];
+//        } else if (value == 1) {
+////            view.sx_stackEdge = UIEdgeInsetsMake(arc4random_uniform(30), arc4random_uniform(30), arc4random_uniform(30), arc4random_uniform(30));
+//            view.sx_stackHeight = arc4random_uniform(80)+20;
+//        } else {
+//            NSInteger idx = [self.scrollView indexOfArrangeView:view];
+//            if (idx < 0) return;
+//            [self.scrollView insertArrangedSubview:[self _createView] atIndex:idx];
+//        }
+//    }];
+//    return view;
+    return nil;
     
 }
 
@@ -172,7 +199,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UIView *item = [self _createView];
-    [self.scrollView addArrangedSubview:item];
+//    [self.scrollView addArrangedSubview:item];
 }
 
 @end
