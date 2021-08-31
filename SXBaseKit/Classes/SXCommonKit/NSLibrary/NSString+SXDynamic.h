@@ -41,6 +41,10 @@ NS_ASSUME_NONNULL_BEGIN
                   num:(nullable BOOL *)num
                    zh:(nullable BOOL *)zh
                symbol:(nullable BOOL *)symbol;
+/// 判断是否为纯数字
+- (BOOL)sx_isPureInt;
+/// 判断是否为浮点型
+- (BOOL)sx_isPureFloat;
 @end
 
 

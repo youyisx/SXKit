@@ -110,4 +110,19 @@
         }
     }
 }
+
+/// 判断是否为纯数字
+- (BOOL)sx_isPureInt {
+    NSScanner* scan = [NSScanner scannerWithString:self];
+    int val;
+    return[scan scanInt:&val] && [scan isAtEnd];
+}
+
+/// 判断是否为浮点型
+- (BOOL)sx_isPureFloat {
+    NSScanner* scan = [NSScanner scannerWithString:self];
+    float val;
+    return[scan scanFloat:&val] && [scan isAtEnd];
+}
+
 @end
