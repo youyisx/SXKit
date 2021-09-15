@@ -22,6 +22,7 @@
 #import <SXBaseKit/UIScrollView+SXStack.h>
 #import <objc/runtime.h>
 #import <SXBaseKit/SXSimpleCollectionView.h>
+#import <SXBaseKit/UIView+SXDynamic.h>
 static void *my_a = &my_a;
 static void *my_b = &my_b;
 
@@ -35,6 +36,7 @@ static void *my_b = &my_b;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.minimumLineSpacing = 20;
     layout.minimumInteritemSpacing = 20;
@@ -57,6 +59,10 @@ static void *my_b = &my_b;
         [sources addObject:@(i)];
     }
     self.collectionView.sources = sources;
+    
+    
+//    [self.view sx_addBottomLine:2 color:UIColor.redColor edge:UIEdgeInsetsMake(0, 20, 20, 20)];
+//    [self.view sx_removeBottomLine];
 //    SXAppDelegate()
    
     

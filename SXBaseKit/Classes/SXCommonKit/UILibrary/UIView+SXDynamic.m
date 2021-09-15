@@ -8,6 +8,8 @@
 
 #import "UIView+SXDynamic.h"
 #import "NSObject+SXDynamic.h"
+#import <objc/runtime.h>
+#import <Masonry/Masonry.h>
 #define k_sizeChangeHandler_0 @"k_sizeChangeHandler_0"
 #define k_layoutSubviews_observers @"k_layoutSubviews_observers"
 @implementation UIView (SXDynamic)
@@ -165,5 +167,24 @@
     return imageOut;
 }
 
+static void *sx_bottomLineKey = &sx_bottomLineKey;
+- (void)sx_addBottomLine:(CGFloat)height color:(UIColor *)color edge:(UIEdgeInsets)edge {
+    [self sx_removeBottomLine];
+    UIView *line = UIView.sx_view(color);
+    [self addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(@(-edge.bottom));
+        make.leading.mas_equalTo(@(edge.left));
+        make.trailing.mas_equalTo(@(-edge.right));
+        make.height.mas_equalTo(@(height));
+    }];
+    objc_setAssociatedObject(self, sx_bottomLineKey, line, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (void)sx_removeBottomLine {
+    UIView *line = objc_getAssociatedObject(self, sx_bottomLineKey);
+    if (![line isKindOfClass:[UIView class]]) return;
+    [line removeFromSuperview];
+}
 @end
 

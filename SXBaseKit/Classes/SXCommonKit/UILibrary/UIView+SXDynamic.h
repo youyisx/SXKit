@@ -43,6 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)sx_addHeightAttributeLayout:(CGFloat)width;
 /// view 转image
 - (UIImage *)sx_snapshotLayerImage;
+
+- (void)sx_addBottomLine:(CGFloat)height color:(UIColor *)color edge:(UIEdgeInsets)edge;
+- (void)sx_removeBottomLine;
 @end
 
 NS_ASSUME_NONNULL_END
