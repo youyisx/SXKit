@@ -19,6 +19,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIImage * (^)(NSString *, CGFloat))sx_qrcode;
 
+
+/// 压缩图片到指定大小以内 size 为 KB单位
+- (NSData *)sx_compressWithMaxDataSizeKBytes:(CGFloat)size;
+/// 压缩图片到指定宽度
+- (UIImage * _Nullable)sx_compressWidth:(CGFloat)width;
 @end
 
 

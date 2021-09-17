@@ -23,6 +23,7 @@
 #import <objc/runtime.h>
 #import <SXBaseKit/SXSimpleCollectionView.h>
 #import <SXBaseKit/UIView+SXDynamic.h>
+#import <SXBaseKit/UIImage+SXDynamic.h>
 static void *my_a = &my_a;
 static void *my_b = &my_b;
 
@@ -36,6 +37,10 @@ static void *my_b = &my_b;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIImage *bigImg = [UIImage imageNamed:@"112.jpeg"];
+    NSData *data = [bigImg sx_compressWithMaxDataSizeKBytes:1*1000];
+    [data writeToFile:@"/Users/taihe-imac-ios-01/Desktop/img.jpg" atomically:YES];
+    
     
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.minimumLineSpacing = 20;

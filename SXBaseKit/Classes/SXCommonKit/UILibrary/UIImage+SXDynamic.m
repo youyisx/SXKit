@@ -90,4 +90,71 @@
     };
 }
 
+#pragma mark - 压缩图片
+/// 压缩图片到指定大小以内
+- (NSData *)sx_compressWithMaxDataSizeKBytes:(CGFloat)size
+{
+    UIImage *image = self;
+    
+    NSData * data = UIImageJPEGRepresentation(image, 1.0);
+    CGFloat dataKBytes = data.length/1000.0;
+    CGFloat maxQuality = 0.9f;
+    
+    while (dataKBytes > size)
+    {
+        while (dataKBytes > size && maxQuality > 0.1f)
+        {
+            maxQuality = maxQuality - 0.1f;
+            data = UIImageJPEGRepresentation(image, maxQuality);
+            dataKBytes = data.length / 1000.0;
+            if(dataKBytes <= size )
+            {
+                return data;
+            }
+        }
+        UIImage *tempImg = [image sx_compressWidth:image.size.width * 0.8];
+        if (!tempImg) {
+            /// 容错
+            return data;
+        }
+        image = tempImg;
+        data = UIImageJPEGRepresentation(image, 1.0);
+        dataKBytes = data.length / 1000.0;
+        maxQuality = 0.9f;
+    }
+    return data;
+}
+
+
+/// 压缩图片到指定宽度
+- (UIImage * _Nullable)sx_compressWidth:(CGFloat)width {
+    if (width <= 0 || width >= self.size.width) return nil;
+    CGFloat height = self.size.height/self.size.width * width;
+    if (height <= 0) return nil;
+    
+    CGSize size = CGSizeMake(width, height);
+    CGRect newRect = CGRectMake(0, 0, size.width, size.height);
+    if (@available(iOS 10.0, *)) {
+        UIGraphicsImageRendererFormat *format = nil;
+        if (@available(iOS 11.0, *)) {
+            format = [UIGraphicsImageRendererFormat preferredFormat];
+        } else {
+            format = [UIGraphicsImageRendererFormat defaultFormat];
+        }
+        format.opaque = NO;
+        format.scale  = 1.0;
+
+        UIGraphicsImageRenderer *render = [[UIGraphicsImageRenderer alloc] initWithSize:size format:format];
+        UIImage *image                  = self;
+        return [render imageWithActions:^(UIGraphicsImageRendererContext *_Nonnull rendererContext) {
+            [image drawInRect:newRect];
+        }];
+    } else {
+        UIGraphicsBeginImageContextWithOptions(size, NO, 1.0);
+        [self drawInRect:newRect];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return image;
+    }
+}
 @end

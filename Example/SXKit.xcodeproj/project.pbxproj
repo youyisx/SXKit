@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		20E96EF779D7B9010AED1E41 /* Pods_SXKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E14447E2B3243A3EF10CCB3 /* Pods_SXKit_Tests.framework */; };
+		5C16FE9826F4846200641E6B /* 112.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5C16FE9726F4846200641E6B /* 112.jpeg */; };
 		5C27B3872648CD1E0073DBDD /* SXTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C27B3862648CD1E0073DBDD /* SXTableViewController.m */; };
 		5CA8CA482629700D00529C99 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5CA8CA472629700D00529C99 /* test.jpg */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		2BF4C759CC6F1419FC2BB5EA /* SXKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SXKit.podspec; path = ../SXKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		425FF5EEC6A536F5F9D07D87 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		5C16FE9726F4846200641E6B /* 112.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 112.jpeg; sourceTree = "<group>"; };
 		5C27B3852648CD1E0073DBDD /* SXTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SXTableViewController.h; sourceTree = "<group>"; };
 		5C27B3862648CD1E0073DBDD /* SXTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SXTableViewController.m; sourceTree = "<group>"; };
 		5CA8CA472629700D00529C99 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		6003F593195388D20070C39A /* Example for SXKit */ = {
 			isa = PBXGroup;
 			children = (
+				5C16FE9726F4846200641E6B /* 112.jpeg */,
 				5CA8CA472629700D00529C99 /* test.jpg */,
 				6003F59C195388D20070C39A /* SXAppDelegate.h */,
 				6003F59D195388D20070C39A /* SXAppDelegate.m */,
@@ -289,6 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C16FE9826F4846200641E6B /* 112.jpeg in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				5CA8CA482629700D00529C99 /* test.jpg in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
