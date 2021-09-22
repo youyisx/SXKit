@@ -37,11 +37,12 @@ static void *my_b = &my_b;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIImage *bigImg = [UIImage imageNamed:@"112.jpeg"];
-    NSData *data = [bigImg sx_compressWithMaxDataSizeKBytes:1*1000];
-    [data writeToFile:@"/Users/taihe-imac-ios-01/Desktop/img.jpg" atomically:YES];
+//    UIImage *bigImg = [UIImage imageNamed:@"112.jpeg"];
+//
+//    [[bigImg sx_compressWithMaxDataSizeKBytes:20 * 1024] writeToFile:@"/Users/taihe-imac-ios-01/Desktop/11.jpg" atomically:YES];
     
     
+
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.minimumLineSpacing = 20;
     layout.minimumInteritemSpacing = 20;

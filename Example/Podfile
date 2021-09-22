@@ -7,6 +7,7 @@ target 'SXKit_Example' do
   pod 'SXBaseKit/SXPhotoLibrary', :path => '../'
   pod 'SXBaseKit/SXVideoTrimmerView', :path => '../'
   pod 'SXBaseKit/SXScrollViewStack', :path => '../'
+  pod 'SXBaseKit/SXScribbleView', :path => '../'
   pod 'SDWebImage'
   target 'SXKit_Tests' do
     inherit! :search_paths
