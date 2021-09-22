@@ -122,4 +122,8 @@ Pod::Spec.new do |s|
      ss.dependency 'ReactiveObjC', '~> 3.1.1'
      ss.frameworks = 'UIKit', 'Foundation'
    end
+   s.subspec 'SXScribbleView' do |ss|
+     ss.source_files = 'SXBaseKit/Classes/SXScribbleView/*'
+     ss.frameworks = 'UIKit', 'Foundation'
+   end
 end
