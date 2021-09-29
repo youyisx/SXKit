@@ -11,7 +11,7 @@
 #import <Masonry/Masonry.h>
 #import "UIImageView+SXPHAsset.h"
 #import <SXBaseKit/SXScreenDefine.h>
-#import <SXBaseKit/SXHudHeader.h>
+//#import <SXBaseKit/SXHudHeader.h>
 #define SXAssetSortKey @"k_sxassetsort_0"
 #import <objc/runtime.h>
 #import <SXBaseKit/SXCommon.h>
@@ -215,7 +215,7 @@
                 if (sort_ > oldSort) obj.selectedSort = (sort_ - 1);
             }];
         } else if (self.selectedAssets.count >= self.maxSelectedCount) {
-            SXShowTips([NSString stringWithFormat:@"最多可选%@个",@(self.maxSelectedCount)]);
+//            SXShowTips([NSString stringWithFormat:@"最多可选%@个",@(self.maxSelectedCount)]);
         } else {
             self.selectedAssets[key_] = asset;
             asset.selectedSort = self.selectedAssets.count;

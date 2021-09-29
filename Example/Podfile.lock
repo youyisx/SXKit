@@ -9,17 +9,16 @@ PODS:
     - SXBaseKit/SXBaseKit (= 0.1.1)
   - SXBaseKit/SXBaseKit (0.1.1):
     - SXBaseKit/SXCommonKit
-    - SXBaseKit/SXHUD
-    - SXBaseKit/SXUIKit
+    - SXBaseKit/SXLogger
   - SXBaseKit/SXCommonKit (0.1.1):
     - Masonry (~> 1.1.0)
     - ReactiveObjC (~> 3.1.1)
-  - SXBaseKit/SXHUD (0.1.1):
-    - MBProgressHUD (~> 1.2.0)
-    - SXBaseKit/SXCommonKit
+    - SXBaseKit/SXLogger
+  - SXBaseKit/SXLogger (0.1.1)
   - SXBaseKit/SXPhotoLibrary (0.1.1):
     - SXBaseKit/SXCommonKit
-    - SXBaseKit/SXHUD
+  - SXBaseKit/SXScheduler (0.1.1):
+    - SXBaseKit/SXLogger
   - SXBaseKit/SXScribbleView (0.1.1)
   - SXBaseKit/SXScrollViewStack (0.1.1):
     - ReactiveObjC (~> 3.1.1)
@@ -29,11 +28,14 @@ PODS:
     - SXBaseKit/SXCommonKit
 
 DEPENDENCIES:
+  - MBProgressHUD (~> 1.2.0)
   - SDWebImage
   - SXBaseKit (from `../`)
   - SXBaseKit/SXPhotoLibrary (from `../`)
+  - SXBaseKit/SXScheduler (from `../`)
   - SXBaseKit/SXScribbleView (from `../`)
   - SXBaseKit/SXScrollViewStack (from `../`)
+  - SXBaseKit/SXUIKit (from `../`)
   - SXBaseKit/SXVideoTrimmerView (from `../`)
 
 SPEC REPOS:
@@ -52,8 +54,8 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
-  SXBaseKit: 2cc73d403cb5eae2b2fc55d3ec5976a7bb944aca
+  SXBaseKit: 860a209815307c4eab36ee7bfceeb797f912aa25
 
-PODFILE CHECKSUM: 04450a9573f957a0787e3f8a105438f6c854162b
+PODFILE CHECKSUM: af63ea924de50a7b78baa5cabefc4b83c89d39aa
 
 COCOAPODS: 1.8.4

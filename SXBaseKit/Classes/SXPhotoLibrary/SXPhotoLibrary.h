@@ -7,6 +7,6 @@
 
 #ifndef SXPhotoLibrary_h
 #define SXPhotoLibrary_h
-#import "SXPhotoHelper+Ext.h"
-#import "UIImageView+SXPHAsset.h"
+#import <SXBaseKit/SXPhotoHelper+Ext.h>
+#import <SXBaseKit/UIImageView+SXPHAsset.h>
 #endif /* SXPhotoLibrary_h */

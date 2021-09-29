@@ -7,17 +7,14 @@
 //
 
 #import "SXPhotoHelper+Ext.h"
-#import "SXNavigationHeader.h"
+#import <SXBaseKit/SXCommon.h>
+
 @interface SXImagePickerDelegateResponse : NSObject<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (nonatomic, assign) BOOL edit;
 @property (nonatomic, copy) void(^didFinishPicking)(UIImage *img);
 @property (nonatomic, strong) id mySelf;
 @end
 @implementation SXImagePickerDelegateResponse
-
-- (void)dealloc {
-    NSLog(@"%s",__FUNCTION__);
-}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey, id> *)info {
     UIImage *image = info[self.edit? UIImagePickerControllerEditedImage:UIImagePickerControllerOriginalImage];

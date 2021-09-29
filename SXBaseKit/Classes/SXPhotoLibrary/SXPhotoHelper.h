@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface SXPhotoHelper(Ext)
+@interface SXPhotoHelper(Append)
 /// 获取相册目录
 + (NSArray <PHAssetCollection *>*)phAssetCollections;
 /// 获取相册资源

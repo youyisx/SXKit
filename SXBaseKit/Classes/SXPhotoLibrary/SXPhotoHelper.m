@@ -39,7 +39,7 @@
 
 @end
 
-@implementation SXPhotoHelper(Ext)
+@implementation SXPhotoHelper(Append)
 
 /// 获取相册目录
 + (NSArray <PHAssetCollection *>*)phAssetCollections {

@@ -29,10 +29,6 @@
     return val;
 }
 
-- (void)dealloc {
-    NSLog(@"--- %s",__FUNCTION__);
-}
-
 @end
 
 @interface SXModalPresentationContentView : UIView
@@ -44,11 +40,6 @@
 
 
 @implementation SXModalPresentationContentView
-
-- (void)dealloc {
-    NSLog(@"--- %s",__FUNCTION__);
-}
-
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

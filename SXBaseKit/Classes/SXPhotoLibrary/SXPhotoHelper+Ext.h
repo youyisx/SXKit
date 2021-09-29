@@ -6,7 +6,7 @@
 //  Copyright © 2021 vince. All rights reserved.
 //
 
-#import "SXPhotoHelper.h"
+#import <SXBaseKit/SXPhotoHelper.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

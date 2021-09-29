@@ -8,7 +8,6 @@
 
 #import "SXViewController.h"
 #import <SXBaseKit/SXCommon.h>
-#import <SXBaseKit/SXHudHeader.h>
 //#import <SXKit/SXVodPlayer.h>
 #import <Masonry/Masonry.h>
 #import <SDWebImage/SDWebImage.h>
@@ -27,9 +26,17 @@
 static void *my_a = &my_a;
 static void *my_b = &my_b;
 
+#import <SXBaseKit/SXCustomLogger.h>
+#import <SXBaseKit/SXToastScheduler.h>
+
+#import <MBProgressHUD/MBProgressHUD.h>
+
 @interface SXViewController ()
 //@property (nonatomic, strong) SXVodControlPlayer *player;
 @property (nonatomic, strong) SXSimpleCollectionView *collectionView;
+@property (nonatomic, strong) RACChannel *channel;
+@property (nonatomic, strong) RACSignal *queueSignal;
+@property (nonatomic, strong) RACMulticastConnection *connection;
 @end
 
 @implementation SXViewController
@@ -37,34 +44,73 @@ static void *my_b = &my_b;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+//    MBProgressHUD *hud_ = [self sx_objectForKey:k_hud_0];
+//    if (hud_ == nil) {
+//        hud_ = [MBProgressHUD showHUDAddedTo:self animated:YES];
+//        [hud_ removeFromSuperViewOnHide];
+//        hud_.contentColor = [UIColor whiteColor];
+//        hud_.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+//        hud_.bezelView.color = [[UIColor blackColor] colorWithAlphaComponent:0.7];
+//        [self sx_setObject:hud_ forKey:k_hud_0];
+//    }
+//    hud_.detailsLabel.text = tips;
+    
+    SXToastScheduler.share.toaskShowConfiguration = ^(NSString * _Nonnull title, NSDictionary * _Nullable info, UIView * _Nonnull contentView, dispatch_block_t  _Nonnull completed) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:contentView ? contentView : SXRootWindow() animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.detailsLabel.text = title;
+        hud.contentColor = [UIColor whiteColor];
+        hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+        hud.bezelView.color = [[UIColor blackColor] colorWithAlphaComponent:0.7];
+        [hud hideAnimated:YES afterDelay:2.5];
+        hud.userInteractionEnabled = NO;
+        hud.completionBlock = completed;
+    };
+    SXToastScheduler.share.oneByOne = YES;
+    SXToastScheduler.share.ignoreSameToast = NO;
+//    SXCustomLogger.showLevel = SXCustomLogLevelWarn | SXCustomLogLevelInfo;
 //    UIImage *bigImg = [UIImage imageNamed:@"112.jpeg"];
 //
 //    [[bigImg sx_compressWithMaxDataSizeKBytes:20 * 1024] writeToFile:@"/Users/taihe-imac-ios-01/Desktop/11.jpg" atomically:YES];
+//    SXCLog(@"aa");
+//    SXCLogInfo(@"info,");
+//    SXCLogWarn(@"warn,");
+//    SXCLogInfo(@"fff,%@ %@",@(111),@"aaa");
+//    SXCLogWarn(@"fff,%@ %@",@(111),@"aaa");
+//    SXCLog(@"aaa,%@",@"a");
+//    SXCLog(nil);
     
-    
+//    SXCLevelLog(SXCustomLogLevelWarn|SXCustomLogLevelInfo, @"噢咕噜 %@",@"12");
 
-    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.minimumLineSpacing = 20;
-    layout.minimumInteritemSpacing = 20;
-    layout.itemSize = CGSizeMake(240, 120);
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    layout.sectionInset = UIEdgeInsetsMake(0, 75, 0, 75);
-    self.collectionView =[SXSimpleCollectionView simpleWithLayout:layout cell:NSStringFromClass(UICollectionViewCell.class)];
     
-    self.collectionView.sx_pagingEnabled = YES;
-    [self.view addSubview:self.collectionView];
-    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(self.view);
-        make.leading.trailing.mas_equalTo(0);
-        make.height.mas_equalTo(160);
-    }];
-    self.collectionView.backgroundColor = [UIColor greenColor];
     
-    NSMutableArray *sources = @[].mutableCopy;
-    for (int i = 0; i<50; i++) {
-        [sources addObject:@(i)];
-    }
-    self.collectionView.sources = sources;
+    
+    
+//    [list removeObjectAtIndex:[list indexOfObject:@""]];
+    
+//    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+//    layout.minimumLineSpacing = 20;
+//    layout.minimumInteritemSpacing = 20;
+//    layout.itemSize = CGSizeMake(240, 120);
+//    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+//    layout.sectionInset = UIEdgeInsetsMake(0, 75, 0, 75);
+//    self.collectionView =[SXSimpleCollectionView simpleWithLayout:layout cell:NSStringFromClass(UICollectionViewCell.class)];
+//
+//    self.collectionView.sx_pagingEnabled = YES;
+//    [self.view addSubview:self.collectionView];
+//    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.mas_equalTo(self.view);
+//        make.leading.trailing.mas_equalTo(0);
+//        make.height.mas_equalTo(160);
+//    }];
+//    self.collectionView.backgroundColor = [UIColor greenColor];
+//
+//    NSMutableArray *sources = @[].mutableCopy;
+//    for (int i = 0; i<50; i++) {
+//        [sources addObject:@(i)];
+//    }
+//    self.collectionView.sources = sources;
     
     
 //    [self.view sx_addBottomLine:2 color:UIColor.redColor edge:UIEdgeInsetsMake(0, 20, 20, 20)];
@@ -210,8 +256,15 @@ static void *my_b = &my_b;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    UIView *item = [self _createView];
-//    [self.scrollView addArrangedSubview:item];
+    static int t = 0;
+    t++;
+    int a = 1;
+    if (a) {
+        [SXToastScheduler.share toast:@(t).stringValue info:@{@"a":@"b"} inView:self.view];
+    } else {
+        [SXToastScheduler.share removeAll];
+    }
+    
 }
 
 @end
