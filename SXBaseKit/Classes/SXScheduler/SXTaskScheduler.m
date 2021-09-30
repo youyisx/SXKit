@@ -100,6 +100,20 @@
     [self _dispatch];
 }
 
+- (BOOL)updateTaskWithIdentifier:(NSString *)identifier
+                            task:(SXTaskSchedulerBlock)task {
+    if (![identifier isKindOfClass:[NSString class]] || identifier.length == 0) return NO;
+    BOOL result = NO;
+    for (int i = 1; i < self.schedulerItems.count; i++) {
+        SXTaskSchedulerItem *item = self.schedulerItems[i];
+        if ([item.identifier isEqualToString:identifier]) {
+            result = YES;
+            item.block = task;
+        }
+    }
+    return result;
+}
+
 - (void)_dispatch {
     if (self.isDispatch) return;
     if (self.schedulerItems.count == 0) return;

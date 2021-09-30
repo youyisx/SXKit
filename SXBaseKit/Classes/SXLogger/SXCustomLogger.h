@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, SXCustomLogLevel) {
 };
 
 @interface SXCustomLogger : NSObject
-/// 根据 SXCustomLogLevel 来控制某些log是否需要被打印，以便在调试时去掉不关注的log; 默认全部级别都打印
+/** 根据 SXCustomLogLevel 来控制某些log是否需要被打印，以便在调试时去掉不关注的log; 默认全部级别都打印 */
 @property (nonatomic, class) SXCustomLogLevel showLevel;
 
 + (void)logWithFile:(nullable const char *)file
