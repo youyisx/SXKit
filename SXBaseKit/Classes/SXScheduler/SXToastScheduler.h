@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^SXHUDShowConfiguration)(NSString *title , NSDictionary *_Nullable info, UIView * contentView, dispatch_block_t completed);
+typedef void (^SXHUDShowConfiguration)(NSString *_Nullable title , NSDictionary *_Nullable info, UIView *_Nullable contentView, dispatch_block_t completed);
 
 @interface SXToastScheduler : NSObject
 
@@ -24,8 +24,8 @@ typedef void (^SXHUDShowConfiguration)(NSString *title , NSDictionary *_Nullable
 + (instancetype)shareIdentifier:(NSString *_Nullable)identifier;
 
 - (void)toast:(NSString *)toast;
-- (void)toast:(NSString *)toast info:(NSDictionary * _Nullable)info;
-- (void)toast:(NSString *)toast info:(NSDictionary * _Nullable)info inView:(UIView *_Nullable)view;
+- (void)toast:(NSString *_Nullable)toast info:(NSDictionary * _Nullable)info;
+- (void)toast:(NSString *_Nullable)toast info:(NSDictionary * _Nullable)info inView:(UIView *_Nullable)view;
 - (void)removeAll;
 @end
 
