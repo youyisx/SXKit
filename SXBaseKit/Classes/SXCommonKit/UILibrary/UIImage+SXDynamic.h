@@ -24,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSData *)sx_compressWithMaxDataSizeKBytes:(CGFloat)size;
 /// 压缩图片到指定宽度
 - (UIImage * _Nullable)sx_compressWidth:(CGFloat)width;
+/// 获取图片平均颜色
+- (UIColor *)sx_averageColor;
+/// 获取图片平均颜色并加深该颜色
+- (UIColor *)sx_averageDeepColor;
 @end
 
 

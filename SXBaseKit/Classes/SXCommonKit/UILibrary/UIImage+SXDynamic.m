@@ -157,4 +157,66 @@
         return image;
     }
 }
+
+/// 获取图片平均颜色
+- (UIColor *)sx_averageColor {
+    unsigned char rgba[4] = {};
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef context = CGBitmapContextCreate(rgba, 1, 1, 8, 4, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    if (!context) return nil;
+    CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), self.CGImage);
+    CGColorSpaceRelease(colorSpace);
+    CGContextRelease(context);
+    if(rgba[3] > 0) {
+        return [UIColor colorWithRed:((CGFloat)rgba[0] / rgba[3])
+                               green:((CGFloat)rgba[1] / rgba[3])
+                                blue:((CGFloat)rgba[2] / rgba[3])
+                               alpha:((CGFloat)rgba[3] / 255.0)];
+    } else {
+        return [UIColor colorWithRed:((CGFloat)rgba[0]) / 255.0
+                               green:((CGFloat)rgba[1]) / 255.0
+                                blue:((CGFloat)rgba[2]) / 255.0
+                               alpha:((CGFloat)rgba[3]) / 255.0];
+    }
+}
+/// 获取图片平均颜色并加深该颜色
+- (UIColor *)sx_averageDeepColor {
+    unsigned char rgba[4] = {};
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef context = CGBitmapContextCreate(rgba, 1, 1, 8, 4, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    if (!context) return nil;
+    CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), self.CGImage);
+    CGColorSpaceRelease(colorSpace);
+    CGContextRelease(context);
+    
+    CGFloat r = 1;
+    CGFloat g = 1;
+    CGFloat b = 1;
+    CGFloat a = 1;
+    
+    if(rgba[3] > 0) {
+        r = ((CGFloat)rgba[0] / rgba[3]);
+        g = ((CGFloat)rgba[1] / rgba[3]);
+        b = ((CGFloat)rgba[2] / rgba[3]);
+        a = ((CGFloat)rgba[3] / 255.0);
+    } else {
+        r = ((CGFloat)rgba[0] / 255.0);
+        g = ((CGFloat)rgba[1] / 255.0);
+        b = ((CGFloat)rgba[2] / 255.0);
+        a = ((CGFloat)rgba[3] / 255.0);
+    }
+    /// 让颜色再深一点
+    CGFloat *temp;
+    temp = r > g ? &r : &g;
+    if (b > (*temp)) temp = &b;
+    (*temp) += 0.1;
+    if ((*temp) > 1) (*temp) = 1;
+    a += 0.1;
+    if (a > 1) a = 1;
+    return [UIColor colorWithRed:r
+                           green:g
+                            blue:b
+                           alpha:a];
+    return nil;
+}
 @end
