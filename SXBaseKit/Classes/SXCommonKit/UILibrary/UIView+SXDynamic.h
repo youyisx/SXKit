@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) SXSizeChangeHandler sizeChangeHandler ;
 /// size 发生变化后 会触发该信号
 - (RACSignal <UIView *>*)sx_sizeChangeSignal;
-
+/// 公共的根据数据模型更新视图的函数，由实例自身实现具体逻辑
 - (void)sx_updateWithModel:(nullable id)model;
 
 + (UINib *)sx_defaultNib;
@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)sx_defaultNibIdentifier;
 
 - (void)sx_tapAction:(dispatch_block_t)block;
+- (UITapGestureRecognizer *)sx_tapGesture;
 
 + (UIView * (^)(UIColor *_Nullable, CGRect))sx_view1;
 + (UIView * (^)(UIColor *_Nullable))sx_view;

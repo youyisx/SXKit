@@ -10,7 +10,7 @@
 #import "SXPhotoHelper.h"
 #import <Masonry/Masonry.h>
 #import "UIImageView+SXPHAsset.h"
-#import <SXBaseKit/SXScreenDefine.h>
+#import <SXBaseKit/SXCommonDefines.h>
 //#import <SXBaseKit/SXHudHeader.h>
 #define SXAssetSortKey @"k_sxassetsort_0"
 #import <objc/runtime.h>

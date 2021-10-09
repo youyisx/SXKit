@@ -12,6 +12,7 @@
 #import <Masonry/Masonry.h>
 #define k_sizeChangeHandler_0 @"k_sizeChangeHandler_0"
 #define k_layoutSubviews_observers @"k_layoutSubviews_observers"
+static void *k_sx_tapGesture = &k_sx_tapGesture;
 @implementation UIView (SXDynamic)
 
 - (void)setSizeChangeHandler:(SXSizeChangeHandler)sizeChangeHandler {
@@ -81,14 +82,21 @@
 }
 
 - (void)sx_tapAction:(dispatch_block_t)block {
-    self.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tap = [UITapGestureRecognizer new];
-    [[tap rac_gestureSignal] subscribeNext:^(__kindof UIGestureRecognizer * _Nullable x) {
+    [[[self sx_tapGesture] rac_gestureSignal] subscribeNext:^(__kindof UIGestureRecognizer * _Nullable x) {
         !block?:block();
     }];
-    [self addGestureRecognizer:tap];
 }
 
+- (UITapGestureRecognizer *)sx_tapGesture {
+    UITapGestureRecognizer *tap = objc_getAssociatedObject(self, k_sx_tapGesture);
+    if (!tap) {
+        self.userInteractionEnabled = YES;
+        tap = [UITapGestureRecognizer new];
+        [self addGestureRecognizer:tap];
+        objc_setAssociatedObject(self, k_sx_tapGesture, tap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return tap;
+}
 
 + (UIView * (^)(UIColor *_Nullable))sx_view {
     return ^(UIColor *color) {

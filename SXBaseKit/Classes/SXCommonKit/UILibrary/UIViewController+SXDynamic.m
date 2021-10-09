@@ -8,7 +8,7 @@
 
 #import "UIViewController+SXDynamic.h"
 #import <Masonry/Masonry.h>
-#import "SXScreenDefine.h"
+#import "SXCommonDefines.h"
 @implementation UIViewController (SXDynamic)
 
 - (void)sx_goBack {

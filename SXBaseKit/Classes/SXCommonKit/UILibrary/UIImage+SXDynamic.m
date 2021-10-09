@@ -7,15 +7,23 @@
 //
 
 #import "UIImage+SXDynamic.h"
-
+#import <SXCommonDefines.h>
 @implementation UIImage (SXDynamic)
 
-+ (instancetype)sx_layerImageWithLayer:(CALayer *)layer {
-    UIGraphicsBeginImageContextWithOptions(layer.frame.size, NO, [UIScreen mainScreen].scale);
-    [layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return img;
++ (UIImage *)sx_layerImageWithLayer:(CALayer *)layer {
+    if (!layer) return nil;
+    CGSize size = layer.frame.size;
+    if (sx_sizeIsEmpty(size)) return nil;
+    UIGraphicsImageRendererFormat *format = [[UIGraphicsImageRendererFormat alloc] init];
+    format.scale = 1;
+    format.opaque = NO;
+    UIGraphicsImageRenderer *render = [[UIGraphicsImageRenderer alloc] initWithSize:size format:format];
+    UIImage *imageOut = [render imageWithActions:^(UIGraphicsImageRendererContext * _Nonnull rendererContext) {
+        CGContextRef context = rendererContext.CGContext;
+        if (!context) return;
+        [layer renderInContext:context];
+    }];
+    return imageOut;
 }
 
 - (UIImage * _Nonnull (^)(void))sx_resizeable {

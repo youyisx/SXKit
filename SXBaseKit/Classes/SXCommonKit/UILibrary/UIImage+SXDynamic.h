@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (SXDynamic)
 
-+ (instancetype)sx_layerImageWithLayer:(CALayer *)layer;
++ (UIImage *_Nullable)sx_layerImageWithLayer:(CALayer *)layer;
 
 - (UIImage * (^)(void))sx_resizeable;
 

@@ -37,13 +37,44 @@ static void *my_b = &my_b;
 @property (nonatomic, strong) RACChannel *channel;
 @property (nonatomic, strong) RACSignal *queueSignal;
 @property (nonatomic, strong) RACMulticastConnection *connection;
+
+@property (nonatomic, strong) UIView *colorView;
 @end
 
 @implementation SXViewController
 
+- (void)clicked:(UIGestureRecognizer *)tap {
+    NSLog(@"---> ??");
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.colorView = UIImageView.sx_view1(UIColor.redColor,CGRectMake(20, 200, 200, 200));
+    self.colorView.transform = CGAffineTransformMakeScale(0.5, 0.8);
+    UIImage *img = [UIImage sx_layerImageWithLayer:self.colorView.layer];
+    if (img) {
+        [UIImageJPEGRepresentation(img, 1) writeToFile:@"/Users/taihe-imac-ios-01/Desktop/tt.jpg" atomically:YES];
+    }
+    [self.view addSubview:self.colorView];
+    [self.colorView sx_tapAction:^{
+        NSLog(@"---> 点击 block");
+    }];
+    [[self.colorView sx_tapGesture] addTarget:self action:@selector(clicked:)];
+    
+    
+    
+    
+//    UILabel *label = UILabel.sx_label(nil).sx_color(UIColor.redColor).sx_font([UIFont systemFontOfSize:18 weight:UIFontWeightBold]);
+//    //中划线
+//    NSDictionary *attribtDic1 = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
+//    NSMutableAttributedString *attribtStr1 = [[NSMutableAttributedString alloc]initWithString:@"￥100元" attributes:attribtDic1];
+//    [attribtStr1 appendAttributedString:[[NSAttributedString alloc] initWithString:@"RMB" attributes:@{NSBaselineOffsetAttributeName:@(10)}] ];
+//    label.attributedText = attribtStr1;
+//    [self.view addSubview:label];
+//    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.center.mas_equalTo(self.view).centerOffset(CGPointMake(0, -10));
+//    }];
     
 //    MBProgressHUD *hud_ = [self sx_objectForKey:k_hud_0];
 //    if (hud_ == nil) {
@@ -256,14 +287,25 @@ static void *my_b = &my_b;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    static int t = 0;
-    t++;
-    int a = 1;
-    if (a) {
-        [SXToastScheduler.share toast:@(t).stringValue info:@{@"a":@"b"} inView:self.view];
-    } else {
-        [SXToastScheduler.share removeAll];
-    }
+    [UIView animateWithDuration:0.45 animations:^{
+//        if (arc4random_uniform(2) == 0) {
+//            self.colorView.sx_extendToTop -= arc4random_uniform(50)+5;
+//        } else {
+//            self.colorView.sx_extendToTop += arc4random_uniform(50)+5;
+//        }
+        self.colorView.sx_y = self.colorView.sx_centerTopInSuperview;
+        self.colorView.sx_x = self.colorView.sx_centerLeftInSuperView;
+    }];
+//    [self.colorView sx_tapAction]
+    
+//    static int t = 0;
+//    t++;
+//    int a = 1;
+//    if (a) {
+//        [SXToastScheduler.share toast:@(t).stringValue info:@{@"a":@"b"} inView:self.view];
+//    } else {
+//        [SXToastScheduler.share removeAll];
+//    }
     
 }
 
