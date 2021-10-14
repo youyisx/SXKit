@@ -11,10 +11,11 @@
 #import <Masonry/Masonry.h>
 #import "UIImageView+SXPHAsset.h"
 #import <SXBaseKit/SXCommonDefines.h>
-//#import <SXBaseKit/SXHudHeader.h>
 #define SXAssetSortKey @"k_sxassetsort_0"
 #import <objc/runtime.h>
 #import <SXBaseKit/SXCommon.h>
+#import <SXBaseKit/SXCustomLogger.h>
+
 @interface PHAsset(SXKitSort)
 @property (nonatomic, readonly) BOOL isSelected;
 @property (nonatomic, assign) NSInteger selectedSort;
@@ -86,7 +87,23 @@
 - (void)sx_updateWithModel:(id)model {
     PHAsset *asset = model;
     if (![asset isKindOfClass:[PHAsset class]]) return;
-    self.imgView.sx_asset = asset;
+    [self.imgView sx_updateAsset:asset placeHolder:nil load:^(UIImageView * _Nonnull contentView, BOOL loading) {
+        UIActivityIndicatorView *loadingView = [contentView viewWithTag:502];
+        SXCLogInfo(@"contentView: %@ loading %@",contentView,@(loading));
+        if (loading) {
+            if (loadingView == nil) {
+                loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                loadingView.color = UIColor.redColor;
+                loadingView.hidesWhenStopped = YES;
+                [contentView addSubview:loadingView];
+                loadingView.tag = 502;
+            }
+            [loadingView startAnimating];
+            loadingView.center = CGPointMake(contentView.frame.size.width *0.5, contentView.frame.size.height *0.5);
+        } else {
+            [loadingView stopAnimating];
+        }
+    }];
     @weakify(self)
     [[[RACObserve(asset, isSelected) distinctUntilChanged] takeUntil:self.rac_prepareForReuseSignal] subscribeNext:^(id  _Nullable x) {
         @strongify(self)
@@ -117,6 +134,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self configCollectionView];
     @weakify(self)
     [[SXPhotoHelper phPhotoLibrayAuthorization] subscribeNext:^(NSNumber * _Nullable x) {

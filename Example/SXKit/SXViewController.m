@@ -30,7 +30,7 @@ static void *my_b = &my_b;
 #import <SXBaseKit/SXToastScheduler.h>
 
 #import <MBProgressHUD/MBProgressHUD.h>
-
+#import <SXBaseKit/SXPhotoPickerController.h>
 @interface SXViewController ()
 //@property (nonatomic, strong) SXVodControlPlayer *player;
 @property (nonatomic, strong) SXSimpleCollectionView *collectionView;
@@ -272,18 +272,25 @@ static void *my_b = &my_b;
 //    [SXPickerContentView showDatePicker:^(NSDate * _Nonnull date) {
 //        NSLog(@"--date :%@",date);
 //    }];
-    SXTableViewController *vc = [SXTableViewController new];
-//    SXModelPresentationVal *val = [SXModalPresentat]
-    SXModelPresentationVal *val = [SXModelPresentationVal defaultVal];
-    val.hidenWhenTouchMask = YES;
-//    val.didHideBlock = ^{
-//        NSLog(@"--- hidden");
-//    };
-    [SXModalPresentation presentationWithViewController:vc val:val completed:nil];
+//    SXTableViewController *vc = [SXTableViewController new];
+////    SXModelPresentationVal *val = [SXModalPresentat]
+//    SXModelPresentationVal *val = [SXModelPresentationVal defaultVal];
+//    val.hidenWhenTouchMask = YES;
+////    val.didHideBlock = ^{
+////        NSLog(@"--- hidden");
+////    };
+//    [SXModalPresentation presentationWithViewController:vc val:val completed:nil];
 //    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
 //    [self.navigationController pushViewController:vc animated:NO];
 //    [self.navigationController presentViewController:vc animated:YES completion:nil];
 //    [self.navigationController pushViewController:vc animated:NO];
+    SXPhotoPickerController *picker = [SXPhotoPickerController defaultPickerController];
+    picker.selectedIdx = 1;
+    picker.maxSelectedCount = 3;
+    picker.selectCallBack = ^(NSArray<PHAsset *> * list) {
+        SXCLogInfo(@"%@",list);
+    };
+    [self presentViewController:picker animated:YES completion:nil];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

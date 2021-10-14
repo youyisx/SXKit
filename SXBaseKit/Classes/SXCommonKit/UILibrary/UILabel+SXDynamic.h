@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (UILabel * (^)(NSTextAlignment))sx_alignment;
 - (void)sx_setLayoutPriorityDefaultHeight;
 /// 更新文本显示（text 可以是 nsstring 或者 nsattributed）
-- (void)sx_updateText:(id)text;
+- (void)sx_updateText:(id _Nullable)text;
 @end
 
 

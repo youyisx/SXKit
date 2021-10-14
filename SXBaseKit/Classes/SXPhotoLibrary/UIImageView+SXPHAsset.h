@@ -11,9 +11,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIImageView (SXPHAsset)
-@property (nonatomic, strong, nullable) PHAsset * sx_asset;
+typedef void(^SXPHAssetLoadBlock)(UIImageView *contentView, BOOL loading) ;
 
+@interface UIImageView (SXPHAsset)
+
+@property (nonatomic, strong) PHImageManager *sx_phImageManager;
+@property (nonatomic, strong, class) PHImageManager *sx_phImageManager;
+
+- (void)sx_updateAsset:(PHAsset *_Nullable)asset;
+- (void)sx_updateAsset:(PHAsset *_Nullable)asset placeHolder:(UIImage *_Nullable)placeHolder;
+- (void)sx_updateAsset:(PHAsset *_Nullable)asset placeHolder:(UIImage *_Nullable)placeHolder load:(SXPHAssetLoadBlock _Nullable)load;
+- (PHAsset *_Nullable)sx_asset;
 @end
 
 NS_ASSUME_NONNULL_END

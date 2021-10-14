@@ -7,96 +7,110 @@
 //
 
 #import "UIImageView+SXPHAsset.h"
+#import <objc/runtime.h>
 #import <ReactiveObjC/ReactiveObjC.h>
-#import <SXBaseKit/SXCommon.h>
-#define k_phImageManager @"k_phImageManager"
-#define k_requestID @"k_requestID"
-#define k_asset @"k_asset"
-#import <Masonry/Masonry.h>
+static void *k_sx_phImageManager    = &k_sx_phImageManager;
+static void *k_sx_asset             = &k_sx_asset;
+static void *k_sx_loadManager       = &k_sx_loadManager;
+static void *k_sx_requestID         = &k_sx_requestID;
+static void *k_sx_layoutDisposable  = &k_sx_layoutDisposable;
 @implementation UIImageView (SXPHAsset)
+@dynamic sx_phImageManager;
 
-- (PHImageManager *)phImageManager {
-    PHImageManager *result = [self sx_objectForKey:k_phImageManager];
-    if (result == nil) {
-        result = [PHImageManager defaultManager];
-        [self sx_setObject:result forKey:k_phImageManager];
-    }
-    return result;
+- (PHImageManager *)sx_phImageManager {
+    return objc_getAssociatedObject(self, k_sx_phImageManager);
 }
 
-- (void)setSx_asset:(PHAsset *)sx_asset {
-    [self sx_updateAsset:sx_asset];
-    [self sx_setObject:sx_asset forKey:k_asset];
-    if (sx_asset == nil) return;
-    if ([self sizeChangeHandler] != nil) return;
-    @weakify(self)
-    self.sizeChangeHandler = ^(CGSize size, UIView * _Nonnull target) {
-      @strongify(self)
-        [self sx_updateAsset:self.sx_asset];
-    };
+- (void)setSx_phImageManager:(PHImageManager *)sx_phImageManager {
+    objc_setAssociatedObject(self, k_sx_phImageManager, sx_phImageManager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+static PHImageManager *imageManager = nil;
++ (PHImageManager *)sx_phImageManager {
+    if (imageManager == nil) imageManager = [PHImageManager defaultManager];
+    return imageManager;
+}
+
++ (void)setSx_phImageManager:(PHImageManager *)sx_phImageManager {
+    imageManager = sx_phImageManager;
 }
 
 - (PHAsset *)sx_asset {
-    return [self sx_objectForKey:k_asset];
+    return objc_getAssociatedObject(self, k_sx_asset);
 }
 
-- (void)sx_updateAsset:(nullable PHAsset *)asset {
-    self.image = nil;
-    PHImageRequestID cancelID = [[self sx_objectForKey:k_requestID] intValue];
-    [[self phImageManager] cancelImageRequest:cancelID];
-    if (![asset isKindOfClass:[PHAsset class]]) return;
-    CGSize size = self.bounds.size;
-    if (CGSizeEqualToSize(CGSizeZero, size)) return;
+- (void)sx_updateAsset:(PHAsset *)asset {
+    [self sx_updateAsset:asset placeHolder:nil load:nil];
+}
+
+- (void)sx_updateAsset:(PHAsset *)asset placeHolder:(UIImage *)placeHolder {
+    [self sx_updateAsset:asset placeHolder:placeHolder load:nil];
+}
+
+- (void)sx_updateAsset:(PHAsset *)asset placeHolder:(UIImage *)placeHolder load:(SXPHAssetLoadBlock)load{
+    [self _sx_cancelRequest];
+    [self _sx_clearRequestElement];
+    self.image = placeHolder;
+    objc_setAssociatedObject(self, k_sx_asset, asset, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if (asset == nil) {
+        !load?:load(self,NO);
+        return;
+    }
+    
+    CGFloat w_ = ceil(self.frame.size.width);
+    CGFloat h_ = ceil(self.frame.size.height);
+    CGFloat scale_ =  [UIScreen mainScreen].scale;
+    CGSize targetSize = CGSizeMake(w_ *scale_, h_ *scale_);
+    
+    @weakify(self)
+    RACDisposable *layoutDisposable =
+    [[self rac_signalForSelector:@selector(layoutSubviews)] subscribeNext:^(RACTuple * _Nullable x) {
+        @strongify(self)
+        CGSize changeSize = self.frame.size;
+        if (ceil(changeSize.width) == w_ && ceil(changeSize.height) == h_) return;
+        [self sx_updateAsset:asset placeHolder:self.image load:load];
+    }];
+    objc_setAssociatedObject(self, k_sx_layoutDisposable, layoutDisposable, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if (w_ <= 0 || h_ <= 0) {
+        !load?:load(self,NO);
+        return;
+    }
+    
+    PHImageManager *manager = self.sx_phImageManager;
+    if (manager == nil) manager = [[self class] sx_phImageManager];
+   
     PHImageRequestOptions *options = [PHImageRequestOptions new];
     options.synchronous = false;
     options.resizeMode = PHImageRequestOptionsResizeModeFast;
     options.networkAccessAllowed = true;
     options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
-
-    size.width = size.width * [UIScreen mainScreen].scale;
-    size.height = size.height * [UIScreen mainScreen].scale;
-    UIActivityIndicatorView *loadingView = [self sx_objectForKey:@"k_loading"];
-    if (loadingView == nil) {
-        loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        loadingView.hidesWhenStopped = true;
-        [self addSubview:loadingView];
-        [loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.mas_equalTo(self);
-        }];
-        [self sx_setObject:loadingView forKey:@"k_loading"];
-    }
-    [loadingView startAnimating];
-    @weakify(self)
+    
+    !load?:load(self,YES);
+    
     PHImageRequestID requestID =
-    [[self phImageManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit
-                                        options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+    [manager requestImageForAsset:asset targetSize:targetSize contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         @strongify(self)
-        self.image = result;
-        [loadingView stopAnimating];
+        if (result) self.image = result;
+        [self _sx_clearRequestElement];
+        !load?:load(self,NO);
     }];
-    [self sx_setObject:@(requestID) forKey:k_requestID];
-//    NSInteger duration = asset.duration;
-//    UILabel *label = [self sx_objectForKey:@"k_label"];
-//    if (duration > 0) {
-//        if (label == nil) {
-//            label = [UILabel new];
-//            label.font = [UIFont systemFontOfSize:11];
-//            label.textColor = UIColor.whiteColor;
-//            [self addSubview:label];
-//            [self sx_setObject:label forKey:@"k_label"];
-//            [label mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.bottom.trailing.mas_equalTo(0);
-//            }];
-//        }
-//        NSInteger minute = duration/60;
-//        NSInteger second = duration%60;
-//        label.text = [NSString stringWithFormat:@"%02ld:%02ld",(long)minute,(long)second];
-//        label.hidden = NO;
-//    } else {
-//        label.hidden = YES;
-//    }
     
+    objc_setAssociatedObject(self, k_sx_requestID, @(requestID), OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, k_sx_loadManager, manager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (void)_sx_cancelRequest {
+    RACDisposable *layoutDisposable  = objc_getAssociatedObject(self, k_sx_layoutDisposable);
+    [layoutDisposable dispose];
+    objc_setAssociatedObject(self, k_sx_layoutDisposable, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
+    PHImageManager *manager = objc_getAssociatedObject(self, k_sx_loadManager);
+    NSNumber *requestID = objc_getAssociatedObject(self, k_sx_requestID);
+    [manager cancelImageRequest:[requestID intValue]];
+}
+
+- (void)_sx_clearRequestElement {
+    objc_setAssociatedObject(self, k_sx_loadManager, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, k_sx_requestID, nil, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 @end
