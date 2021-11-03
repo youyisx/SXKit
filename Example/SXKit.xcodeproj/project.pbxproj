@@ -10,6 +10,8 @@
 		20E96EF779D7B9010AED1E41 /* Pods_SXKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E14447E2B3243A3EF10CCB3 /* Pods_SXKit_Tests.framework */; };
 		5C16FE9826F4846200641E6B /* 112.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5C16FE9726F4846200641E6B /* 112.jpeg */; };
 		5C27B3872648CD1E0073DBDD /* SXTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C27B3862648CD1E0073DBDD /* SXTableViewController.m */; };
+		5C2B9ADE273273F2002C0A5D /* UIViewController+TransitioningTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2B9ADD273273F2002C0A5D /* UIViewController+TransitioningTest.m */; };
+		5C2D7829272BD52E0057C142 /* SXAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D7828272BD52E0057C142 /* SXAlertViewController.m */; };
 		5CA8CA482629700D00529C99 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5CA8CA472629700D00529C99 /* test.jpg */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -45,6 +47,10 @@
 		5C16FE9726F4846200641E6B /* 112.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 112.jpeg; sourceTree = "<group>"; };
 		5C27B3852648CD1E0073DBDD /* SXTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SXTableViewController.h; sourceTree = "<group>"; };
 		5C27B3862648CD1E0073DBDD /* SXTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SXTableViewController.m; sourceTree = "<group>"; };
+		5C2B9ADC273273F2002C0A5D /* UIViewController+TransitioningTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TransitioningTest.h"; sourceTree = "<group>"; };
+		5C2B9ADD273273F2002C0A5D /* UIViewController+TransitioningTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TransitioningTest.m"; sourceTree = "<group>"; };
+		5C2D7827272BD52E0057C142 /* SXAlertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SXAlertViewController.h; sourceTree = "<group>"; };
+		5C2D7828272BD52E0057C142 /* SXAlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SXAlertViewController.m; sourceTree = "<group>"; };
 		5CA8CA472629700D00529C99 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		5E14447E2B3243A3EF10CCB3 /* Pods_SXKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SXKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* SXKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SXKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +165,10 @@
 				6003F5A6195388D20070C39A /* SXViewController.m */,
 				5C27B3852648CD1E0073DBDD /* SXTableViewController.h */,
 				5C27B3862648CD1E0073DBDD /* SXTableViewController.m */,
+				5C2D7827272BD52E0057C142 /* SXAlertViewController.h */,
+				5C2D7828272BD52E0057C142 /* SXAlertViewController.m */,
+				5C2B9ADC273273F2002C0A5D /* UIViewController+TransitioningTest.h */,
+				5C2B9ADD273273F2002C0A5D /* UIViewController+TransitioningTest.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -389,9 +399,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C2D7829272BD52E0057C142 /* SXAlertViewController.m in Sources */,
 				5C27B3872648CD1E0073DBDD /* SXTableViewController.m in Sources */,
 				6003F59E195388D20070C39A /* SXAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* SXViewController.m in Sources */,
+				5C2B9ADE273273F2002C0A5D /* UIViewController+TransitioningTest.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

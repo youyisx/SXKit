@@ -13,4 +13,5 @@
 @property (strong, nonatomic) UIWindow *window;
 /// 播放器方向
 @property (nonatomic, assign) UIDeviceOrientation vodPlayerOrientation;
+
 @end

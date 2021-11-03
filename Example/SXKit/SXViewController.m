@@ -31,6 +31,8 @@ static void *my_b = &my_b;
 
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <SXBaseKit/SXPhotoPickerController.h>
+
+#import "UIViewController+TransitioningTest.h"
 @interface SXViewController ()
 //@property (nonatomic, strong) SXVodControlPlayer *player;
 @property (nonatomic, strong) SXSimpleCollectionView *collectionView;
@@ -39,6 +41,8 @@ static void *my_b = &my_b;
 @property (nonatomic, strong) RACMulticastConnection *connection;
 
 @property (nonatomic, strong) UIView *colorView;
+
+@property (nonatomic, strong) UITextField *textField;
 @end
 
 @implementation SXViewController
@@ -50,17 +54,47 @@ static void *my_b = &my_b;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.colorView = UIImageView.sx_view1(UIColor.redColor,CGRectMake(20, 200, 200, 200));
+    self.title = @"ABC";
+    self.textField = [UITextField new];
+    self.textField.layer.borderColor = UIColor.blackColor.CGColor;
+    self.textField.layer.borderWidth = 1;
+    [self.view addSubview:self.textField];
+    [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(200, 40));
+    }];
+//    UIView *inputView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 100)];
+//    inputView.backgroundColor = [UIColor redColor];
+//    self.textField.inputView = inputView;
+    self.colorView = UIImageView.sx_view1(UIColor.redColor,CGRectMake(20, 200, 20, 20));
     self.colorView.transform = CGAffineTransformMakeScale(0.5, 0.8);
     UIImage *img = [UIImage sx_layerImageWithLayer:self.colorView.layer];
-    if (img) {
-        [UIImageJPEGRepresentation(img, 1) writeToFile:@"/Users/taihe-imac-ios-01/Desktop/tt.jpg" atomically:YES];
-    }
-    [self.view addSubview:self.colorView];
-    [self.colorView sx_tapAction:^{
-        NSLog(@"---> 点击 block");
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.backgroundColor = UIColor.blueColor;
+    [btn setImage:img forState:UIControlStateNormal];
+    [btn setTitle:@" 嘿嘿哈嘿" forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightMedium];
+
+    [self.view addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.mas_topLayoutGuideBottom).offset(100);
+        make.centerX.mas_equalTo(self.view);
     }];
-    [[self.colorView sx_tapGesture] addTarget:self action:@selector(clicked:)];
+    
+ 
+    
+    
+    
+    
+//    if (img) {
+//        [UIImageJPEGRepresentation(img, 1) writeToFile:@"/Users/taihe-imac-ios-01/Desktop/tt.jpg" atomically:YES];
+//    }
+//    [self.view addSubview:self.colorView];
+//    [self.colorView sx_tapAction:^{
+//        NSLog(@"---> 点击 block");
+//    }];
+//    [[self.colorView sx_tapGesture] addTarget:self action:@selector(clicked:)];
     
     
     
@@ -263,6 +297,8 @@ static void *my_b = &my_b;
 
 
 - (IBAction)clickedBtn:(id)sender {
+    [self openAlert];
+    
 //    [self.testView mas_updateConstraints:^(MASConstraintMaker *make) {
 //        make.size.mas_equalTo(CGSizeMake(arc4random_uniform(200)+5, arc4random_uniform(200)+5));
 //    }];
@@ -271,7 +307,7 @@ static void *my_b = &my_b;
 //    }];
 //    [SXPickerContentView showDatePicker:^(NSDate * _Nonnull date) {
 //        NSLog(@"--date :%@",date);
-//    }];
+////    }];
 //    SXTableViewController *vc = [SXTableViewController new];
 ////    SXModelPresentationVal *val = [SXModalPresentat]
 //    SXModelPresentationVal *val = [SXModelPresentationVal defaultVal];
@@ -280,20 +316,41 @@ static void *my_b = &my_b;
 ////        NSLog(@"--- hidden");
 ////    };
 //    [SXModalPresentation presentationWithViewController:vc val:val completed:nil];
-//    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-//    [self.navigationController pushViewController:vc animated:NO];
-//    [self.navigationController presentViewController:vc animated:YES completion:nil];
-//    [self.navigationController pushViewController:vc animated:NO];
-    SXPhotoPickerController *picker = [SXPhotoPickerController defaultPickerController];
-    picker.selectedIdx = 1;
-    picker.maxSelectedCount = 3;
-    picker.selectCallBack = ^(NSArray<PHAsset *> * list) {
-        SXCLogInfo(@"%@",list);
-    };
-    [self presentViewController:picker animated:YES completion:nil];
+////    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+////    [self.navigationController pushViewController:vc animated:NO];
+////    [self.navigationController presentViewController:vc animated:YES completion:nil];
+////    [self.navigationController pushViewController:vc animated:NO];
+//    SXPhotoPickerController *picker = [SXPhotoPickerController defaultPickerController];
+//    picker.selectedIdx = 1;
+//    picker.maxSelectedCount = 3;
+//    picker.selectCallBack = ^(NSArray<PHAsset *> * list) {
+//        SXCLogInfo(@"%@",list);
+//    };
+//    [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (void)test {
+    NSLog(@"%s",__FUNCTION__);
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:NO];
+//    NSString *tips = @" [self.navigationController pushViewController:vc animated:NO];地地中国地中地中地国地国地国地f[self.navigationController pushViewController:vc animated:NO];地地中国地中地中地国地国地国地f[self.navigationController pushViewController:vc animated:NO];地地中国地中地中地国地国地国地f[self.navigationController pushViewController:vc animated:NO];地地中国地中地中地国地国地国地f";
+//    UILabel *tipsLabel = [UILabel new];
+//    tipsLabel.numberOfLines = 0;
+//    tipsLabel.text = tips;
+//    tipsLabel.textColor = UIColor.redColor;
+//    tipsLabel.font = [UIFont systemFontOfSize:12];
+//    CGSize size = [tipsLabel sizeThatFits:CGSizeMake(100, CGFLOAT_MAX)];
+  
+    
+//
+//    NSInteger length = phone.length;
+//    NSString *last = phone.length > 7 ? [phone substringFromIndex:7] : nil;
+//    NSString *mid  = phone.length > 3 ? [phone substringWithRange:NSMakeRange(3, (length - 3) > 4 ? 4 : (length - 3))] : nil;
+//    NSString *first = phone.length > 3 ? [phone substringToIndex:3] : phone;
+//    NSLog(@"%@-%@-%@",first,mid,last);
+    
     [UIView animateWithDuration:0.45 animations:^{
 //        if (arc4random_uniform(2) == 0) {
 //            self.colorView.sx_extendToTop -= arc4random_uniform(50)+5;
@@ -313,7 +370,6 @@ static void *my_b = &my_b;
 //    } else {
 //        [SXToastScheduler.share removeAll];
 //    }
-    
 }
 
 @end

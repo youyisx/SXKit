@@ -74,7 +74,11 @@ Pod::Spec.new do |s|
     ss.source_files = 'SXBaseKit/Classes/SXScheduler/**/*'
     ss.dependency 'SXBaseKit/SXLogger'
   end
-
+  s.subspec 'SXVCTransitioning' do |ss|
+    ss.source_files = 'SXBaseKit/Classes/SXVCTransitioning/**/*'
+    ss.dependency 'ReactiveObjC', '~> 3.1.1'
+    ss.frameworks = 'UIKit', 'Foundation'
+  end
   
   #   s.subspec 'SXPlayer' do |ss|
   #     ss.source_files = 'SXKit/Classes/SXPlayer/*.{h,m}'
