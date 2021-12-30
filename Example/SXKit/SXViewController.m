@@ -33,6 +33,7 @@ static void *my_b = &my_b;
 #import <SXBaseKit/SXPhotoPickerController.h>
 
 #import "UIViewController+TransitioningTest.h"
+
 @interface SXViewController ()
 //@property (nonatomic, strong) SXVodControlPlayer *player;
 @property (nonatomic, strong) SXSimpleCollectionView *collectionView;
@@ -54,6 +55,9 @@ static void *my_b = &my_b;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    SXCustomLogger.showLevel = SXCustomLogLevelInfo;
+    SXCLogInfo(@"叶鄙 %@",@"1");
+    SXCLog(@"111");
     self.title = @"ABC";
     self.textField = [UITextField new];
     self.textField.layer.borderColor = UIColor.blackColor.CGColor;
@@ -82,10 +86,73 @@ static void *my_b = &my_b;
         make.centerX.mas_equalTo(self.view);
     }];
     
- 
     
+//    CMTime t = CMTimeMakeWithSeconds(2, 600);
+//    CMTime t1 = CMTimeMakeWithSeconds(2.1, 600);
+//    CMTime t2 = CMTimeMake(400, 200);
+//    NSLog(@"-> sub %@",@(CMTimeGetSeconds(CMTimeSubtract(t1, t))));
+//    NSLog(@"-> %d",CMTimeCompare(t, t1));
+//    NSLog(@"-> %d",CMTimeCompare(t1, t1));
+//    NSLog(@"-> %d",CMTimeCompare(t, t2));
+//    NSLog(@"-> %d",CMTimeCompare(t1, t2));
+//
+//    NSMutableArray *list = @[@"1",@"2",@"0",@"3",@"6",@"4",@"5"].mutableCopy;
+//    [list sortUsingComparator:^NSComparisonResult(NSString * _Nonnull obj1, NSString * _Nonnull obj2) {
+//        return obj1.integerValue > obj2.integerValue;
+//    }];
+//
+//    CGRect ff = CGRectMake(0, 0, 100, 200);
+//    CGRect tt = CGRectMake(1, 1, 20, 20);
+//    CGRect bb = CGRectMake(0, -10, 50, 50);
+//    NSLog(@"%d  %d",CGRectContainsRect(ff, tt),CGRectContainsRect(ff, bb));
     
-    
+    RACSignal *t1 = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        NSLog(@"--> t1");
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSLog(@"--> t1 send");
+//            [subscriber sendError:nil];
+            [subscriber sendNext:@(1)];
+            [subscriber sendCompleted];
+        });
+        return nil;
+    }];
+    RACSignal *t2 = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        NSLog(@"--> t2");
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSLog(@"--> t2 send");
+            [subscriber sendNext:@(2)];
+            [subscriber sendCompleted];
+        });
+        return nil;
+    }];
+    RACSignal *t3 = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        NSLog(@"--> t3");
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSLog(@"--> t3 send");
+            [subscriber sendNext:@(2)];
+            [subscriber sendCompleted];
+//            [subscriber sendError:nil];
+        });
+        return nil;
+    }];
+    [[RACSignal zip:@[t1,t2,t3]] subscribeNext:^(RACTuple * _Nullable x) {
+        NSLog(@"-> x %@",x);
+
+    } error:^(NSError * _Nullable error) {
+        NSLog(@"-> error");
+
+    } completed:^{
+        NSLog(@"-> complete");
+
+    }];
+//    [[RACSignal concat:@[t1,t2,t3]] subscribeNext:^(id  _Nullable x) {
+//        NSLog(@"-> x %@",x);
+//
+//    } error:^(NSError * _Nullable error) {
+//        NSLog(@"-> error");
+//    } completed:^{
+//        NSLog(@"-> complete");
+//    }];
     
 //    if (img) {
 //        [UIImageJPEGRepresentation(img, 1) writeToFile:@"/Users/taihe-imac-ios-01/Desktop/tt.jpg" atomically:YES];

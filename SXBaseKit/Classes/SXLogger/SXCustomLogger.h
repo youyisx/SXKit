@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, SXCustomLogLevel) {
+typedef NS_OPTIONS(NSInteger, SXCustomLogLevel) {
     SXCustomLogLevelDefault = 1<<0,
     SXCustomLogLevelInfo    = 1<<1,
     SXCustomLogLevelWarn    = 1<<2,

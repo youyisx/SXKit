@@ -50,10 +50,10 @@
     }];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-
+    self.tableView.panGestureRecognizer.delegate = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"1"];
 //
-    
+    NSLog(@"ff");
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

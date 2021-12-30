@@ -198,5 +198,21 @@
         return nil;
     }];
 }
+
++ (void)compressVide:(PHAsset *)asset {
+    [[PHImageManager defaultManager] requestAVAssetForVideo:asset options:nil resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
+        AVAssetExportSession *exprtSession = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPreset640x480];
+        exprtSession.outputURL = [NSURL URLWithString:@"...."];
+        exprtSession.shouldOptimizeForNetworkUse = true;
+    }];
+    [[PHImageManager defaultManager] requestExportSessionForVideo:asset options:nil exportPreset:AVAssetExportPreset640x480 resultHandler:^(AVAssetExportSession * _Nullable exportSession, NSDictionary * _Nullable info) {
+//            exportSession.outputURL
+        exportSession.shouldOptimizeForNetworkUse = true;
+        
+    }];
+//    AVAsset *avasset = [AVAsset assetWithURL:asset.localizedDescription];
+    
+    
+}
 @end
 

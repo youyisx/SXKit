@@ -11,8 +11,77 @@
 #import <ReactiveObjC/ReactiveObjC.h>
 #import "UIViewController+SXTransitioning.h"
 
-@interface SXAlertView : UIView
+@interface SXTableView : UITableView
 
+@end
+@implementation SXTableView
+
+//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+//    UIView *view = [super hitTest:point withEvent:event];
+//    if (view && self.contentOffset.x <= 0) {
+//        return nil;
+//    }
+//    NSLog(@"-- view %@",NSStringFromClass(view.class));
+////    self.panGestureRecognizer.delegate = self;
+//    return view;
+//}
+
+- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
+    self = [super initWithFrame:frame style:style];
+    if (self) {
+//        NSLog(@"%s",__FUNCTION__);
+//        @weakify(self);
+//        [[RACObserve(self, contentOffset) distinctUntilChanged] subscribeNext:^(id  _Nullable x) {
+//            @strongify(self);
+//            CGFloat py = self.contentOffset.y;
+//            CGFloat offset = self.contentInset.top;
+//            if (py + offset >= 0) return;
+//            UIResponder * responder = self.nextResponder;
+//            while (responder != nil && ![responder isKindOfClass:[UIViewController class]]) {
+//                responder = responder.nextResponder;
+//            }
+//            if ([responder isKindOfClass:[UIViewController class]]) {
+//                UIViewController *c = (UIViewController *)responder;
+//                [c dismissViewControllerAnimated:YES completion:nil];
+//            }
+//        }];
+    }
+    return self;
+}
+
+//- (instancetype)initWithFrame:(CGRect)frame {
+//    self = [super initWithFrame:frame];
+//    if (self) {
+//        NSLog(@"%s",__FUNCTION__);
+//    }
+//    return self;
+//}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if ([gestureRecognizer isKindOfClass:UIPanGestureRecognizer.class]) {
+        UIPanGestureRecognizer *pan = (UIPanGestureRecognizer *)gestureRecognizer;
+        CGPoint contentOffset       = self.contentOffset;
+        CGPoint velocity            = [pan velocityInView:pan.view];
+        //        CGAffineTransform transform = self.superview.transform;
+        //        if (transform.ty != 0) {
+        //            return NO;
+        //        }
+        if (contentOffset.y == -self.contentInset.top) {
+            NSLog(@"%@", NSStringFromCGPoint(velocity));
+            // 关键点: 当前是最顶点, 不允许往下滑动
+            if (velocity.y > 0) {
+                // 向下
+                return NO;
+            }
+        }
+    }
+    return YES;
+}
+
+@end
+
+@interface SXAlertView : UIView
+@property (nonatomic, assign) BOOL ignore;
 @end
 @implementation SXAlertView
 
@@ -35,13 +104,23 @@
 //    [self addSubview:child];
 }
 
+//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+//    UIView *hitView = [super hitTest:point withEvent:event];
+//    if (hitView == self || self.ignore) {
+//        NSLog(@"-- nil");
+//        return nil;
+//    }
+//    NSLog(@"--- other");
+//    return hitView;
+//}
+
 - (void)dealloc {
     NSLog(@"%s",__FUNCTION__);
 }
 @end
 
-@interface SXAlertViewController ()
-
+@interface SXAlertViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
+@property (nonatomic, strong) UITableView *tableView;
 @end
 
 @implementation SXAlertViewController
@@ -81,9 +160,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.layer.cornerRadius = 12;
+//    self.view.layer.cornerRadius = 12;
+    self.view.backgroundColor = [UIColor clearColor];
     
-    self.view.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1];
+//    self.view.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1];
     UIButton *confirm = [UIButton buttonWithType:UIButtonTypeCustom];
     [confirm setTitle:@"确定" forState:UIControlStateNormal];
     [confirm setTitleColor:UIColor.redColor forState:UIControlStateNormal];
@@ -135,7 +215,25 @@
         make.bottom.mas_equalTo(self.mas_bottomLayoutGuideTop);
         make.height.mas_equalTo(@40);
     }];
+    
+    self.tableView = [[SXTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView.rowHeight = 40;
+    self.tableView.estimatedRowHeight = 40;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    
+    [self.view addSubview:self.tableView];
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(40);
+        make.bottom.mas_equalTo(tf.mas_top);
+        make.leading.trailing.mas_equalTo(0);
+    }];
+    
+
 }
+
 
 /*
 #pragma mark - Navigation
@@ -147,5 +245,27 @@
 }
 */
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 20;
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    cell.textLabel.text = [NSString stringWithFormat:@"-> %@",@(indexPath.row)];
+    return cell;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.contentOffset.y <= -scrollView.contentInset.top && scrollView.panGestureRecognizer.state == UIGestureRecognizerStateChanged) {
+        NSLog(@"tableview top");
+        SXAlertView *view = (SXAlertView *)self.view;
+        view.ignore = YES;
+        scrollView.panGestureRecognizer.state = UIGestureRecognizerStateEnded;
+        [scrollView setContentOffset:CGPointZero animated:NO];
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            view.ignore = NO;
+//        });
+        return;
+    }
+}
 @end
