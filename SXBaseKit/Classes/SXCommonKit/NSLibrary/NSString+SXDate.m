@@ -20,7 +20,9 @@
         obj = [[NSDateFormatter alloc] init];
         [obj setDateFormat:formatter];
         [obj setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+        [obj setCalendar:[[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
         [obj setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Shanghai"]];
+
         params[formatter] = obj;
     }
     return obj;
